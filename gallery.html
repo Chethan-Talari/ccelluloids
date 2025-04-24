@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <img src="white-logo.png" class="logo" alt="Logo">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About Me</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="gallery-preview">
+    <h2>My Best Shots</h2>
+	
+	<div class="video-wrapper">
+        <video autoplay muted loop controls>
+        <source src="movie.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+</div>
+
+<div class="gallery-rows">
+  <div class="gallery-row">
+
+    <!-- Image 1 -->
+    <div class="gallery-item">
+      <input type="checkbox" id="img1" hidden>
+      <label for="img1">
+        <img src="photo1.jpg" alt="Photo 1" class="gallery-img">
+      </label>
+      <div class="lightbox">
+        <label for="img1" class="lightbox-overlay"></label>
+        <img src="photo1.jpg" class="lightbox-image">
+      </div>
+    </div>
+
+    <!-- Image 2 -->
+    <div class="gallery-item">
+      <input type="checkbox" id="img2" hidden>
+      <label for="img2">
+        <img src="photo2.jpg" alt="Photo 2" class="gallery-img">
+      </label>
+      <div class="lightbox">
+        <label for="img2" class="lightbox-overlay"></label>
+        <img src="photo2.jpg" class="lightbox-image">
+      </div>
+    </div>
+
+    <!-- Image 3 -->
+    <div class="gallery-item">
+      <input type="checkbox" id="img3" hidden>
+      <label for="img3">
+        <img src="photo3.jpg" alt="Photo 3" class="gallery-img">
+      </label>
+      <div class="lightbox">
+        <label for="img3" class="lightbox-overlay"></label>
+        <img src="photo3.jpg" class="lightbox-image">
+      </div>
+    </div>
+  </div>
+
+<div class="gallery-row video-gallery">
+  <video src="vid1.mp4" muted autoplay loop controls class="gallery-video" type="video/mp4"></video>
+  <video src="vid2.mp4" muted autoplay loop controls class="gallery-video" type="video/mp4"></video>
+  <video src="vid3.mp4" muted autoplay loop controls class="gallery-video" type="video/mp4"></video>
+</div>
+
+
+  <div class="gallery-row">
+    <!-- Image 4 -->
+    <div class="gallery-item">
+      <input type="checkbox" id="img4" hidden>
+      <label for="img4">
+        <img src="photo4.jpg" alt="Photo 4" class="gallery-img">
+      </label>
+      <div class="lightbox">
+        <label for="img4" class="lightbox-overlay"></label>
+        <img src="photo4.jpg" class="lightbox-image">
+      </div>
+    </div>
+
+    <!-- Image 5 -->
+    <div class="gallery-item">
+      <input type="checkbox" id="img5" hidden>
+      <label for="img5">
+        <img src="photo5.jpg" alt="Photo 5" class="gallery-img">
+      </label>
+      <div class="lightbox">
+        <label for="img5" class="lightbox-overlay"></label>
+        <img src="photo5.jpg" class="lightbox-image">
+      </div>
+    </div>
+
+    <!-- Image 6 -->
+    <div class="gallery-item">
+      <input type="checkbox" id="img6" hidden>
+      <label for="img6">
+        <img src="photo6.jpg" alt="Photo 6" class="gallery-img">
+      </label>
+      <div class="lightbox">
+        <label for="img6" class="lightbox-overlay"></label>
+        <img src="photo6.jpg" class="lightbox-image">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+<br>	
+
+<a href="about.html" class="btn">Know More About Me</a>
+
+  <footer>
+    <div class="footer-left">
+      Contact: cc.group@zohomail.in | Phone: +91 810 6543 475
+    </div>
+    <div class="footer-right">
+      <img src="white-logo.png" width="100" alt="Logo">
+    </div>
+  </footer>
+</body>
+</html>
