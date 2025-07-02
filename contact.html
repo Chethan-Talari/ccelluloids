@@ -19,13 +19,19 @@
     <h2>Contact Me</h2>
     <p>For bookings and inquiries, reach out here.</p>
     <div class="contact-container">
-      <form>
+      
+      <form
+  action="https://formspree.io/f/mqabkwwb"
+  method="POST"
+>
         <input type="text" placeholder="Your Name" required>
         <input type="email" placeholder="Your Email" required>
         <input type="tel" placeholder="Your Phone">
         <textarea rows="5" placeholder="Your Message"></textarea>
-        <button type="submit" class="btn">Send</button>
+       <input type="hidden" name="_redirect" value="https://cc.chethantalari.me/success.html">
+        <a href="success.html">Send</a>
       </form>
+      
       <img src="contact-image.jpg" alt="Telephone" width="180">
     </div>
 
@@ -44,5 +50,6 @@
       <img src="white-logo.png" width="100" alt="Logo">
     </div>
   </footer>
+  
 </body>
 </html>
