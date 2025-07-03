@@ -39,6 +39,53 @@ img {
     color: #ffcc00;
 }
 
+.spark {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffcc00 40%, transparent 60%);
+  opacity: 0.8;
+  animation: spark-fade 0.5s ease-out forwards;
+}
+
+@keyframes spark-fade {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+#loader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+#loader img {
+  width: 150px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
+
 /* HERO SECTION */
 .hero-static {
   position: relative;
@@ -125,6 +172,28 @@ img {
   background-color: #ffcc00;
   color: black;
 }
+
+.shiny-text {
+  position: relative;
+  display: inline-block;
+  color: white;
+  overflow: hidden;
+  background: linear-gradient(90deg, #fff, #ffcc00, #fff);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 
 .news-box {
   background: #fff3cd;
