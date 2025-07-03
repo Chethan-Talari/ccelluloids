@@ -45,10 +45,9 @@
 
   <!-- LIGHTBOX MODAL -->
   <div id="lightboxModal" class="lightbox-modal">
+    <div class="lightbox-backdrop"></div>
     <span class="lightbox-close">&times;</span>
-    <div class="lightbox-overlay-content">
-      <div class="lightbox-content"></div>
-    </div>
+    <div class="lightbox-content"></div>
   </div>
 
   <!-- FOOTER -->
@@ -71,6 +70,7 @@
       item.addEventListener('click', () => {
         modal.classList.add('show');
         modalContent.innerHTML = '';
+
         if (item.tagName === 'IMG') {
           const img = document.createElement('img');
           img.src = item.src;
@@ -92,7 +92,7 @@
     });
 
     modal.addEventListener('click', (e) => {
-      if (e.target === modal || e.target.classList.contains('lightbox-overlay-content')) {
+      if (e.target.classList.contains('lightbox-modal') || e.target.classList.contains('lightbox-backdrop')) {
         modal.classList.remove('show');
         modalContent.innerHTML = '';
       }
