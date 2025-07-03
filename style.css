@@ -296,22 +296,19 @@ html {
 }
 
 .hero-video-wrapper {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  overflow: hidden;
-  border-radius: 12px;
-  background: #000;
-}
-
-.hero-video-wrapper video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-video-wrapper video {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 12px;
 }
 
 
@@ -1448,14 +1445,22 @@ footer {
     transform: rotate(45deg) translate(-5px, -6px);
   }
 
-.hero h1 {
-    font-size: 2rem;
-    line-height: 1.2;
+  .hero-static {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    padding: 20px;
   }
 
-  .hero p {
-    font-size: 1.1rem;
-    line-height: 1.4;
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .hero-overlay p {
+    font-size: 1rem;
   }
 
 .news-box h2 {
