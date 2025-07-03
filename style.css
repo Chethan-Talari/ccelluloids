@@ -848,10 +848,17 @@ footer {
 
 .contact-container {
   display: flex;
-  gap: 40px;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  align-items: center;    
+  max-width: 600px;       
+  margin: 0px auto;      
+}
+
+.contact-container textarea{
+height: 150px;
+resize: vertical;
 }
 
 .contact-form {
@@ -873,6 +880,7 @@ footer {
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
+  box-sizing: border-box;
   transition: border 0.3s, box-shadow 0.3s;
 }
 
@@ -898,39 +906,32 @@ footer {
   background-color: #e6b800;
 }
 
-.contact-photo {
-  flex: 1;
-  min-width: 300px;
+.contact-info {
   display: flex;
   justify-content: center;
-  align-items: center;
-}
-
-.contact-photo img {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-.contact-info {
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-around;
+  gap: 40px;
+  margin-top: 30px;
   flex-wrap: wrap;
-  gap: 20px;
-  font-size: 1.1rem;
-  color: #333;
-  text-align: center;
 }
 
-.contact-info div {
+.contact-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  text-align: center;
+  max-width: 150px;
 }
 
+.contact-item img {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.contact-item span {
+  font-size: 0.95rem;
+  color: #333;
+}
 
 /* FOOTER */
 footer {
