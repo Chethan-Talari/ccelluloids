@@ -5,6 +5,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="preloader">
+  <img src="white-logo.png" alt="Loading...">
+</div>
+
   <header class="navbar">
     <a href="index.html"><img src="white-logo.png" class="logo" alt="Logo"></a>
     <nav>
@@ -15,25 +19,30 @@
     </nav>
   </header>
 
-  <section class="contact-section">
-    <h2>Contact Me</h2>
-    <p>For bookings and inquiries, reach out here.</p>
-    <div class="contact-container">
-      
-      <form
-  action="https://formspree.io/f/mqabkwwb"
-  method="POST"
->
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <input type="tel" placeholder="Your Phone">
-        <textarea rows="5" placeholder="Your Message"></textarea>
-       <input type="hidden" name="_redirect" value="https://cc.chethantalari.me/success.html">
-        <a href="success.html">Send</a>
-      </form>
-      
-      <img src="contact-image.jpg" alt="Telephone" width="180">
+
+<section class="contact-section">
+  <h2>Contact Me</h2>
+  <p class="contact-subheading">For bookings and inquiries, reach out here.</p>
+  
+  <div class="contact-container">
+    <!-- LEFT: Form -->
+   
+<form class="contact-form" action="https://formspree.io/f/mqabkwwb" method="POST">
+  <input type="hidden" name="_captcha" value="false">
+  <!-- Optional: Redirect after submit -->
+  <input type="hidden" name="_next" value="thankyou.html">
+
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="text" name="contact" placeholder="Email or Phone Number" required>
+  <textarea name="message" placeholder="Your Message" required></textarea>
+  <button type="submit">Send</button>
+</form>
+
+    <!-- RIGHT: Image -->
+    <div class="contact-photo">
+      <img src="your-photo.jpg" alt="Behind the scenes">
     </div>
+  </div>
 
     <div class="contact-info">
       <p><img src="location-icon.gif" width="20"> HSR Layout, Bangalore</p>
@@ -59,6 +68,60 @@
   document.addEventListener('mousemove', e => {
     cursor.style.top = e.clientY + 'px';
     cursor.style.left = e.clientX + 'px';
+  });
+</script>
+
+<script>
+  const cursor = document.querySelector('.custom-cursor');
+
+  // Move the cursor
+  document.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
+
+  // Click ripple
+  document.addEventListener('click', () => {
+    cursor.classList.add('ripple');
+    setTimeout(() => {
+      cursor.classList.remove('ripple');
+    }, 500);
+  });
+</script>
+<script>
+  const cursor = document.querySelector('.custom-cursor');
+
+  document.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
+
+  document.addEventListener('click', () => {
+    cursor.classList.add('ripple');
+    setTimeout(() => cursor.classList.remove('ripple'), 500);
+  });
+
+  // Hover effect on buttons and links
+  document.querySelectorAll('button, a, .btn').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('hover');
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover');
+    });
+  });
+</script>
+<script>
+  window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+  });
+</script>
+
+<a href="#" class="scroll-top" aria-label="Scroll to top">↑</a>
+<script>
+  const scrollBtn = document.querySelector('.scroll-top');
+  window.addEventListener('scroll', () => {
+    scrollBtn.classList.toggle('show', window.scrollY > 300);
   });
 </script>
 

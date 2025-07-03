@@ -70,9 +70,10 @@
 </div>
 
 <h2 style="text-align:center;"> Behind the Scenes </h2>
-<div class="bts-strip">
-  <img src="bts-working.jpg" alt="Behind the Scenes">
-</div>
+<section class="behind-the-scenes">
+  <video src="bts-video.mp4" autoplay loop muted playsinline controls></video>
+</section>
+
 
 
 <section class="collab-note">
@@ -123,6 +124,55 @@
   document.addEventListener('mousemove', e => {
     cursor.style.top = e.clientY + 'px';
     cursor.style.left = e.clientX + 'px';
+  });
+</script>
+
+<script>
+  const cursor = document.querySelector('.custom-cursor');
+
+  // Move the cursor
+  document.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
+
+  // Click ripple
+  document.addEventListener('click', () => {
+    cursor.classList.add('ripple');
+    setTimeout(() => {
+      cursor.classList.remove('ripple');
+    }, 500);
+  });
+</script>
+<script>
+  const cursor = document.querySelector('.custom-cursor');
+
+  document.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
+
+  document.addEventListener('click', () => {
+    cursor.classList.add('ripple');
+    setTimeout(() => cursor.classList.remove('ripple'), 500);
+  });
+
+  // Hover effect on buttons and links
+  document.querySelectorAll('button, a, .btn').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('hover');
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover');
+    });
+  });
+</script>
+
+<a href="#" class="scroll-top" aria-label="Scroll to top">↑</a>
+<script>
+  const scrollBtn = document.querySelector('.scroll-top');
+  window.addEventListener('scroll', () => {
+    scrollBtn.classList.toggle('show', window.scrollY > 300);
   });
 </script>
 
