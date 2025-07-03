@@ -295,6 +295,25 @@ html {
   pointer-events: none;
 }
 
+.hero-video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #000;
+}
+
+.hero-video-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
 
 .hero-dark-overlay {
   position: absolute;
@@ -1428,5 +1447,42 @@ footer {
   .burger.toggle .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
   }
+
+.hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+
+.news-box h2 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+.polaroid-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  .polaroid-row img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+
+ .quote-banner {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    margin: 30px 15px;
+  }
+
 }
 
