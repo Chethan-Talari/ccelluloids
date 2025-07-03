@@ -358,6 +358,44 @@ html {
   }
 }
 
+.view-work-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.view-work-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background-color: #ffcc00;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  animation: pulse 2s infinite;
+}
+
+.view-work-btn:hover {
+  background-color: #e6b800;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 204, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+  }
+}
+
 
 .news-box {
   background: #fff3cd;
@@ -399,7 +437,7 @@ html {
 }
 
 .polaroid-row img {
-  width: 180px;
+  width: 300px;
   border: 1px solid #eee;
   padding: 10px;
   background-color: white;
