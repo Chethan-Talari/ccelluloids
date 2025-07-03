@@ -1,3 +1,4 @@
+
 /* GLOBAL */
 body {
     margin: 0;
@@ -5,6 +6,22 @@ body {
     background-color: #f4f4f4;
     color: #333;
 }
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #ffcc00;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: background 0.3s, transform 0.15s;
+  box-shadow: 0 0 15px #ffcc00;
+  z-index: 10000;
+}
+
 
 img {
     max-width: 100%;
@@ -249,6 +266,19 @@ html {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   border-radius: 8px;
 }
+
+.quote-banner {
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+  font-size: 2rem;
+  text-align: center;
+  margin: 40px auto;
+  max-width: 800px;
+  line-height: 1.4;
+  color: #333;  /* adjust color as you want */
+  padding: 10px 20px;
+}
+
 
 .bts-strip {
   margin: 60px auto;
@@ -534,15 +564,22 @@ footer {
     margin-bottom: 20px;
 }
 
-.social-links img {
-    margin-right: 10px;
-    transition: transform 0.2s;
+.social-links {
+  display: flex;
+  justify-content: left; 
+  gap: 15px; 
+  margin-top: 10px;
 }
 
-.social-links img:hover {
-    transform: scale(1.5);
+.social-links a img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.2s ease;
 }
 
+.social-links a img:hover {
+  transform: scale(1.2);
+}
 .client-logos {
   padding: 50px 0;
   text-align: center;
