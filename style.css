@@ -287,13 +287,14 @@ img {
 }
 
 
-/* BASIC */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif, Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   color: #111;
 }
+
+
 
 img, video {
   max-width: 100%;
