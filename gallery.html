@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <title>Gallery</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- NAVBAR -->
   <header class="navbar">
     <a href="index.html">
-      <img src="white-logo.png" class="logo" alt="Logo">
+      <img src="white-logo.png" class="logo" alt="Logo" />
     </a>
     <nav>
       <a href="index.html">Home</a>
@@ -27,82 +26,27 @@
 
   <!-- GALLERY GRID -->
   <div class="gallery-grid">
-    <!-- Images -->
-    <div class="gallery-item" data-aos="fade-up">
-      <input type="checkbox" id="img1" hidden>
-      <label for="img1">
-        <img src="photo1.jpg" alt="Photo 1">
-      </label>
-      <div class="lightbox">
-        <label for="img1" class="lightbox-overlay"></label>
-        <img src="photo1.jpg" class="lightbox-image">
-      </div>
-    </div>
+    <img src="photo1.jpg" alt="Photo 1" class="gallery-item" />
+    <img src="photo2.jpg" alt="Photo 2" class="gallery-item" />
+    <img src="photo3.jpg" alt="Photo 3" class="gallery-item" />
+    <img src="photo4.jpg" alt="Photo 4" class="gallery-item" />
+    <img src="photo5.jpg" alt="Photo 5" class="gallery-item" />
+    <img src="photo6.jpg" alt="Photo 6" class="gallery-item" />
 
-    <div class="gallery-item" data-aos="fade-up">
-      <input type="checkbox" id="img2" hidden>
-      <label for="img2">
-        <img src="photo2.jpg" alt="Photo 2">
-      </label>
-      <div class="lightbox">
-        <label for="img2" class="lightbox-overlay"></label>
-        <img src="photo2.jpg" class="lightbox-image">
-      </div>
-    </div>
-
-    <div class="gallery-item" data-aos="fade-up">
-      <input type="checkbox" id="img3" hidden>
-      <label for="img3">
-        <img src="photo3.jpg" alt="Photo 3">
-      </label>
-      <div class="lightbox">
-        <label for="img3" class="lightbox-overlay"></label>
-        <img src="photo3.jpg" class="lightbox-image">
-      </div>
-    </div>
-
-    <div class="gallery-item" data-aos="fade-up">
-      <input type="checkbox" id="img4" hidden>
-      <label for="img4">
-        <img src="photo4.jpg" alt="Photo 4">
-      </label>
-      <div class="lightbox">
-        <label for="img4" class="lightbox-overlay"></label>
-        <img src="photo4.jpg" class="lightbox-image">
-      </div>
-    </div>
-
-    <div class="gallery-item" data-aos="fade-up">
-      <input type="checkbox" id="img5" hidden>
-      <label for="img5">
-        <img src="photo5.jpg" alt="Photo 5">
-      </label>
-      <div class="lightbox">
-        <label for="img5" class="lightbox-overlay"></label>
-        <img src="photo5.jpg" class="lightbox-image">
-      </div>
-    </div>
-
-    <div class="gallery-item" data-aos="fade-up">
-      <input type="checkbox" id="img6" hidden>
-      <label for="img6">
-        <img src="photo6.jpg" alt="Photo 6">
-      </label>
-      <div class="lightbox">
-        <label for="img6" class="lightbox-overlay"></label>
-        <img src="photo6.jpg" class="lightbox-image">
-      </div>
-    </div>
-
-    <!-- Videos -->
-    <video src="vid1.mp4" class="gallery-video" muted autoplay loop controls data-aos="fade-up"></video>
-    <video src="vid2.mp4" class="gallery-video" muted autoplay loop controls data-aos="fade-up"></video>
-    <video src="vid3.mp4" class="gallery-video" muted autoplay loop controls data-aos="fade-up"></video>
+    <video src="vid1.mp4" class="gallery-item" muted autoplay loop controls></video>
+    <video src="vid2.mp4" class="gallery-item" muted autoplay loop controls></video>
+    <video src="vid3.mp4" class="gallery-item" muted autoplay loop controls></video>
   </div>
 
   <!-- CTA -->
   <div style="text-align:center; margin:40px;">
     <a href="about.html" class="btn">Know More About Me</a>
+  </div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightboxModal" class="lightbox-modal">
+    <span class="lightbox-close">&times;</span>
+    <div class="lightbox-content"></div>
   </div>
 
   <!-- FOOTER -->
@@ -111,14 +55,45 @@
       Contact: cc.group@zohomail.in | Phone: +91 810 6543 475
     </div>
     <div class="footer-right">
-      <img src="white-logo.png" width="100" alt="Logo">
+      <img src="white-logo.png" width="100" alt="Logo" />
     </div>
   </footer>
 
-  <!-- AOS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- SCRIPT -->
   <script>
-    AOS.init();
+    const modal = document.getElementById('lightboxModal');
+    const modalContent = document.querySelector('.lightbox-content');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        modal.classList.add('show');
+        modalContent.innerHTML = '';
+        if (item.tagName === 'IMG') {
+          const img = document.createElement('img');
+          img.src = item.src;
+          modalContent.appendChild(img);
+        } else if (item.tagName === 'VIDEO') {
+          const video = document.createElement('video');
+          video.src = item.src;
+          video.controls = true;
+          video.autoplay = true;
+          modalContent.appendChild(video);
+        }
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('show');
+      modalContent.innerHTML = '';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('show');
+        modalContent.innerHTML = '';
+      }
+    });
   </script>
 </body>
 </html>
