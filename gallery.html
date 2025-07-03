@@ -33,9 +33,9 @@
     <img src="photo5.jpg" alt="Photo 5" class="gallery-item" />
     <img src="photo6.jpg" alt="Photo 6" class="gallery-item" />
 
-    <video src="vid1.mp4" class="gallery-item" muted autoplay loop controls></video>
-    <video src="vid2.mp4" class="gallery-item" muted autoplay loop controls></video>
-    <video src="vid3.mp4" class="gallery-item" muted autoplay loop controls></video>
+    <video src="vid1.mp4" class="gallery-item" muted loop controls></video>
+    <video src="vid2.mp4" class="gallery-item" muted loop controls></video>
+    <video src="vid3.mp4" class="gallery-item" muted loop controls></video>
   </div>
 
   <!-- CTA -->
@@ -46,7 +46,9 @@
   <!-- LIGHTBOX MODAL -->
   <div id="lightboxModal" class="lightbox-modal">
     <span class="lightbox-close">&times;</span>
-    <div class="lightbox-content"></div>
+    <div class="lightbox-overlay-content">
+      <div class="lightbox-content"></div>
+    </div>
   </div>
 
   <!-- FOOTER -->
@@ -78,6 +80,7 @@
           video.src = item.src;
           video.controls = true;
           video.autoplay = true;
+          video.loop = true;
           modalContent.appendChild(video);
         }
       });
@@ -89,7 +92,7 @@
     });
 
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
+      if (e.target === modal || e.target.classList.contains('lightbox-overlay-content')) {
         modal.classList.remove('show');
         modalContent.innerHTML = '';
       }

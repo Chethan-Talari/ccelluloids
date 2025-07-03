@@ -393,7 +393,6 @@ img, video {
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* Ensure images and videos keep shape */
 .gallery-item img,
 .gallery-item video {
   width: 100%;
@@ -418,6 +417,14 @@ img, video {
 
 .lightbox-modal.show {
   display: flex;
+}
+
+.lightbox-overlay-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .lightbox-content img,
