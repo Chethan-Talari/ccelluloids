@@ -1371,3 +1371,62 @@ footer {
   }
 }
 
+@media (min-width: 769px) {
+  .burger {
+    display: none;
+  }
+
+  .nav-links {
+    position: static;
+    transform: none !important;
+    height: auto;
+    flex-direction: row;
+    gap: 30px;
+    background: none;
+    padding-top: 0;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 70%;
+    background-color: #000;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    padding-top: 80px;
+    gap: 20px;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    transform: translateX(0);
+  }
+
+  .burger.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .burger.toggle .line2 {
+    opacity: 0;
+  }
+
+  .burger.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
+
