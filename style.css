@@ -307,6 +307,28 @@ img {
 }
 
 /* GALLERY PREVIEW */
+
+.section-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  color: #222;
+  position: relative;
+}
+
+.section-heading::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background: #ffcc00;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+
 .gallery-preview {
     padding: 60px 30px;
     text-align: center;
@@ -346,6 +368,30 @@ img {
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.gallery-item img {
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  width: 100%;
+  object-fit: cover;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+
+
 .video-wrapper {
     display: flex;
     justify-content: center;
@@ -372,18 +418,18 @@ img {
 }
 
 .gallery-video {
-  height: 500px;
-  width: auto;
+  width: 100%;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
 }
 
 .gallery-video:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
+
 
 
 .lightbox {
@@ -402,19 +448,29 @@ input:checked ~ .lightbox {
   display: flex;
 }
 
-.lightbox-image {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.2);
-}
-
 .lightbox-overlay {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
   cursor: zoom-out;
+}
+
+.lightbox {
+  background: rgba(0,0,0,0.95);
+}
+
+.lightbox-image {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.3);
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 

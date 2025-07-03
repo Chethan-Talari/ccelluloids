@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <title>Gallery</title>
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
 </head>
 <body>
   <header class="navbar">
@@ -16,7 +17,7 @@
   </header>
 
   <section class="gallery-preview">
-    <h2>My Best Shots</h2>
+    <h2 class="section-heading">My Best Shots</h2>
 	
 	<div class="video-wrapper">
         <video autoplay muted loop controls>
@@ -27,11 +28,11 @@
 
 </div>
 
-<div class="gallery-rows">
-  <div class="gallery-row">
+<div class="gallery-grid">
+  <div class="gallery-item">
 
     <!-- Image 1 -->
-    <div class="gallery-item">
+    <div class="gallery-item" data-aos="fade-up">
       <input type="checkbox" id="img1" hidden>
       <label for="img1">
         <img src="photo1.jpg" alt="Photo 1" class="gallery-img">
@@ -43,7 +44,7 @@
     </div>
 
     <!-- Image 2 -->
-    <div class="gallery-item">
+    <div class="gallery-item" data-aos="fade-up">
       <input type="checkbox" id="img2" hidden>
       <label for="img2">
         <img src="photo2.jpg" alt="Photo 2" class="gallery-img">
@@ -55,7 +56,7 @@
     </div>
 
     <!-- Image 3 -->
-    <div class="gallery-item">
+    <div class="gallery-item" data-aos="fade-up">
       <input type="checkbox" id="img3" hidden>
       <label for="img3">
         <img src="photo3.jpg" alt="Photo 3" class="gallery-img">
@@ -67,16 +68,16 @@
     </div>
   </div>
 
-<div class="gallery-row video-gallery">
+<div class="gallery-grid">
   <video src="vid1.mp4" muted autoplay loop controls class="gallery-video" type="video/mp4"></video>
   <video src="vid2.mp4" muted autoplay loop controls class="gallery-video" type="video/mp4"></video>
   <video src="vid3.mp4" muted autoplay loop controls class="gallery-video" type="video/mp4"></video>
 </div>
 
 
-  <div class="gallery-row">
+  <div class="gallery-grid">
     <!-- Image 4 -->
-    <div class="gallery-item">
+    <div class="gallery-item" data-aos="fade-up">
       <input type="checkbox" id="img4" hidden>
       <label for="img4">
         <img src="photo4.jpg" alt="Photo 4" class="gallery-img">
@@ -88,7 +89,7 @@
     </div>
 
     <!-- Image 5 -->
-    <div class="gallery-item">
+    <div class="gallery-item" data-aos="fade-up">
       <input type="checkbox" id="img5" hidden>
       <label for="img5">
         <img src="photo5.jpg" alt="Photo 5" class="gallery-img">
@@ -100,7 +101,7 @@
     </div>
 
     <!-- Image 6 -->
-    <div class="gallery-item">
+    <div class="gallery-item" data-aos="fade-up">
       <input type="checkbox" id="img6" hidden>
       <label for="img6">
         <img src="photo6.jpg" alt="Photo 6" class="gallery-img">
@@ -128,6 +129,12 @@
             <img src="white-logo.png" width="100" alt="Logo">
         </div>
   	</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
 
 </body>
 </html>
