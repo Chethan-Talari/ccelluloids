@@ -5,6 +5,7 @@
     <title> C Celluloids </title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 <body class="home">
@@ -13,16 +14,25 @@
   <img src="white-logo.png" alt="Logo">
 </div>
 
-    <header class="navbar">
-    <a href="index.html">
-        <img src="white-logo.png" class="logo" alt="Logo">
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="about.html">About Me</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+<header class="navbar">
+  <div class="logo">
+    <a href="index.html"><img src="white-logo.png" class="logo" alt="Logo"></a>
+  </div>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+</header>
+
 
 <section class="hero-static">
   <video class="hero-video" autoplay muted loop playsinline>
@@ -180,6 +190,17 @@
     scrollBtn.classList.toggle('show', window.scrollY > 300);
   });
 </script>
+
+<script>
+  const burger = document.querySelector('.burger');
+  const nav = document.querySelector('.nav-links');
+
+  burger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    burger.classList.toggle('toggle');
+  });
+</script>
+
 
 </body>
 </html>
