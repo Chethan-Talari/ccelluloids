@@ -1522,20 +1522,288 @@ footer {
   padding-bottom: 60%;
  }
 
-    .h2 {
-    font-size: 12px;
-    line-height: 1;
-    margin-bottom: 15px;
+
+}
+
+/* ============================= */
+/* 1. Mobile (Phones) ≤768px     */
+/* ============================= */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+    line-height: 1.5;
+    padding: 0;
+  }
+
+  h1, h2 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+
+h3 {
+    font-size: 0.8rem;
+    margin: 10px 0;
+}
+
+  p {
+    font-size: 0.95rem;
+    margin: 10px 0;
+  }
+
+  .hero {
+    height: 80vh;
+    padding: 20px 10px;
     text-align: center;
   }
 
-    .h3 {
-    font-size: 10px;
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .hero-overlay p {
+    font-size: 1rem;
+  }
+
+  .news-box {
+    padding: 15px;
+    margin: 20px auto;
+  }
+
+  .news-box h2 {
+    font-size: 1.2rem;
+  }
+
+  .view-work-button-wrapper {
+    margin: 20px 0;
+  }
+
+  .view-work-btn {
+    width: 90%;
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+
+  .youtube-section {
+    margin: 30px auto;
+  }
+
+  .youtube-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  .responsive-iframe {
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  }
+
+  .polaroid-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .polaroid-row img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+  }
+
+  .quote-banner {
+    font-size: 1.6rem;
+    margin: 20px 10px;
     line-height: 1.3;
-    margin-bottom: 15px;
+  }
+
+  .location-info {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+
+  .contact-section {
+    padding: 30px 15px;
+  }
+
+  .contact-section h2 {
+    font-size: 2rem;
+  }
+
+  .contact-subheading {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
+  .contact-form {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .contact-form button {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .contact-info {
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .contact-item span {
+    font-size: 0.9rem;
+  }
+
+  footer {
+    flex-direction: column;
+    padding: 20px 15px;
+    font-size: 0.9rem;
     text-align: center;
   }
 
+  .footer-right img {
+    width: 80px;
+    margin-top: 10px;
+  }
+}
 
+/* ============================= */
+/* 2. Tablet (iPad) 769–1024px   */
+/* ============================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3 {
+    font-size: 2rem;
+    margin: 12px 0;
+  }
+
+  p {
+    font-size: 1.05rem;
+    margin: 12px 0;
+  }
+
+  .hero {
+    height: 90vh;
+    padding: 30px 20px;
+  }
+
+  .hero-overlay h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-overlay p {
+    font-size: 1.2rem;
+  }
+
+  .news-box {
+    max-width: 90%;
+    padding: 20px;
+    margin: 30px auto;
+  }
+
+  .news-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .view-work-button-wrapper {
+    margin: 30px 0;
+  }
+
+  .view-work-btn {
+    padding: 14px 24px;
+    font-size: 1.05rem;
+  }
+
+  .youtube-section {
+    margin: 40px auto;
+  }
+
+  .youtube-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .responsive-iframe {
+    padding-bottom: 56.25%;
+  }
+
+  .polaroid-row {
+    gap: 20px;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .polaroid-row img {
+    width: 45%;
+    max-width: 400px;
+    height: auto;
+  }
+
+  .quote-banner {
+    font-size: 1.8rem;
+    margin: 30px 20px;
+    line-height: 1.4;
+  }
+
+  .location-info {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  .contact-section {
+    padding: 50px 30px;
+  }
+
+  .contact-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .contact-subheading {
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+  }
+
+  .contact-form {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .contact-form button {
+    font-size: 1.05rem;
+    padding: 12px;
+  }
+
+  .contact-info {
+    gap: 30px;
+    margin-top: 25px;
+  }
+
+  .contact-item span {
+    font-size: 1rem;
+  }
+
+  footer {
+    padding: 25px 30px;
+    font-size: 1rem;
+  }
+
+  .footer-right img {
+    width: 90px;
+  }
 }
 
