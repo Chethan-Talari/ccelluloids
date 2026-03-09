@@ -4,82 +4,164 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery | C Celluloids</title>
-  <meta name="description" content="Explore C Celluloids gallery featuring cinematic photography, films, and event highlights." />
-  <meta name="theme-color" content="#0b0d12" />
+  <meta name="description" content="Explore C Celluloids gallery across fashion, product, model, event, documentary, and street photography projects." />
+  <meta name="theme-color" content="#0a0a0d" />
   <meta property="og:title" content="Gallery | C Celluloids" />
-  <meta property="og:description" content="A curated gallery of photos and videos by C Celluloids." />
+  <meta property="og:description" content="Filterable cinematic gallery with project descriptions and fullscreen previews." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.ccelluloids.in/gallery.html" />
   <link rel="canonical" href="https://www.ccelluloids.in/gallery.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="page-gallery">
-  <div id="preloader">
-    <img src="white-logo.png" alt="Loading C Celluloids" width="120" height="45" />
-  </div>
-
-  <header class="navbar">
-    <div class="logo">
-      <a href="index.html"><img src="white-logo.png" class="logo" alt="C Celluloids logo" width="130" height="48" /></a>
-    </div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="hireme.html" class="hireme-nav-btn">Hire Me</a></li>
-      </ul>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="C Celluloids home"><img src="white-logo.png" alt="C Celluloids" width="136" height="50" /></a>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="hireme.html" class="btn btn-sm">Book Shoot</a>
     </nav>
-    <div class="burger">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
-    </div>
   </header>
 
   <main>
-    <h1 class="section-title">Gallery</h1>
-    <div class="gallery-grid">
-      <img src="photo1.jpg" alt="Gallery Photo 1" class="gallery-item" loading="lazy" decoding="async" />
-      <img src="photo2.jpg" alt="Gallery Photo 2" class="gallery-item" loading="lazy" decoding="async" />
-      <img src="photo3.jpg" alt="Gallery Photo 3" class="gallery-item" loading="lazy" decoding="async" />
-      <img src="photo4.jpg" alt="Gallery Photo 4" class="gallery-item" loading="lazy" decoding="async" />
-      <img src="photo5.jpg" alt="Gallery Photo 5" class="gallery-item" loading="lazy" decoding="async" />
-      <img src="photo6.jpg" alt="Gallery Photo 6" class="gallery-item" loading="lazy" decoding="async" />
-      <img src="photo7.jpg" alt="Gallery Photo 7" class="gallery-item" loading="lazy" decoding="async" />
-      <img src="photo8.jpg" alt="Gallery Photo 8" class="gallery-item" loading="lazy" decoding="async" />
-      <img src="photoA.jpg" alt="Gallery Photo 9" class="gallery-item" loading="lazy" decoding="async" />
-      <img src="photoB.JPG" alt="Gallery Photo 10" class="gallery-item" loading="lazy" decoding="async" />
-      <img src="photoC.JPG" alt="Gallery Photo 11" class="gallery-item" loading="lazy" decoding="async" />
-      <img src="photoD.JPG" alt="Gallery Photo 12" class="gallery-item" loading="lazy" decoding="async" />
+    <section class="section page-intro section-dark">
+      <div class="container reveal">
+        <p class="eyebrow">Portfolio System</p>
+        <h1>Visual Library Built by Category</h1>
+        <p>Use filters to see relevant project styles quickly, then open any frame in cinematic fullscreen view.</p>
+      </div>
+    </section>
 
-      <video src="vid1.mp4" class="gallery-item" muted playsinline controls preload="none"></video>
-      <video src="vid2.mp4" class="gallery-item" muted playsinline controls preload="none"></video>
-      <video src="vid3.mp4" class="gallery-item" muted playsinline controls preload="none"></video>
-      <video src="vid4.mp4" class="gallery-item" muted playsinline controls preload="none"></video>
-    </div>
+    <section class="section">
+      <div class="container">
+        <div class="filter-bar reveal" role="tablist" aria-label="Gallery Categories">
+          <button class="filter-btn active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="fashion" type="button" id="fashion">Fashion / Saree</button>
+          <button class="filter-btn" data-filter="product" type="button" id="product">Product</button>
+          <button class="filter-btn" data-filter="model" type="button">Model Shoots</button>
+          <button class="filter-btn" data-filter="event" type="button" id="event">Event Coverage</button>
+          <button class="filter-btn" data-filter="documentary" type="button" id="documentary">Documentary</button>
+          <button class="filter-btn" data-filter="street" type="button">Street (Coming Up)</button>
+        </div>
 
-    <div class="gallery-cta">
-      <a href="about.html" class="btn">Know More About Me</a>
-    </div>
+        <div class="masonry-grid" id="galleryGrid">
+          <article class="gallery-card reveal" data-category="fashion">
+            <button class="gallery-trigger" type="button" data-type="image" data-src="photoB.JPG" data-title="Saree Campaign" data-desc="Editorial saree visuals focused on drape, texture, and expression.">
+              <img src="photoB.JPG" alt="Saree brand campaign portrait" loading="lazy" decoding="async" />
+            </button>
+            <h3>Saree Campaign</h3><p>Fashion / Saree Brand Shoots</p>
+          </article>
+          <article class="gallery-card reveal" data-category="product">
+            <button class="gallery-trigger" type="button" data-type="image" data-src="service-product.jpg" data-title="Water Brand Product Shoot" data-desc="Clean and premium product setup with cinematic highlights.">
+              <img src="service-product.jpg" alt="Premium water bottle product photograph" loading="lazy" decoding="async" />
+            </button>
+            <h3>Water Brand</h3><p>Product Photography</p>
+          </article>
+          <article class="gallery-card reveal" data-category="model">
+            <button class="gallery-trigger" type="button" data-type="image" data-src="photo1.jpg" data-title="Model Portrait Story" data-desc="High-contrast visual set crafted for portfolio impact.">
+              <img src="photo1.jpg" alt="Model portfolio portrait" loading="lazy" decoding="async" />
+            </button>
+            <h3>Portrait Editorial</h3><p>Model Shoots</p>
+          </article>
+          <article class="gallery-card reveal" data-category="event">
+            <button class="gallery-trigger" type="button" data-type="image" data-src="photo7.jpg" data-title="Live Event Highlights" data-desc="Fast-moving stage and crowd moments captured in detail.">
+              <img src="photo7.jpg" alt="Live event stage photography" loading="lazy" decoding="async" />
+            </button>
+            <h3>Live Stage</h3><p>Event Coverage</p>
+          </article>
+          <article class="gallery-card reveal" data-category="documentary">
+            <button class="gallery-trigger" type="button" data-type="image" data-src="shot1.jpg" data-title="Field Documentary Frame" data-desc="Human-centered frame from development documentation work.">
+              <img src="shot1.jpg" alt="Documentary fieldwork frame" loading="lazy" decoding="async" />
+            </button>
+            <h3>Field Story</h3><p>Documentary Projects</p>
+          </article>
+          <article class="gallery-card reveal" data-category="documentary">
+            <button class="gallery-trigger" type="button" data-type="video" data-src="vid1.mp4" data-title="Documentary Motion" data-desc="Short sequence from a documentary production timeline.">
+              <video muted playsinline preload="none">
+                <source src="vid1.mp4" type="video/mp4" />
+              </video>
+            </button>
+            <h3>Documentary Clip</h3><p>Documentary Projects</p>
+          </article>
+          <article class="gallery-card reveal" data-category="fashion">
+            <button class="gallery-trigger" type="button" data-type="image" data-src="photoC.JPG" data-title="Fashion Detail Study" data-desc="Style-focused frame designed for social and campaign usage.">
+              <img src="photoC.JPG" alt="Fashion detail portrait" loading="lazy" decoding="async" />
+            </button>
+            <h3>Editorial Detail</h3><p>Fashion / Saree Brand Shoots</p>
+          </article>
+          <article class="gallery-card reveal" data-category="product">
+            <button class="gallery-trigger" type="button" data-type="image" data-src="photo3.jpg" data-title="Commercial Product Frame" data-desc="Product texture and premium styling for ad creatives.">
+              <img src="photo3.jpg" alt="Commercial product hero shot" loading="lazy" decoding="async" />
+            </button>
+            <h3>Commercial Product</h3><p>Product Photography</p>
+          </article>
+          <article class="gallery-card reveal" data-category="model">
+            <button class="gallery-trigger" type="button" data-type="image" data-src="photo4.jpg" data-title="Model Character Frame" data-desc="Portrait mood board execution for personal brand campaigns.">
+              <img src="photo4.jpg" alt="Model portrait with cinematic lighting" loading="lazy" decoding="async" />
+            </button>
+            <h3>Character Portrait</h3><p>Model Shoots</p>
+          </article>
+          <article class="gallery-card reveal" data-category="event">
+            <button class="gallery-trigger" type="button" data-type="video" data-src="vid2.mp4" data-title="Event Aftermovie" data-desc="Dynamic event sequence with crowd reaction and stage highlights.">
+              <video muted playsinline preload="none">
+                <source src="vid2.mp4" type="video/mp4" />
+              </video>
+            </button>
+            <h3>Event Film</h3><p>Event Coverage</p>
+          </article>
+          <article class="gallery-card reveal" data-category="street">
+            <button class="gallery-trigger" type="button" data-type="image" data-src="photo8.jpg" data-title="Street Story (Upcoming)" data-desc="Category scaffold ready for future street photography additions.">
+              <img src="photo8.jpg" alt="Street style visual preview" loading="lazy" decoding="async" />
+            </button>
+            <h3>Street Preview</h3><p>Street Photography</p>
+          </article>
+          <article class="gallery-card reveal" data-category="documentary">
+            <button class="gallery-trigger" type="button" data-type="video" data-src="vid3.mp4" data-title="Impact Story Segment" data-desc="Narrative clip showcasing field interview and daily life moments.">
+              <video muted playsinline preload="none">
+                <source src="vid3.mp4" type="video/mp4" />
+              </video>
+            </button>
+            <h3>Impact Segment</h3><p>Documentary Projects</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <div id="lightboxModal" class="lightbox-modal">
-      <div class="lightbox-backdrop"></div>
-      <span class="lightbox-close" tabindex="0">&times;</span>
-      <div class="lightbox-content"></div>
-    </div>
+    <section class="section cta-band texture">
+      <div class="container cta-wrap reveal">
+        <div>
+          <h2>Need visuals for your next launch?</h2>
+          <p>Share the brief and get a clear production roadmap with timelines.</p>
+        </div>
+        <a href="hireme.html" class="btn">Work With Me</a>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <div class="footer-left">Contact: admin@ccelluloids.in | Phone: +91 810 6543 475</div>
-    <div class="footer-right">
-      <img src="white-logo.png" width="100" height="37" alt="C Celluloids logo" loading="lazy" decoding="async" />
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Gallery preview">
+    <button class="lightbox-close" type="button" aria-label="Close preview">×</button>
+    <button class="lightbox-prev" type="button" aria-label="Previous item">‹</button>
+    <div class="lightbox-stage"></div>
+    <button class="lightbox-next" type="button" aria-label="Next item">›</button>
+    <div class="lightbox-meta">
+      <h3></h3>
+      <p></p>
     </div>
+  </div>
+
+  <footer class="site-footer">
+    <div><h3>C Celluloids</h3><p>Bangalore, India. Available across India.</p></div>
+    <div><a href="mailto:admin@ccelluloids.in">admin@ccelluloids.in</a><a href="tel:+918106543475">+91 81065 43475</a></div>
+    <div class="footer-social"><a href="https://www.instagram.com/c_celluloids/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.youtube.com/@ccelluloids" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://www.behance.net/chethantalari" target="_blank" rel="noopener noreferrer">Behance</a></div>
   </footer>
 
-  <div class="custom-cursor"></div>
-  <a href="#" class="scroll-top" aria-label="Scroll to top">&uarr;</a>
+  <a href="#" class="scroll-top" aria-label="Scroll to top">↑</a>
   <script src="main.js" defer></script>
 </body>
 </html>
-

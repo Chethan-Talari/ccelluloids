@@ -4,110 +4,108 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | C Celluloids</title>
-  <meta name="description" content="Meet Chethan Talari of C Celluloids, a visual storyteller creating cinematic photography and films for brands and live events." />
-  <meta name="theme-color" content="#0b0d12" />
+  <meta name="description" content="Meet the story, creative philosophy, process, and production workflow behind C Celluloids." />
+  <meta name="theme-color" content="#0a0a0d" />
   <meta property="og:title" content="About | C Celluloids" />
-  <meta property="og:description" content="Photographer and visual artist behind C Celluloids." />
+  <meta property="og:description" content="Story-driven profile of the filmmaker and creative direction behind C Celluloids." />
   <meta property="og:type" content="profile" />
   <meta property="og:url" content="https://www.ccelluloids.in/about.html" />
   <link rel="canonical" href="https://www.ccelluloids.in/about.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="page-about">
-  <div id="preloader">
-    <img src="white-logo.png" alt="Loading C Celluloids" width="120" height="45" />
-  </div>
-
-  <header class="navbar">
-    <div class="logo">
-      <a href="index.html"><img src="white-logo.png" class="logo" alt="C Celluloids logo" width="130" height="48" /></a>
-    </div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="hireme.html" class="hireme-nav-btn">Hire Me</a></li>
-      </ul>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="C Celluloids home"><img src="white-logo.png" alt="C Celluloids" width="136" height="50" /></a>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="hireme.html" class="btn btn-sm">Book Shoot</a>
     </nav>
-    <div class="burger">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
-    </div>
   </header>
 
   <main>
-    <section class="about-section">
-      <div class="about-container">
-        <img src="profile.jpg" alt="Portrait of Chethan Talari" class="about-photo" width="300" height="450" />
-        <div class="about-text">
-          <img src="signature.png" width="400" height="83" alt="Chethan signature" loading="lazy" decoding="async" />
-          <h1>Photographer & Visual Artist</h1>
-          <p><b>3+ years experience behind the lens.</b><br />Passionate about capturing stunning moments that tell a story. I strive to bring out the emotions in every shot. Inspired by the interplay of light and shadows, I aim to create visuals that leave a lasting impact.</p>
-          <h2>Follow Me</h2>
-          <div class="social-links">
-            <a href="https://www.instagram.com/c_celluloids/" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile"><img src="instagram-icon.png" width="30" height="30" alt="Instagram" loading="lazy" decoding="async" /></a>
-            <a href="https://www.youtube.com/@ccelluloids" target="_blank" rel="noopener noreferrer" aria-label="YouTube channel"><img src="youtube-icon.png" width="30" height="30" alt="YouTube" loading="lazy" decoding="async" /></a>
-            <a href="https://www.behance.net/chethantalari" target="_blank" rel="noopener noreferrer" aria-label="Behance profile"><img src="behance-icon.png" width="30" height="30" alt="Behance" loading="lazy" decoding="async" /></a>
+    <section class="section page-intro section-dark">
+      <div class="container reveal">
+        <p class="eyebrow">About C Celluloids</p>
+        <h1>Story First. Craft Always.</h1>
+        <p>A Bangalore-based visual studio led by Chethan Talari, building cinematic work that balances emotion, precision, and brand clarity.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container about-grid">
+        <div class="about-portrait reveal" data-parallax data-speed="0.12">
+          <img src="profile.jpg" alt="Portrait of Chethan Talari" loading="lazy" decoding="async" />
+        </div>
+        <article class="about-copy reveal">
+          <h2>Personal Story</h2>
+          <p>What started as curiosity about light and human expression evolved into a full creative practice across photography, documentary, and post-production. Every project is approached as a narrative system, not just a shoot day.</p>
+          <h3>Creative Philosophy</h3>
+          <p>Make every frame intentional. Build visuals that feel premium but honest. Design content that moves people and also serves a clear communication objective.</p>
+          <h3>Experience</h3>
+          <p>3+ years of hands-on work with brands, events, and documentary initiatives, including ministry-level development storytelling and large live productions.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="container split-panels">
+        <article class="panel reveal">
+          <h2>Equipment & Workflow</h2>
+          <p>Professional camera systems, fast prime and zoom setups, on-set data discipline, and streamlined edit pipelines from ingest to color and final export.</p>
+          <ul>
+            <li>Pre-production brief + shot strategy</li>
+            <li>Production day direction and coverage</li>
+            <li>Post-production with client review loops</li>
+            <li>Final deliverables in platform-ready formats</li>
+          </ul>
+        </article>
+        <article class="panel reveal">
+          <h2>Behind The Scenes</h2>
+          <video src="bts-video.mp4" muted loop controls playsinline preload="none"></video>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal"><p class="eyebrow">Credibility</p><h2>Trusted by teams across domains</h2></div>
+        <div class="logo-marquee reveal">
+          <div>
+            <img src="client1.png" alt="Client logo 1" loading="lazy" decoding="async" />
+            <img src="client2.png" alt="Client logo 2" loading="lazy" decoding="async" />
+            <img src="client3.png" alt="Client logo 3" loading="lazy" decoding="async" />
+            <img src="client4.jpeg" alt="Client logo 4" loading="lazy" decoding="async" />
+            <img src="client5.png" alt="Client logo 5" loading="lazy" decoding="async" />
+            <img src="client6.png" alt="Client logo 6" loading="lazy" decoding="async" />
+            <img src="client7.jpg" alt="Client logo 7" loading="lazy" decoding="async" />
+            <img src="client8.png" alt="Client logo 8" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
     </section>
 
-    <section class="client-logos">
-      <h2>Trusted By</h2>
-      <div class="marquee">
-        <div class="marquee-content">
-          <img src="client1.png" alt="Client 1" loading="lazy" decoding="async" />
-          <img src="client2.png" alt="Client 2" loading="lazy" decoding="async" />
-          <img src="client3.png" alt="Client 3" loading="lazy" decoding="async" />
-          <img src="client4.jpeg" alt="Client 4" loading="lazy" decoding="async" />
-          <img src="client5.png" alt="Client 5" loading="lazy" decoding="async" />
-          <img src="client6.png" alt="Client 6" loading="lazy" decoding="async" />
-          <img src="client7.jpg" alt="Client 7" loading="lazy" decoding="async" />
-          <img src="client8.png" alt="Client 8" loading="lazy" decoding="async" />
-          <img src="client1.png" alt="Client 1" loading="lazy" decoding="async" />
-          <img src="client2.png" alt="Client 2" loading="lazy" decoding="async" />
-          <img src="client3.png" alt="Client 3" loading="lazy" decoding="async" />
-          <img src="client4.jpeg" alt="Client 4" loading="lazy" decoding="async" />
-          <img src="client5.png" alt="Client 5" loading="lazy" decoding="async" />
-          <img src="client6.png" alt="Client 6" loading="lazy" decoding="async" />
-          <img src="client7.jpg" alt="Client 7" loading="lazy" decoding="async" />
-          <img src="client8.png" alt="Client 8" loading="lazy" decoding="async" />
-        </div>
+    <section class="section cta-band texture">
+      <div class="container cta-wrap reveal">
+        <div><h2>If your project needs depth and polish, let’s build it.</h2><p>Tell me the goal, audience, and timeline. I’ll propose a practical production approach.</p></div>
+        <a href="hireme.html" class="btn">Work With Me</a>
       </div>
-    </section>
-
-    <section class="project-table">
-      <h2>Major Projects & Events</h2>
-      <table>
-        <tr>
-          <th>Year</th>
-          <th>Project/Event</th>
-          <th>Role</th>
-        </tr>
-        <tr><td>2025</td><td>SAMARTH Documentary Shoot</td><td>Documentary Filmmaker</td></tr>
-        <tr><td>2025</td><td>Design Scion - NIFT Bengaluru</td><td>Cinematographer & Editor</td></tr>
-        <tr><td>2024</td><td>Thaman Live Concert - Chennai</td><td>Chief Photographer</td></tr>
-        <tr><td>2023</td><td>DSP Live Concert - Chennai</td><td>Photographer</td></tr>
-        <tr><td>2023</td><td>NOVATO 2K23</td><td>Head - Photography Team, Event Organiser</td></tr>
-        <tr><td>2022</td><td>NOVATO 2K22</td><td>Lead Photographer</td></tr>
-        <tr><td>2022</td><td>Kulageetham - National Sanskrit University</td><td>Editor</td></tr>
-        <tr><td>2022</td><td>Sundara khanda - Shortfilm</td><td>Cinematographer & Editor</td></tr>
-      </table>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-left">Contact: admin@ccelluloids.in | Phone: +91 810 6543 475</div>
-    <div class="footer-right">
-      <img src="white-logo.png" width="100" height="37" alt="C Celluloids logo" loading="lazy" decoding="async" />
-    </div>
+  <footer class="site-footer">
+    <div><h3>C Celluloids</h3><p>Bangalore, India. Available across India.</p></div>
+    <div><a href="mailto:admin@ccelluloids.in">admin@ccelluloids.in</a><a href="tel:+918106543475">+91 81065 43475</a></div>
+    <div class="footer-social"><a href="https://www.instagram.com/c_celluloids/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.youtube.com/@ccelluloids" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://www.behance.net/chethantalari" target="_blank" rel="noopener noreferrer">Behance</a></div>
   </footer>
 
-  <div class="custom-cursor"></div>
-  <a href="#" class="scroll-top" aria-label="Scroll to top">&uarr;</a>
+  <a href="#" class="scroll-top" aria-label="Scroll to top">↑</a>
   <script src="main.js" defer></script>
 </body>
 </html>

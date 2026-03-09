@@ -3,131 +3,212 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>C Celluloids | Cinematic Visual Storytelling</title>
-  <meta name="description" content="C Celluloids creates cinematic photography and filmmaking for brands, events, concerts, and documentaries across India." />
-  <meta name="theme-color" content="#0b0d12" />
-  <meta property="og:title" content="C Celluloids" />
-  <meta property="og:description" content="Cinematic photography, videography, and visual storytelling by C Celluloids." />
+  <title>C Celluloids | Cinematic Creative Studio</title>
+  <meta name="description" content="C Celluloids is a premium creative studio for photography, documentary filmmaking, video production, editing, and creative direction." />
+  <meta name="theme-color" content="#0a0a0d" />
+  <meta property="og:title" content="C Celluloids | Cinematic Creative Studio" />
+  <meta property="og:description" content="Visual storytelling that turns brand stories into cinematic experiences." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://www.ccelluloids.in/white-logo.png" />
-  <meta property="og:url" content="https://www.ccelluloids.in/index.html" />
-  <link rel="canonical" href="https://www.ccelluloids.in/index.html" />
+  <meta property="og:url" content="https://www.ccelluloids.in/" />
+  <link rel="canonical" href="https://www.ccelluloids.in/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet" />
 </head>
-<body class="home page-home">
-  <div id="loader">
+<body class="page-home">
+  <div id="loader" aria-hidden="true">
     <img src="white-logo.png" alt="C Celluloids logo" width="150" height="56" />
   </div>
 
-  <header class="navbar">
-    <div class="logo">
-      <a href="index.html"><img src="white-logo.png" class="logo" alt="C Celluloids logo" width="130" height="48" /></a>
-    </div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="hireme.html" class="hireme-nav-btn">Hire Me</a></li>
-      </ul>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="C Celluloids home">
+      <img src="white-logo.png" alt="C Celluloids" width="136" height="50" />
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="hireme.html" class="btn btn-sm">Hire / Book Shoot</a>
     </nav>
-    <div class="burger">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
-    </div>
   </header>
 
-  <main class="home-main">
-    <section class="hero-static">
-      <div class="hero-video-wrapper">
-        <video autoplay muted loop playsinline preload="metadata">
-          <source src="videos/bg-home.mp4" type="video/mp4" />
-        </video>
+  <main>
+    <section class="hero section-dark" data-parallax data-speed="0.22">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="bg-home.jpg">
+        <source src="videos/bg-home.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content container reveal">
+        <p class="eyebrow">C Celluloids</p>
+        <h1>From Idea to Screen.<br/>Stories Built to Convert.</h1>
+        <p class="lead">Photography, documentary filmmaking, video production, editing, and creative direction for brands, creators, and campaigns that need measurable impact.</p>
+        <div class="hero-actions">
+          <a href="hireme.html" class="btn">Start a Project</a>
+          <a href="gallery.html" class="btn btn-ghost">View Signature Work</a>
+        </div>
+        <ul class="hero-metrics">
+          <li><strong>3+ Years</strong><span>Production Experience</span></li>
+          <li><strong>80+ Shoots</strong><span>Across India</span></li>
+          <li><strong>End-to-End</strong><span>Concept to Final Cut</span></li>
+        </ul>
       </div>
-      <div class="hero-dark-overlay"></div>
-      <div class="hero-overlay">
-        <h1 class="shiny-text">Crafting Cinematic Visuals</h1>
-        <p>Photographer &bull; Cinematographer &bull; Visual Storyteller</p>
-        <a href="#whats-new" class="scroll-down-arrow" aria-label="Scroll to What's New">&#8595;</a>
+    </section>
+
+    <section class="section texture">
+      <div class="container two-col">
+        <article class="story-block reveal">
+          <p class="eyebrow">Creative Positioning</p>
+          <h2>Premium visuals for brands that want authority and emotion.</h2>
+          <p>Your audience decides in seconds. C Celluloids builds visuals that immediately communicate trust, craft, and personality, then pushes viewers to act.</p>
+        </article>
+        <aside class="story-card reveal">
+          <h3>Ideal Client Categories</h3>
+          <ul>
+            <li>Fashion labels and saree brands</li>
+            <li>Product and FMCG launches</li>
+            <li>Event and concert productions</li>
+            <li>Documentary and social impact projects</li>
+            <li>Personal brands and model portfolios</li>
+          </ul>
+        </aside>
       </div>
     </section>
 
-    <section id="whats-new">
-      <div class="news-box">
-        <h2>&#10024; What's New</h2>
-        <p>Currently working on <b>"SAMARTH Success Documentary"</b> under Central Silk Board, <b>Ministry of Textiles</b>.</p>
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Best Work</p>
+          <h2>Quick Showcase</h2>
+        </div>
+        <div class="showcase-grid">
+          <a class="showcase-card tilt reveal" href="gallery.html#fashion" style="--bg:url('photoB.JPG')">
+            <span>Fashion / Saree Campaigns</span>
+          </a>
+          <a class="showcase-card tilt reveal" href="gallery.html#product" style="--bg:url('service-product.jpg')">
+            <span>Product Photography</span>
+          </a>
+          <a class="showcase-card tilt reveal" href="gallery.html#documentary" style="--bg:url('shot1.jpg')">
+            <span>Documentary Frames</span>
+          </a>
+          <a class="showcase-card tilt reveal" href="gallery.html#event" style="--bg:url('photo7.jpg')">
+            <span>Event Coverage</span>
+          </a>
+        </div>
       </div>
     </section>
 
-    <h2 class="section-title">Recent Work</h2>
-    <h3 class="section-subtitle"><strong>Videography & Edit</strong> - Design Scion 2025 (NIFT Bengaluru)</h3>
-    <div class="responsive-iframe">
-      <iframe
-        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fniftbengaluruofficial%2Fvideos%2F703298872173314%2F&show_text=true&width=560&t=0"
-        width="560"
-        height="490"
-       
-        scrolling="no"
-        loading="lazy"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
-    </div>
-
-    <h2 class="section-title">Glimpse - SAMARTH Shoot</h2>
-    <div class="polaroid-row">
-      <img src="shot1.jpg" alt="Candid documentary shot 1" loading="lazy" decoding="async" />
-      <img src="shot2.jpg" alt="Candid documentary shot 2" loading="lazy" decoding="async" />
-      <img src="shot3.jpg" alt="Candid documentary shot 3" loading="lazy" decoding="async" />
-    </div>
-
-    <div class="view-work-button-wrapper">
-      <a href="gallery.html" class="view-work-btn">View my Gallery</a>
-    </div>
-
-    <section class="quote-banner">
-      <p>"Where creativity meets passion."</p>
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Services</p>
+          <h2>Production Services Clients Actually Hire</h2>
+        </div>
+        <div class="service-grid">
+          <article class="service-card reveal"><h3>Photography</h3><p>Editorial, branded, model, and high-impact stills designed for campaign use.</p><a href="services.html#photography">Explore</a></article>
+          <article class="service-card reveal"><h3>Documentary Filmmaking</h3><p>Human stories with structure, interviews, and cinematic narrative flow.</p><a href="services.html#documentary">Explore</a></article>
+          <article class="service-card reveal"><h3>Video Production</h3><p>Pre-production, on-ground execution, and direction for promo and commercial films.</p><a href="services.html#video-production">Explore</a></article>
+          <article class="service-card reveal"><h3>Editing & Finishing</h3><p>Color, pacing, and post workflows that make your final film platform-ready.</p><a href="services.html#editing">Explore</a></article>
+        </div>
+      </div>
     </section>
 
-    <h2 class="section-title">Behind the Scenes</h2>
-    <section class="behind-the-scenes">
-      <video src="bts-video.mp4" muted loop playsinline controls preload="none"></video>
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Featured Projects</p>
+          <h2>Recent Stories in Motion</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card reveal">
+            <img src="shot2.jpg" alt="SAMARTH documentary production still" loading="lazy" decoding="async" />
+            <div>
+              <h3>SAMARTH Success Documentary</h3>
+              <p>Ministry-backed storytelling focused on impact and livelihoods.</p>
+            </div>
+          </article>
+          <article class="project-card reveal">
+            <img src="photo6.jpg" alt="Design Scion event visual production" loading="lazy" decoding="async" />
+            <div>
+              <h3>Design Scion 2025</h3>
+              <p>Cinematography and edit delivery for NIFT Bengaluru event campaign.</p>
+            </div>
+          </article>
+          <article class="project-card reveal">
+            <img src="photoA.jpg" alt="Concert event live photography" loading="lazy" decoding="async" />
+            <div>
+              <h3>Live Event Visuals</h3>
+              <p>Concert and cultural event imagery crafted for social traction.</p>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section class="collab-note">
-      <p>Got a <strong>concert</strong>, <strong>brand</strong>, or <strong>creative project</strong> in mind? <br />Let's work together. <a href="hireme.html">Contact me &rarr;</a></p>
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Social Proof</p>
+          <h2>What Clients Value</h2>
+        </div>
+        <div class="testimonial-grid">
+          <blockquote class="reveal">"Very sharp eye for brand emotion and detail. Delivery was fast and campaign-ready."<cite>Fashion Brand Team</cite></blockquote>
+          <blockquote class="reveal">"Handled documentary storytelling with maturity and respect for the subject."<cite>Impact Project Stakeholder</cite></blockquote>
+          <blockquote class="reveal">"Captured event energy perfectly. The edits increased engagement immediately."<cite>Event Organizer</cite></blockquote>
+        </div>
+      </div>
     </section>
 
-    <section class="location-info">
-      <h3>Based In &#128205; Bangalore, India</h3>
-      <p>Available for shoots across India.</p>
+    <section class="section cta-band texture">
+      <div class="container cta-wrap reveal">
+        <div>
+          <p class="eyebrow">Ready To Create</p>
+          <h2>Book your shoot in under 2 minutes.</h2>
+          <p>Share your requirement, budget, and timeline. You get a response quickly with a clear production plan.</p>
+        </div>
+        <div class="hero-actions">
+          <a href="hireme.html" class="btn">Hire Me</a>
+          <a href="https://wa.me/918106543475" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-left">Contact: admin@ccelluloids.in | Phone: +91 810 6543 475</div>
-    <div class="footer-right">
-      <img src="white-logo.png" width="100" height="37" alt="C Celluloids logo" loading="lazy" decoding="async" />
+  <footer class="site-footer">
+    <div>
+      <h3>C Celluloids</h3>
+      <p>Bangalore, India. Available across India.</p>
+    </div>
+    <div>
+      <a href="mailto:admin@ccelluloids.in">admin@ccelluloids.in</a>
+      <a href="tel:+918106543475">+91 81065 43475</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/c_celluloids/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.youtube.com/@ccelluloids" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://www.behance.net/chethantalari" target="_blank" rel="noopener noreferrer">Behance</a>
     </div>
   </footer>
 
-  <div class="custom-cursor"></div>
-  <a href="#" class="scroll-top" aria-label="Scroll to top">&uarr;</a>
+  <a href="#" class="scroll-top" aria-label="Scroll to top">↑</a>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "ProfessionalService",
       "name": "C Celluloids",
       "url": "https://www.ccelluloids.in",
       "logo": "https://www.ccelluloids.in/white-logo.png",
+      "areaServed": "India",
       "email": "admin@ccelluloids.in",
-      "telephone": "+91-810-6543-475"
+      "telephone": "+91-8106543475",
+      "serviceType": ["Photography", "Documentary Filmmaking", "Video Production", "Editing", "Creative Direction"]
     }
   </script>
   <script src="main.js" defer></script>
 </body>
 </html>
-
