@@ -3,88 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hire Me | C Celluloids</title>
-  <meta name="description" content="Book C Celluloids for photography, videography, cinematic edits, and documentary storytelling projects." />
-  <meta name="theme-color" content="#0b0d12" />
-  <meta property="og:title" content="Hire Me | C Celluloids" />
-  <meta property="og:description" content="Get in touch with C Celluloids for bookings and project inquiries." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.ccelluloids.in/hireme.html" />
-  <link rel="canonical" href="https://www.ccelluloids.in/hireme.html" />
+  <title>Hire / Contact | C Celluloids</title>
+  <meta name="description" content="Contact C Celluloids to book photography, films, and creative production. Fast inquiry form with project type, budget, and schedule." />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="page-hireme">
-  <div id="preloader">
-    <img src="white-logo.png" alt="Loading C Celluloids" width="120" height="45" />
-  </div>
-
-  <header class="navbar">
-    <div class="logo">
-      <a href="index.html"><img src="white-logo.png" class="logo" alt="C Celluloids logo" width="130" height="48" /></a>
-    </div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="hireme.html" class="hireme-nav-btn">Hire Me</a></li>
-      </ul>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="brand-mark"><img src="white-logo.png" alt="C Celluloids logo" width="130" height="48" /></a>
+    <button class="burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="site-nav">
+      <a href="index.html">Home</a><a href="gallery.html">Gallery</a><a href="services.html">Services</a><a href="about.html">About</a><a href="hireme.html" class="btn btn-small">Book Shoot</a>
     </nav>
-    <div class="burger">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
-    </div>
   </header>
-
-  <main>
-    <section class="contact-section">
-      <h1 class="contact-title">Hire Me</h1>
-      <p class="contact-subheading">For bookings and inquiries, reach out here.</p>
-
-      <div class="contact-container">
-        <form class="contact-form" action="https://usebasin.com/f/a3dfc92aa5f2" method="POST">
-          <input type="hidden" name="redirect" value="thankyou.html" />
-
-          <label for="name" class="sr-only">Your Name</label>
-          <input id="name" type="text" name="name" placeholder="Your Name" autocomplete="name" required />
-
-          <label for="contact" class="sr-only">Email or Phone Number</label>
-          <input id="contact" type="text" name="contact" placeholder="Email or Phone Number" autocomplete="email" required />
-
-          <label for="message" class="sr-only">Your Message</label>
-          <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-
-          <button type="submit">Send</button>
-        </form>
-      </div>
-    </section>
-
-    <section class="contact-info">
-      <div class="contact-item">
-        <img src="location-icon.gif" alt="Location" loading="lazy" decoding="async" />
-        <span>HSR Layout, Bangalore</span>
-      </div>
-      <div class="contact-item">
-        <img src="phone-icon.gif" alt="Phone" loading="lazy" decoding="async" />
-        <span>+91 810 6543 475</span>
-      </div>
-      <div class="contact-item">
-        <img src="email-icon.gif" alt="Email" loading="lazy" decoding="async" />
-        <span>chethan.t@ccelluloids.in</span>
-      </div>
+  <main class="page">
+    <section class="page-head reveal"><p class="eyebrow">Contact</p><h1>Let's create your next high-impact visual story.</h1><p>Share details below. I reply within 24 hours.</p></section>
+    <section class="contact-wrap reveal">
+      <form class="contact-form" action="https://usebasin.com/f/a3dfc92aa5f2" method="POST">
+        <input type="hidden" name="redirect" value="thankyou.html" />
+        <label>Name<input type="text" name="name" required /></label>
+        <label>Email / Phone<input type="text" name="contact" required /></label>
+        <label>Project Type
+          <select name="project_type" required>
+            <option value="">Select</option><option>Photography</option><option>Brand Shoot</option><option>Product Shoot</option><option>Event Coverage</option><option>Documentary Film</option><option>Video Editing</option>
+          </select>
+        </label>
+        <label>Budget Range
+          <select name="budget_range" required>
+            <option value="">Select</option><option>₹25k - ₹50k</option><option>₹50k - ₹1L</option><option>₹1L - ₹3L</option><option>₹3L+</option>
+          </select>
+        </label>
+        <label>Event / Shoot Date<input type="date" name="event_date" /></label>
+        <label>Project Brief<textarea name="message" rows="5" required></textarea></label>
+        <button type="submit" class="btn">Send Inquiry</button>
+      </form>
+      <aside class="contact-side">
+        <h3>Quick Contact</h3>
+        <p><strong>Email:</strong> admin@ccelluloids.in</p>
+        <p><strong>Phone:</strong> +91 810 6543 475</p>
+        <a class="btn btn-ghost" href="https://wa.me/918106543475" target="_blank" rel="noopener">WhatsApp Now</a>
+        <div class="socials"><a href="#">Instagram</a><a href="#">Behance</a><a href="#">Facebook</a></div>
+      </aside>
     </section>
   </main>
-
-  <footer>
-    <div class="footer-left">Contact: admin@ccelluloids.in | Phone: +91 810 6543 475</div>
-    <div class="footer-right">
-      <img src="white-logo.png" width="100" height="37" alt="C Celluloids logo" loading="lazy" decoding="async" />
-    </div>
-  </footer>
-
-  <div class="custom-cursor"></div>
-  <a href="#" class="scroll-top" aria-label="Scroll to top">&uarr;</a>
+  <footer class="site-footer"><p>C Celluloids • Built for stories that sell.</p></footer>
   <script src="main.js" defer></script>
 </body>
 </html>
