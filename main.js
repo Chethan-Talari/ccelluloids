@@ -16,13 +16,13 @@
     }
     window.addEventListener("load", () => {
       document.body.classList.add("loaded");
-      setTimeout(() => loader.remove(), 700);
+      setTimeout(() => loader.remove(), 650);
     });
   };
 
   const initActiveNav = () => {
     const path = window.location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll(".site-nav a").forEach((link) => {
+    document.querySelectorAll(".site-nav a, .dock-nav a").forEach((link) => {
       const href = link.getAttribute("href");
       if (!href || href.startsWith("http") || href.startsWith("#")) {
         return;
@@ -41,14 +41,16 @@
     }
 
     toggle.addEventListener("click", () => {
-      const open = nav.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", String(open));
+      const isOpen = nav.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
     });
 
-    nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
-      nav.classList.remove("open");
-      toggle.setAttribute("aria-expanded", "false");
-    }));
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
 
     document.addEventListener("click", (event) => {
       if (!nav.contains(event.target) && !toggle.contains(event.target)) {
@@ -75,13 +77,13 @@
   };
 
   const initReveal = () => {
-    const nodes = [...document.querySelectorAll(".reveal")];
-    if (!nodes.length) {
+    const items = [...document.querySelectorAll(".reveal")];
+    if (!items.length) {
       return;
     }
 
     if (reduceMotion || !("IntersectionObserver" in window)) {
-      nodes.forEach((el) => el.classList.add("visible"));
+      items.forEach((item) => item.classList.add("visible"));
       return;
     }
 
@@ -92,193 +94,305 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.16, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0.14, rootMargin: "0px 0px -50px 0px" });
 
-    nodes.forEach((el) => observer.observe(el));
+    items.forEach((item, index) => {
+      item.style.transitionDelay = `${Math.min(index % 6, 5) * 40}ms`;
+      observer.observe(item);
+    });
   };
 
-  const initParallax = () => {
-    if (reduceMotion) {
-      return;
-    }
-    const targets = [...document.querySelectorAll("[data-parallax]")];
-    if (!targets.length) {
+  const initFilterGallery = () => {
+    const filters = [...document.querySelectorAll(".category-card")];
+    const projects = [...document.querySelectorAll(".project-card")];
+    const title = document.getElementById("projectListTitle");
+    const section = document.getElementById("projectsSection");
+    if (!filters.length || !projects.length) {
       return;
     }
 
-    targets.forEach((target) => target.classList.add("is-parallax"));
-
-    let raf = 0;
-    const update = () => {
-      targets.forEach((target) => {
-        const speed = Number(target.dataset.speed || 0.15);
-        const rect = target.getBoundingClientRect();
-        const offset = (window.innerHeight - rect.top) * speed;
-        target.style.transform = `translate3d(0, ${Math.max(-24, Math.min(24, offset - 24)).toFixed(1)}px, 0)`;
-      });
-      raf = 0;
+    const labelMap = {
+      all: "All Projects",
+      commercial: "Commercial Projects",
+      product: "Product Projects",
+      fashion: "Fashion Projects",
+      events: "Event Projects",
+      documentary: "Documentary Projects",
+      street: "Street Projects",
     };
 
-    const onScroll = () => {
-      if (!raf) {
-        raf = requestAnimationFrame(update);
+    const setFilter = (category) => {
+      section?.classList.remove("is-collapsed");
+
+      filters.forEach((button) => {
+        button.classList.toggle("active", (button.dataset.category || "all") === category);
+      });
+
+      projects.forEach((project) => {
+        const match = category === "all" || project.dataset.category === category;
+        project.hidden = !match;
+      });
+
+      if (title) {
+        title.textContent = labelMap[category] || "Projects";
       }
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    update();
+    projects.forEach((project) => {
+      project.hidden = true;
+    });
+    if (title) {
+      title.textContent = "Select A Category";
+    }
+
+    filters.forEach((button) => {
+      button.addEventListener("click", () => {
+        setFilter(button.dataset.category || "all");
+        document.getElementById("projectsSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
   };
 
-  const initTilt = () => {
-    if (reduceMotion) {
+  const initCardTilt = () => {
+    if (!window.matchMedia("(pointer: fine)").matches || reduceMotion) {
       return;
     }
 
-    document.querySelectorAll(".tilt").forEach((card) => {
+    const cards = [...document.querySelectorAll(".project-card-trigger, .category-card")];
+    cards.forEach((card) => {
       card.addEventListener("mousemove", (event) => {
         const rect = card.getBoundingClientRect();
         const x = (event.clientX - rect.left) / rect.width - 0.5;
         const y = (event.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = `perspective(900px) rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg) translateY(-2px)`;
+        card.style.transform = `perspective(900px) rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 4).toFixed(2)}deg)`;
       });
 
       card.addEventListener("mouseleave", () => {
-        card.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)";
+        card.style.transform = "";
       });
     });
   };
 
-  const initFilterableGallery = () => {
-    const filterButtons = [...document.querySelectorAll(".filter-btn")];
-    const cards = [...document.querySelectorAll(".gallery-card")];
-    if (!filterButtons.length || !cards.length) {
+  const initProjectStory = () => {
+    const story = document.getElementById("projectStory");
+    const scrollWrap = story?.querySelector(".project-story-scroll");
+    const heroSection = story?.querySelector(".project-story-hero");
+    const cover = story?.querySelector(".story-cover");
+    const stickyTitle = story?.querySelector(".story-sticky-title");
+    const title = story?.querySelector(".story-title");
+    const meta = story?.querySelector(".story-meta");
+    const description = story?.querySelector(".story-description");
+    const galleryTitle = story?.querySelector(".story-gallery-title");
+    const masonry = story?.querySelector(".story-masonry");
+    const backButton = story?.querySelector(".story-back");
+    const entries = [...document.querySelectorAll(".project-card")];
+
+    if (
+      !story ||
+      !scrollWrap ||
+      !heroSection ||
+      !cover ||
+      !stickyTitle ||
+      !title ||
+      !meta ||
+      !description ||
+      !galleryTitle ||
+      !masonry ||
+      !backButton ||
+      !entries.length
+    ) {
       return;
     }
 
-    const setFilter = (filter) => {
-      filterButtons.forEach((btn) => btn.classList.toggle("active", btn.dataset.filter === filter));
-      cards.forEach((card) => {
-        const match = filter === "all" || card.dataset.category === filter;
-        card.hidden = !match;
-      });
+    const updateProgress = () => {
+      const heroTop = heroSection.offsetTop;
+      const heroRange = Math.max(1, heroSection.offsetHeight - (window.innerHeight - 72));
+      const inHero = Math.max(0, Math.min(heroRange, scrollWrap.scrollTop - heroTop));
+      const revealRange = heroRange * 0.58;
+      const progress = Math.max(0, Math.min(1, inHero / Math.max(1, revealRange)));
+      const titleUi = Math.max(0, Math.min(1, (progress - 0.05) / 0.2));
+      const infoUi = Math.max(0, Math.min(1, (progress - 0.22) / 0.28));
+      const baseUi = Math.max(0, Math.min(1, (progress - 0.04) / 0.2));
+      story.style.setProperty("--story-progress", progress.toFixed(3));
+      story.style.setProperty("--story-ui", baseUi.toFixed(3));
+      story.style.setProperty("--story-title-ui", titleUi.toFixed(3));
+      story.style.setProperty("--story-info-ui", infoUi.toFixed(3));
+      story.classList.toggle("ui-visible", baseUi > 0.03);
     };
 
-    filterButtons.forEach((btn) => {
-      btn.addEventListener("click", () => setFilter(btn.dataset.filter));
+    const openStory = (entry) => {
+      const data = entry.querySelector(".project-data");
+      if (!data) {
+        return;
+      }
+
+      const coverImage = data.querySelector(".project-cover-src");
+      const projectTitle = data.querySelector(".project-title-src")?.textContent?.trim() || "Project";
+      const detailLines = [...data.querySelectorAll("p:not(.project-description-src)")].map((item) => item.textContent.trim());
+      const descText = data.querySelector(".project-description-src")?.textContent?.trim() || "Project highlights and visual direction.";
+      const mediaItems = [...data.querySelectorAll(".project-media-list .gallery-media")];
+
+      cover.src = coverImage?.src || "";
+      cover.alt = coverImage?.alt || `${projectTitle} cover`;
+      stickyTitle.textContent = projectTitle;
+      title.textContent = projectTitle;
+      galleryTitle.textContent = projectTitle;
+      description.textContent = descText;
+
+      meta.innerHTML = "";
+      detailLines.forEach((line) => {
+        const detail = document.createElement("p");
+        detail.textContent = line;
+        meta.appendChild(detail);
+      });
+
+      masonry.innerHTML = "";
+      mediaItems.forEach((item) => {
+        masonry.appendChild(item.cloneNode(true));
+      });
+
+      story.classList.add("open");
+      story.setAttribute("aria-hidden", "false");
+      document.body.classList.add("story-open");
+      scrollWrap.scrollTop = 0;
+      story.style.setProperty("--story-ui", "0");
+      story.style.setProperty("--story-title-ui", "0");
+      story.style.setProperty("--story-info-ui", "0");
+      story.classList.remove("ui-visible");
+      updateProgress();
+    };
+
+    const closeStory = () => {
+      story.classList.remove("open");
+      story.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("story-open");
+      story.style.setProperty("--story-progress", "0");
+      story.style.setProperty("--story-ui", "0");
+      story.style.setProperty("--story-title-ui", "0");
+      story.style.setProperty("--story-info-ui", "0");
+      story.classList.remove("ui-visible");
+    };
+
+    entries.forEach((entry) => {
+      const trigger = entry.querySelector(".project-card-trigger");
+      if (trigger) {
+        trigger.addEventListener("click", () => openStory(entry));
+      }
     });
 
-    const hash = window.location.hash.replace("#", "");
-    if (hash) {
-      const pref = filterButtons.find((btn) => btn.dataset.filter === hash || btn.id === hash);
-      if (pref) {
-        setFilter(pref.dataset.filter);
+    backButton.addEventListener("click", closeStory);
+    scrollWrap.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && story.classList.contains("open")) {
+        closeStory();
       }
-    }
+    });
   };
 
   const initLightbox = () => {
-    const lightbox = document.getElementById("lightbox");
-    const stage = lightbox?.querySelector(".lightbox-stage");
-    const title = lightbox?.querySelector(".lightbox-meta h3");
-    const desc = lightbox?.querySelector(".lightbox-meta p");
-    const close = lightbox?.querySelector(".lightbox-close");
-    const prev = lightbox?.querySelector(".lightbox-prev");
-    const next = lightbox?.querySelector(".lightbox-next");
-    const triggers = [...document.querySelectorAll(".gallery-trigger")];
-
-    if (!lightbox || !stage || !title || !desc || !close || !prev || !next || !triggers.length) {
+    const modal = document.getElementById("lightbox");
+    const stage = modal?.querySelector(".lightbox-stage");
+    const title = modal?.querySelector(".lightbox-meta h3");
+    const desc = modal?.querySelector(".lightbox-meta p");
+    const closeButton = modal?.querySelector(".lightbox-close");
+    const prevButton = modal?.querySelector(".lightbox-prev");
+    const nextButton = modal?.querySelector(".lightbox-next");
+    if (!modal || !stage || !title || !desc || !closeButton || !prevButton || !nextButton) {
       return;
     }
 
+    let items = [];
     let index = 0;
 
     const render = () => {
-      const current = triggers[index];
-      const type = current.dataset.type;
-      const src = current.dataset.src;
+      const item = items[index];
+      const type = item.dataset.type || "image";
+      const src = item.dataset.src;
       stage.innerHTML = "";
 
       if (type === "video") {
         const video = document.createElement("video");
+        video.src = src;
         video.controls = true;
         video.autoplay = true;
         video.loop = true;
         video.preload = "metadata";
-        video.src = src;
         stage.appendChild(video);
       } else {
         const image = document.createElement("img");
         image.src = src;
-        image.alt = current.querySelector("img")?.alt || "Gallery preview";
+        image.alt = item.querySelector("img")?.alt || "Gallery preview";
         stage.appendChild(image);
       }
 
-      title.textContent = current.dataset.title || "Project";
-      desc.textContent = current.dataset.desc || "";
+      title.textContent = item.dataset.title || "Project";
+      desc.textContent = item.dataset.desc || "";
     };
 
-    const open = (newIndex) => {
+    const open = (newIndex, newItems) => {
+      items = newItems;
+      if (!items.length) {
+        return;
+      }
       index = newIndex;
       render();
-      lightbox.classList.add("open");
-      lightbox.setAttribute("aria-hidden", "false");
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
     };
 
-    const closeModal = () => {
-      lightbox.classList.remove("open");
-      lightbox.setAttribute("aria-hidden", "true");
+    const close = () => {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
       stage.innerHTML = "";
       document.body.style.overflow = "";
     };
 
     const move = (step) => {
-      index = (index + step + triggers.length) % triggers.length;
+      index = (index + step + items.length) % items.length;
       render();
     };
 
-    triggers.forEach((trigger, triggerIndex) => {
-      trigger.addEventListener("click", () => open(triggerIndex));
+    document.addEventListener("click", (event) => {
+      const media = event.target.closest(".gallery-media");
+      if (!media) {
+        return;
+      }
+
+      const scope = media.closest(".project-story") || document;
+      const scopeItems = [...scope.querySelectorAll(".gallery-media")];
+      const scopeIndex = scopeItems.indexOf(media);
+      if (scopeIndex === -1) {
+        return;
+      }
+      open(scopeIndex, scopeItems);
     });
 
-    close.addEventListener("click", closeModal);
-    prev.addEventListener("click", () => move(-1));
-    next.addEventListener("click", () => move(1));
+    closeButton.addEventListener("click", close);
+    prevButton.addEventListener("click", () => move(-1));
+    nextButton.addEventListener("click", () => move(1));
 
-    lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) {
-        closeModal();
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        close();
       }
     });
 
     document.addEventListener("keydown", (event) => {
-      if (!lightbox.classList.contains("open")) {
+      if (!modal.classList.contains("open")) {
         return;
       }
       if (event.key === "Escape") {
-        closeModal();
-      }
-      if (event.key === "ArrowRight") {
-        move(1);
+        close();
       }
       if (event.key === "ArrowLeft") {
         move(-1);
       }
-    });
-  };
-
-  const initMediaRespect = () => {
-    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    const saveData = Boolean(connection?.saveData);
-    const slow = /2g|slow-2g/i.test(connection?.effectiveType || "");
-    if (!saveData && !slow) {
-      return;
-    }
-
-    document.querySelectorAll("video[autoplay]").forEach((video) => {
-      video.autoplay = false;
-      video.removeAttribute("autoplay");
-      video.pause();
+      if (event.key === "ArrowRight") {
+        move(1);
+      }
     });
   };
 
@@ -288,10 +402,9 @@
     initMenu();
     initScrollTop();
     initReveal();
-    initParallax();
-    initTilt();
-    initFilterableGallery();
+    initFilterGallery();
+    initCardTilt();
+    initProjectStory();
     initLightbox();
-    initMediaRespect();
   });
 })();

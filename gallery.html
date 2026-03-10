@@ -4,155 +4,78 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery | C Celluloids</title>
-  <meta name="description" content="Explore C Celluloids gallery across fashion, product, model, event, documentary, and street photography projects." />
-  <meta name="theme-color" content="#0a0a0d" />
+  <meta name="description" content="Project-based gallery with category cards, project cards, and immersive project storytelling views." />
+  <meta name="theme-color" content="#f7f7f2" />
   <meta property="og:title" content="Gallery | C Celluloids" />
-  <meta property="og:description" content="Filterable cinematic gallery with project descriptions and fullscreen previews." />
+  <meta property="og:description" content="Explore commercial, product, fashion, events, documentary, and street photography projects." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.ccelluloids.in/gallery.html" />
   <link rel="canonical" href="https://www.ccelluloids.in/gallery.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="page-gallery">
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="C Celluloids home"><img src="white-logo.png" alt="C Celluloids" width="136" height="50" /></a>
-    <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
-    <nav class="site-nav" aria-label="Main">
-      <a href="index.html">Home</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About</a>
-      <a href="hireme.html" class="btn btn-sm">Book Shoot</a>
-    </nav>
-  </header>
-
   <main>
     <section class="section page-intro section-dark">
       <div class="container reveal">
-        <p class="eyebrow">Portfolio System</p>
-        <h1>Visual Library Built by Category</h1>
-        <p>Use filters to see relevant project styles quickly, then open any frame in cinematic fullscreen view.</p>
+        <p class="eyebrow">Gallery</p>
+        <h1>Browse by Category, Then Open Projects</h1>
+        <p>Select a category card to view project cards. Click any project card to open the immersive project story view.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="filter-bar reveal" role="tablist" aria-label="Gallery Categories">
-          <button class="filter-btn active" data-filter="all" type="button">All</button>
-          <button class="filter-btn" data-filter="fashion" type="button" id="fashion">Fashion / Saree</button>
-          <button class="filter-btn" data-filter="product" type="button" id="product">Product</button>
-          <button class="filter-btn" data-filter="model" type="button">Model Shoots</button>
-          <button class="filter-btn" data-filter="event" type="button" id="event">Event Coverage</button>
-          <button class="filter-btn" data-filter="documentary" type="button" id="documentary">Documentary</button>
-          <button class="filter-btn" data-filter="street" type="button">Street (Coming Up)</button>
-        </div>
-
-        <div class="masonry-grid" id="galleryGrid">
-          <article class="gallery-card reveal" data-category="fashion">
-            <button class="gallery-trigger" type="button" data-type="image" data-src="photoB.JPG" data-title="Saree Campaign" data-desc="Editorial saree visuals focused on drape, texture, and expression.">
-              <img src="photoB.JPG" alt="Saree brand campaign portrait" loading="lazy" decoding="async" />
-            </button>
-            <h3>Saree Campaign</h3><p>Fashion / Saree Brand Shoots</p>
-          </article>
-          <article class="gallery-card reveal" data-category="product">
-            <button class="gallery-trigger" type="button" data-type="image" data-src="service-product.jpg" data-title="Water Brand Product Shoot" data-desc="Clean and premium product setup with cinematic highlights.">
-              <img src="service-product.jpg" alt="Premium water bottle product photograph" loading="lazy" decoding="async" />
-            </button>
-            <h3>Water Brand</h3><p>Product Photography</p>
-          </article>
-          <article class="gallery-card reveal" data-category="model">
-            <button class="gallery-trigger" type="button" data-type="image" data-src="photo1.jpg" data-title="Model Portrait Story" data-desc="High-contrast visual set crafted for portfolio impact.">
-              <img src="photo1.jpg" alt="Model portfolio portrait" loading="lazy" decoding="async" />
-            </button>
-            <h3>Portrait Editorial</h3><p>Model Shoots</p>
-          </article>
-          <article class="gallery-card reveal" data-category="event">
-            <button class="gallery-trigger" type="button" data-type="image" data-src="photo7.jpg" data-title="Live Event Highlights" data-desc="Fast-moving stage and crowd moments captured in detail.">
-              <img src="photo7.jpg" alt="Live event stage photography" loading="lazy" decoding="async" />
-            </button>
-            <h3>Live Stage</h3><p>Event Coverage</p>
-          </article>
-          <article class="gallery-card reveal" data-category="documentary">
-            <button class="gallery-trigger" type="button" data-type="image" data-src="shot1.jpg" data-title="Field Documentary Frame" data-desc="Human-centered frame from development documentation work.">
-              <img src="shot1.jpg" alt="Documentary fieldwork frame" loading="lazy" decoding="async" />
-            </button>
-            <h3>Field Story</h3><p>Documentary Projects</p>
-          </article>
-          <article class="gallery-card reveal" data-category="documentary">
-            <button class="gallery-trigger" type="button" data-type="video" data-src="vid1.mp4" data-title="Documentary Motion" data-desc="Short sequence from a documentary production timeline.">
-              <video muted playsinline preload="none">
-                <source src="vid1.mp4" type="video/mp4" />
-              </video>
-            </button>
-            <h3>Documentary Clip</h3><p>Documentary Projects</p>
-          </article>
-          <article class="gallery-card reveal" data-category="fashion">
-            <button class="gallery-trigger" type="button" data-type="image" data-src="photoC.JPG" data-title="Fashion Detail Study" data-desc="Style-focused frame designed for social and campaign usage.">
-              <img src="photoC.JPG" alt="Fashion detail portrait" loading="lazy" decoding="async" />
-            </button>
-            <h3>Editorial Detail</h3><p>Fashion / Saree Brand Shoots</p>
-          </article>
-          <article class="gallery-card reveal" data-category="product">
-            <button class="gallery-trigger" type="button" data-type="image" data-src="photo3.jpg" data-title="Commercial Product Frame" data-desc="Product texture and premium styling for ad creatives.">
-              <img src="photo3.jpg" alt="Commercial product hero shot" loading="lazy" decoding="async" />
-            </button>
-            <h3>Commercial Product</h3><p>Product Photography</p>
-          </article>
-          <article class="gallery-card reveal" data-category="model">
-            <button class="gallery-trigger" type="button" data-type="image" data-src="photo4.jpg" data-title="Model Character Frame" data-desc="Portrait mood board execution for personal brand campaigns.">
-              <img src="photo4.jpg" alt="Model portrait with cinematic lighting" loading="lazy" decoding="async" />
-            </button>
-            <h3>Character Portrait</h3><p>Model Shoots</p>
-          </article>
-          <article class="gallery-card reveal" data-category="event">
-            <button class="gallery-trigger" type="button" data-type="video" data-src="vid2.mp4" data-title="Event Aftermovie" data-desc="Dynamic event sequence with crowd reaction and stage highlights.">
-              <video muted playsinline preload="none">
-                <source src="vid2.mp4" type="video/mp4" />
-              </video>
-            </button>
-            <h3>Event Film</h3><p>Event Coverage</p>
-          </article>
-          <article class="gallery-card reveal" data-category="street">
-            <button class="gallery-trigger" type="button" data-type="image" data-src="photo8.jpg" data-title="Street Story (Upcoming)" data-desc="Category scaffold ready for future street photography additions.">
-              <img src="photo8.jpg" alt="Street style visual preview" loading="lazy" decoding="async" />
-            </button>
-            <h3>Street Preview</h3><p>Street Photography</p>
-          </article>
-          <article class="gallery-card reveal" data-category="documentary">
-            <button class="gallery-trigger" type="button" data-type="video" data-src="vid3.mp4" data-title="Impact Story Segment" data-desc="Narrative clip showcasing field interview and daily life moments.">
-              <video muted playsinline preload="none">
-                <source src="vid3.mp4" type="video/mp4" />
-              </video>
-            </button>
-            <h3>Impact Segment</h3><p>Documentary Projects</p>
-          </article>
-        </div>
+        <div class="category-masonry reveal" id="categoryMasonry" aria-label="Project categories"></div>
       </div>
     </section>
 
-    <section class="section cta-band texture">
-      <div class="container cta-wrap reveal">
-        <div>
-          <h2>Need visuals for your next launch?</h2>
-          <p>Share the brief and get a clear production roadmap with timelines.</p>
+    <section class="section section-dark projects-section is-collapsed" id="projectsSection">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Projects</p>
+          <h2 id="projectListTitle">All Projects</h2>
         </div>
-        <a href="hireme.html" class="btn">Work With Me</a>
+
+        <div class="project-card-grid" id="projectCardGrid"></div>
       </div>
     </section>
   </main>
+
+  <section class="project-story" id="projectStory" aria-hidden="true">
+    <div class="project-story-scroll">
+      <header class="project-story-top">
+        <button class="story-back" type="button">Back</button>
+        <h2 class="story-sticky-title"></h2>
+      </header>
+      <section class="project-story-hero">
+        <div class="story-hero-pin">
+          <img class="story-cover" src="" alt="" />
+          <div class="story-cover-dark"></div>
+          <div class="story-detail-overlay">
+            <h1 class="story-title"></h1>
+            <div class="story-info-block">
+              <div class="story-meta"></div>
+              <p class="story-description"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="project-story-gallery">
+        <div class="story-gallery-head"><h3 class="story-gallery-title"></h3></div>
+        <div class="story-masonry"></div>
+      </section>
+    </div>
+  </section>
 
   <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Gallery preview">
     <button class="lightbox-close" type="button" aria-label="Close preview">×</button>
     <button class="lightbox-prev" type="button" aria-label="Previous item">‹</button>
     <div class="lightbox-stage"></div>
     <button class="lightbox-next" type="button" aria-label="Next item">›</button>
-    <div class="lightbox-meta">
-      <h3></h3>
-      <p></p>
-    </div>
+    <div class="lightbox-meta"><h3></h3><p></p></div>
   </div>
 
   <footer class="site-footer">
@@ -162,6 +85,12 @@
   </footer>
 
   <a href="#" class="scroll-top" aria-label="Scroll to top">↑</a>
+  <nav class="dock-nav" aria-label="Bottom Navigation">
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About</a>
+    <a href="hireme.html">Hire Me</a>
+  </nav>
   <script src="main.js" defer></script>
 </body>
 </html>
