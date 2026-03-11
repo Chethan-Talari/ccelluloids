@@ -140,6 +140,20 @@
     return lines;
   };
 
+  const getCategorySummary = (slug) => {
+    const copy = {
+      all: "A complete view across commercial, documentary, event, fashion, and future street work.",
+      commercial: "Campaign imagery built for brands, launches, and product-led visual systems.",
+      product: "Clean, tactile frames shaped for catalog, e-commerce, and branded storytelling.",
+      fashion: "Editorial portraits and model-focused visuals with styling, mood, and direction.",
+      events: "Atmosphere-led coverage that captures stage, crowd, movement, and brand presence.",
+      documentary: "Human-centered storytelling built around lived moments, place, and observation.",
+      street: "Unscripted city frames collected through rhythm, contrast, and visual instinct.",
+    };
+
+    return copy[slug] || "Project-driven work grouped by format, mood, and client need.";
+  };
+
   const renderGalleryCards = () => {
     const categoryMasonry = document.getElementById("categoryMasonry");
     const projectGrid = document.getElementById("projectCardGrid");
@@ -177,16 +191,19 @@
     categoryMasonry.innerHTML = categoryCards
       .map(
         (category) => `
-          <button class="category-card reveal${category.slug === state.activeCategory ? " active" : ""}" type="button" data-category="${escapeHtml(category.slug)}">
-            <span class="card-frame">
+          <button class="category-card reveal${category.slug === state.activeCategory ? " active" : ""}" type="button" data-category="${escapeHtml(category.slug)}" aria-label="View ${escapeHtml(category.title)} category">
+            <span class="gallery-panel-media">
               <img src="${escapeHtml(category.cover)}" alt="${escapeHtml(category.title)} category preview" loading="lazy" decoding="async" />
-              <span class="card-corners" aria-hidden="true"></span>
-              <span class="card-hover" aria-hidden="true"><i>+</i></span>
+              <span class="gallery-panel-shade" aria-hidden="true"></span>
             </span>
-            <span class="card-meta">
+            <span class="gallery-panel-copy">
+              <span class="gallery-panel-topline">
+                <em>${escapeHtml(category.chip)}</em>
+                <span>${escapeHtml(String(category.count).padStart(2, "0"))} Projects</span>
+              </span>
+              <span class="gallery-panel-rule" aria-hidden="true"></span>
               <strong>${escapeHtml(category.title)}</strong>
-              <em>${escapeHtml(String(category.count).padStart(2, "0"))} projects</em>
-              <span class="card-chip">${escapeHtml(category.chip)}</span>
+              <small>${escapeHtml(getCategorySummary(category.slug))}</small>
             </span>
           </button>
         `
@@ -202,15 +219,18 @@
           .map((project) => `
             <article class="project-card reveal" data-project-id="${escapeHtml(project.id)}">
               <button class="project-card-trigger" type="button" aria-label="Open ${escapeHtml(project.title)} project">
-                <span class="card-frame">
+                <span class="gallery-panel-media">
                   <img src="${escapeHtml(project.cover)}" alt="${escapeHtml(project.title)} cover image" loading="lazy" decoding="async" />
-                  <span class="card-corners" aria-hidden="true"></span>
-                  <span class="card-hover" aria-hidden="true"><i>+</i></span>
+                  <span class="gallery-panel-shade" aria-hidden="true"></span>
                 </span>
-                <span class="card-meta">
+                <span class="gallery-panel-copy">
+                  <span class="gallery-panel-topline">
+                    <em>${escapeHtml(project.client || project.brand_model || project.chip || slugToTitle(project.category))}</em>
+                    <span>${escapeHtml(project.date || "")}</span>
+                  </span>
+                  <span class="gallery-panel-rule" aria-hidden="true"></span>
                   <strong>${escapeHtml(project.title)}</strong>
-                  <em>${escapeHtml(project.date || "")}</em>
-                  <span class="card-chip">${escapeHtml(project.chip || slugToTitle(project.category))}</span>
+                  <small>${escapeHtml(project.description || project.project || "")}</small>
                 </span>
               </button>
             </article>
