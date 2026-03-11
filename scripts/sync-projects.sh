@@ -63,13 +63,29 @@ read_meta_value() {
   ' "$file"
 }
 
-mapfile -t project_dirs < <(find "$PROJECTS_DIR" -mindepth 2 -maxdepth 2 -type d | sort)
+project_dirs=()
+while IFS= read -r dir; do
+  project_dirs+=("$dir")
+done < <(find "$PROJECTS_DIR" -mindepth 2 -maxdepth 2 -type d | sort)
 
 # Collect categories with at least one project.
-declare -A categories_seen=()
+categories_seen=()
+category_exists() {
+  local needle="$1"
+  local item
+  for item in "${categories_seen[@]:-}"; do
+    if [[ "$item" == "$needle" ]]; then
+      return 0
+    fi
+  done
+  return 1
+}
+
 for dir in "${project_dirs[@]:-}"; do
   cat_slug="$(basename "$(dirname "$dir")")"
-  categories_seen["$cat_slug"]=1
+  if ! category_exists "$cat_slug"; then
+    categories_seen+=("$cat_slug")
+  fi
 done
 
 {
@@ -78,7 +94,7 @@ done
 
   printf '  "categories": ['
   first_cat=1
-  for cat_slug in $(printf '%s\n' "${!categories_seen[@]:-}" | sort); do
+  for cat_slug in "${categories_seen[@]:-}"; do
     cat_title="$(category_label "$cat_slug")"
     cat_chip="$(category_chip "$cat_slug")"
     if [[ $first_cat -eq 1 ]]; then
@@ -135,7 +151,10 @@ done
       fi
     done
 
-    mapfile -t media_files < <(find "$project_dir/photos" "$project_dir/videos" -type f 2>/dev/null | sort -V)
+    media_files=()
+    while IFS= read -r file; do
+      media_files+=("$file")
+    done < <(find "$project_dir/photos" "$project_dir/videos" -type f 2>/dev/null | sort -V)
 
     if [[ -z "$cover" && ${#media_files[@]} -gt 0 ]]; then
       cover="${media_files[0]}"

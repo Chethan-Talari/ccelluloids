@@ -1,0 +1,79 @@
+# Project Folder Structure
+
+Create folders inside `assets/projects` using this structure:
+
+```text
+assets/projects/
+  commercial/
+    saree-brand-campaign/
+      cover.jpg
+      meta.txt
+      photos/
+        01.jpg
+        02.jpg
+      videos/
+        teaser.mp4
+  product/
+    aquapure-product-shoot/
+      cover.jpg
+      meta.txt
+      photos/
+  fashion/
+    editorial-model-shoot/
+      cover.jpg
+      meta.txt
+      photos/
+  events/
+    cultural-event-coverage/
+      cover.jpg
+      meta.txt
+      photos/
+  documentary/
+    independent-documentary-project/
+      cover.jpg
+      meta.txt
+      photos/
+      videos/
+  street/
+    bangalore-streets-series/
+      cover.jpg
+      meta.txt
+      photos/
+```
+
+## Rules
+
+- Category folder names become gallery categories.
+- Project folder names become project titles automatically.
+- `cover.jpg` is used for the category card and the project card.
+- Put all stills inside `photos/`.
+- Put all motion clips inside `videos/`.
+- Keep file names ordered like `01.jpg`, `02.jpg`, `03.jpg`.
+
+## Optional `meta.txt`
+
+```text
+title=Saree Brand Campaign
+date=Jul 10, 2025
+chip=Brand & Commercial
+description=Commercial brand storytelling
+client=Varnika Silks
+project=Commercial Shoot
+brand_model=Varnika Silks
+agency=Brandshark
+```
+
+## Categories To Use
+
+- `commercial`
+- `product`
+- `fashion`
+- `events`
+- `documentary`
+- `street`
+
+After adding or changing folders, run:
+
+```bash
+./scripts/sync-projects.sh
+```

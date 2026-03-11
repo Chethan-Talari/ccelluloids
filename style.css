@@ -176,11 +176,19 @@ video {
   padding: 2rem 0;
 }
 
-.hero h1 {
-  color: #fff;
-  font-size: clamp(2rem, 5.5vw, 4rem);
-  margin-bottom: 1rem;
-  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+.hero-logo {
+  width: min(420px, 72vw);
+  height: auto;
+  margin: 0 auto 1rem;
+  filter: drop-shadow(0 12px 36px rgba(0, 0, 0, 0.35));
+}
+
+.hero-tagline {
+  margin: 0 0 1.4rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.92rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
 .hero-metrics {
@@ -440,101 +448,91 @@ video {
   padding-top: 3rem;
 }
 
-.home-end-grid {
+.home-end-masonry {
   display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(320px, 0.83fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 1rem;
-  align-items: start;
-}
-
-.home-end-left {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.9rem;
   text-align: left;
 }
 
-.home-end-copy {
-  font-size: 2rem;
-  line-height: 1.18;
-  color: #2b2d31;
-  max-width: 18ch;
-}
-
-.mini-testimonial {
-  display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 0.75rem;
-  align-self: start;
-}
-
-.mini-testimonial img {
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  object-fit: cover;
-}
-
-.mini-testimonial p {
-  margin-bottom: 0.34rem;
-}
-
-.mini-testimonial strong {
-  color: #121316;
-}
-
-.mini-testimonial span {
-  color: #1b1e22;
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-.home-end-photo {
-  grid-column: 1 / 2;
-  border-radius: 1rem;
+.cta-stack-card {
+  position: relative;
   overflow: hidden;
+  min-height: 220px;
+  padding: 0.75rem;
+  background: #f0f1ec;
+  border: 1px solid rgba(16, 17, 18, 0.1);
+  border-radius: 1.2rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.home-end-photo img {
+.cta-stack-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.1);
+  border-color: rgba(16, 17, 18, 0.18);
+}
+
+.cta-stack-card img {
   width: 100%;
-  height: 540px;
+  height: 320px;
   object-fit: cover;
-  transition: transform 0.45s ease;
+  border-radius: 0.9rem;
+  transition: transform 0.45s ease, filter 0.45s ease;
 }
 
-.home-end-photo:hover img {
-  transform: scale(1.03);
+.cta-stack-card:hover img {
+  transform: scale(1.05);
+  filter: saturate(1.04);
 }
 
-.home-end-link {
-  grid-column: 1 / 2;
-  font-size: 1.9rem;
+.cta-stack-copy {
+  grid-column: span 5;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(160deg, #ffffff, #eceee9);
+}
+
+.cta-stack-copy p {
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  line-height: 1.08;
+  color: #16181b;
+  max-width: 16ch;
+}
+
+.cta-stack-feature {
+  grid-column: span 4;
+}
+
+.cta-stack-body {
+  padding: 0.8rem 0.2rem 0.1rem;
+}
+
+.cta-stack-body h3 {
+  font-size: 2.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.cta-stack-body p {
+  max-width: 30ch;
+}
+
+.cta-stack-stat {
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 180px;
+  padding: 1.5rem;
+  background: linear-gradient(145deg, #fffef7, #f0eee5);
+}
+
+.cta-stack-stat strong {
   font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.4rem, 4.4vw, 4rem);
+  line-height: 0.95;
   color: #111316;
-  border-bottom: 1px solid #111316;
-  width: fit-content;
-}
-
-.home-end-right {
-  background: #efefea;
-  border: 1px solid var(--line);
-  border-radius: 1rem;
-  padding: 0.6rem;
-  text-align: left;
-  position: sticky;
-  top: 90px;
-}
-
-.home-end-right img {
-  width: 100%;
-  height: 460px;
-  object-fit: cover;
-  border-radius: 0.75rem;
-}
-
-.home-end-right h3 {
-  font-size: 2.15rem;
-  margin: 0.7rem 0 0.3rem;
 }
 
 .circle-cta {
@@ -583,20 +581,29 @@ video {
   padding: 1.4rem;
 }
 
+.card-stat-large {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 190px;
+}
+
 .card-stat h3,
 .card-percent h3 {
   font-size: 4.2rem;
   line-height: 0.9;
 }
 
-.card-collage {
+.card-collage,
+.card-wide-strip {
   grid-column: span 3;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;
 }
 
-.card-collage img {
+.card-collage img,
+.card-wide-strip img {
   width: 100%;
   height: 190px;
   object-fit: cover;
@@ -605,6 +612,10 @@ video {
 
 .card-grid-photo {
   grid-column: span 3;
+}
+
+.card-grid-photo-large img {
+  height: 320px;
 }
 
 .card-grid-photo img {
@@ -629,6 +640,10 @@ video {
   grid-column: span 2;
 }
 
+.card-instagram-tall img {
+  height: 420px;
+}
+
 .card-instagram img {
   width: 100%;
   height: 320px;
@@ -649,6 +664,13 @@ video {
   grid-column: span 2;
 }
 
+.card-focus-dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.45));
+}
+
 .card-focus img {
   width: 100%;
   height: 320px;
@@ -661,6 +683,7 @@ video {
   left: 1rem;
   right: 1rem;
   bottom: 0.95rem;
+  z-index: 1;
   color: #fff;
   font-size: 1.6rem;
   line-height: 1.08;
@@ -1394,6 +1417,12 @@ video {
   background: #ffffff;
 }
 
+.footer-brand img {
+  width: 180px;
+  height: auto;
+  margin-bottom: 0.45rem;
+}
+
 .site-footer h3 {
   font-size: 1.2rem;
 }
@@ -1405,6 +1434,13 @@ video {
 
 .footer-social {
   text-align: right;
+}
+
+.gallery-empty {
+  padding: 2rem 1.2rem;
+  border: 1px dashed rgba(16, 17, 18, 0.18);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .dock-nav {
@@ -1537,17 +1573,18 @@ body.loaded #loader {
     grid-template-columns: 1fr;
   }
 
-  .home-end-left {
-    grid-template-columns: 1fr;
+  .home-end-masonry {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .home-end-photo,
-  .home-end-link {
-    grid-column: auto;
+  .cta-stack-copy,
+  .cta-stack-feature,
+  .cta-stack-stat {
+    grid-column: span 1;
   }
 
-  .home-end-right {
-    position: static;
+  .cta-stack-copy p {
+    max-width: none;
   }
 
   .about-mosaic {
@@ -1611,16 +1648,17 @@ body.loaded #loader {
     font-size: 1.6rem;
   }
 
-  .home-end-photo img {
-    height: 380px;
+  .home-end-masonry {
+    grid-template-columns: 1fr;
   }
 
-  .home-end-right img {
-    height: 300px;
+  .cta-stack-body h3 {
+    font-size: 1.8rem;
   }
 
-  .home-end-right h3 {
-    font-size: 1.7rem;
+  .cta-stack-card img,
+  .card-instagram-tall img {
+    height: 280px;
   }
 
   .about-mosaic {
