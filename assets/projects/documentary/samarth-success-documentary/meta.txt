@@ -1,8 +1,0 @@
-title=SAMARTH Success Documentary
-date=Sep 12, 2025
-chip=Documentary
-description=Documentary storytelling focused on real people, progress, and lived outcomes.
-client=SAMARTH
-project=Documentary Film
-brand_model=SAMARTH Program
-agency=Independent

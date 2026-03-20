@@ -154,28 +154,13 @@
     return copy[slug] || "Project-driven work grouped by format, mood, and client need.";
   };
 
-  const renderGalleryCards = () => {
-    const categoryMasonry = document.getElementById("categoryMasonry");
-    const projectGrid = document.getElementById("projectCardGrid");
-    const section = document.getElementById("projectsSection");
-    const title = document.getElementById("projectListTitle");
-    if (!categoryMasonry || !projectGrid || !section || !title) {
-      return;
-    }
-
+  const getCategoryCards = () => {
     const counts = state.projects.reduce((map, project) => {
       map[project.category] = (map[project.category] || 0) + 1;
       return map;
     }, {});
 
-    const categoryCards = [
-      {
-        slug: "all",
-        title: "View All",
-        chip: `${state.projects.length} Projects`,
-        cover: state.projects[0]?.cover || "photo2.jpg",
-        count: state.projects.length,
-      },
+    return [
       ...state.categories.map((category) => {
         const firstProject = state.projects.find((project) => project.category === category.slug);
         return {
@@ -186,12 +171,31 @@
           count: counts[category.slug] || 0,
         };
       }),
+      {
+        slug: "all",
+        title: "View All",
+        chip: `${state.projects.length} Projects`,
+        cover: state.projects[0]?.cover || "photo2.jpg",
+        count: state.projects.length,
+      },
     ];
+  };
 
-    categoryMasonry.innerHTML = categoryCards
+  const getCategoryFromUrl = () => {
+    const value = new URLSearchParams(window.location.search).get("category") || "all";
+    return value.toLowerCase();
+  };
+
+  const renderGalleryIndex = () => {
+    const categoryMasonry = document.getElementById("categoryMasonry");
+    if (!categoryMasonry) {
+      return;
+    }
+
+    categoryMasonry.innerHTML = getCategoryCards()
       .map(
         (category) => `
-          <button class="category-card reveal${category.slug === state.activeCategory ? " active" : ""}" type="button" data-category="${escapeHtml(category.slug)}" aria-label="View ${escapeHtml(category.title)} category">
+          <a class="category-card reveal" href="category.html?category=${encodeURIComponent(category.slug)}" aria-label="View ${escapeHtml(category.title)} category">
             <span class="gallery-panel-media">
               <img src="${escapeHtml(category.cover)}" alt="${escapeHtml(category.title)} category preview" loading="lazy" decoding="async" />
               <span class="gallery-panel-shade" aria-hidden="true"></span>
@@ -205,10 +209,41 @@
               <strong>${escapeHtml(category.title)}</strong>
               <small>${escapeHtml(getCategorySummary(category.slug))}</small>
             </span>
-          </button>
+          </a>
         `
       )
       .join("");
+
+    revealItems([...categoryMasonry.querySelectorAll(".reveal")]);
+    initCardTilt(categoryMasonry);
+  };
+
+  const renderCategoryProjects = () => {
+    const projectGrid = document.getElementById("projectCardGrid");
+    const title = document.getElementById("projectListTitle");
+    const eyebrow = document.getElementById("categoryEyebrow");
+    const lead = document.getElementById("categoryLead");
+    const backLink = document.getElementById("categoryBackLink");
+    if (!projectGrid || !title) {
+      return;
+    }
+
+    state.activeCategory = getCategoryFromUrl();
+    const selectedCategory = state.categories.find((item) => item.slug === state.activeCategory);
+    const isAll = state.activeCategory === "all";
+    const heading = isAll ? "View All" : (selectedCategory?.title || slugToTitle(state.activeCategory));
+
+    if (eyebrow) {
+      eyebrow.textContent = isAll ? "All Categories" : "Category";
+    }
+    title.textContent = heading;
+    if (lead) {
+      lead.textContent = getCategorySummary(state.activeCategory);
+    }
+    if (backLink) {
+      backLink.hidden = false;
+    }
+    document.title = `${heading} | C Celluloids`;
 
     const visibleProjects = state.projects.filter(
       (project) => state.activeCategory === "all" || project.category === state.activeCategory
@@ -242,21 +277,6 @@
         </div>
       `;
 
-    title.textContent =
-      state.activeCategory === "all"
-        ? "All Projects"
-        : `${state.categories.find((item) => item.slug === state.activeCategory)?.title || slugToTitle(state.activeCategory)} Projects`;
-
-    section.classList.toggle("is-collapsed", !visibleProjects.length && !state.projects.length);
-
-    categoryMasonry.querySelectorAll(".category-card").forEach((button) => {
-      button.addEventListener("click", () => {
-        state.activeCategory = button.dataset.category || "all";
-        renderGalleryCards();
-        document.getElementById("projectsSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-
     projectGrid.querySelectorAll(".project-card-trigger").forEach((trigger) => {
       trigger.addEventListener("click", () => {
         const projectId = trigger.closest(".project-card")?.dataset.projectId;
@@ -268,10 +288,8 @@
     });
 
     revealItems([
-      ...categoryMasonry.querySelectorAll(".reveal"),
       ...projectGrid.querySelectorAll(".reveal"),
     ]);
-    initCardTilt(categoryMasonry);
     initCardTilt(projectGrid);
   };
 
@@ -498,25 +516,62 @@
     const categoryMasonry = document.getElementById("categoryMasonry");
     const projectGrid = document.getElementById("projectCardGrid");
     const title = document.getElementById("projectListTitle");
-    if (!categoryMasonry || !projectGrid || !title) {
-      return;
+    if (categoryMasonry) {
+      categoryMasonry.innerHTML = `
+        <div class="gallery-empty reveal visible">
+          <p>${escapeHtml(message)}</p>
+        </div>
+      `;
     }
+    if (projectGrid) {
+      projectGrid.innerHTML = `
+        <div class="gallery-empty reveal visible">
+          <p>Create folders in assets/projects and run the sync script to populate this gallery.</p>
+        </div>
+      `;
+    }
+    if (title) {
+      title.textContent = "No Projects Yet";
+    }
+  };
 
-    categoryMasonry.innerHTML = `
-      <div class="gallery-empty reveal visible">
-        <p>${escapeHtml(message)}</p>
-      </div>
-    `;
-    projectGrid.innerHTML = `
-      <div class="gallery-empty reveal visible">
-        <p>Create folders in assets/projects and run the sync script to populate this gallery.</p>
-      </div>
-    `;
-    title.textContent = "No Projects Yet";
+  const initTrustedLogoGrid = () => {
+    document.querySelectorAll(".logo-grid[data-staggered]").forEach((grid) => {
+      if (grid.dataset.enhanced === "true") {
+        return;
+      }
+
+      const logos = [...grid.querySelectorAll("img")].map((img) => img.cloneNode(true));
+      grid.innerHTML = "";
+
+      let cursor = 0;
+      let rowIndex = 0;
+      while (cursor < logos.length) {
+        const count = rowIndex % 2 === 0 ? 4 : 3;
+        const row = document.createElement("div");
+        row.className = "logo-row";
+        row.dataset.count = String(count);
+
+        logos.slice(cursor, cursor + count).forEach((img) => {
+          const item = document.createElement("div");
+          item.className = "logo-item";
+          item.appendChild(img);
+          row.appendChild(item);
+        });
+
+        grid.appendChild(row);
+        cursor += count;
+        rowIndex += 1;
+      }
+
+      grid.dataset.enhanced = "true";
+    });
   };
 
   const initGalleryData = async () => {
-    if (!document.body.classList.contains("page-gallery")) {
+    const isGalleryIndex = document.body.classList.contains("page-gallery");
+    const isCategoryPage = document.body.classList.contains("page-category");
+    if (!isGalleryIndex && !isCategoryPage) {
       return;
     }
 
@@ -539,7 +594,11 @@
         return;
       }
 
-      renderGalleryCards();
+      if (isGalleryIndex) {
+        renderGalleryIndex();
+      } else {
+        renderCategoryProjects();
+      }
     } catch (error) {
       renderGalleryEmptyState("Gallery data is not available yet.");
       console.error(error);
@@ -554,6 +613,7 @@
     initCardTilt();
     initProjectStory();
     initLightbox();
+    initTrustedLogoGrid();
     initGalleryData();
   });
 })();

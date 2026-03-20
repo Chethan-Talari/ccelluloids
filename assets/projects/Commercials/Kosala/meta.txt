@@ -1,0 +1,8 @@
+title=Kosala Saree Campaign
+date= Dec 18, 2025
+chip=Brand & Commercial
+description=Commercial brand storytelling
+client= Kosala
+project=Commercial Shoot
+brand_model= Ananya
+agency=Brandshark

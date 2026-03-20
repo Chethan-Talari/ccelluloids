@@ -1,60 +1,81 @@
 {
-  "generated_at": "2026-03-11T04:31:50Z",
+  "generated_at": "2026-03-20T13:12:28Z",
   "categories": [
-    {"slug":"commercial","title":"Commercial","chip":"Brand & Commercial"},
-    {"slug":"documentary","title":"Documentary","chip":"Documentary"},
-    {"slug":"events","title":"Events","chip":"Events"}
+    {"slug":"Commercials","title":"Commercials","chip":"Category"},
+    {"slug":"Documentaries","title":"Documentaries","chip":"Category"},
+    {"slug":"Events","title":"Events","chip":"Category"}
   ],
   "projects": [
     {
-      "id": "commercial/saree-brand-campaign",
-      "category": "commercial",
+      "id": "Commercials/Kosala",
+      "category": "Commercials",
+      "title": "Kosala Saree Campaign",
+      "date": "Dec 18, 2025",
+      "chip": "Brand & Commercial",
+      "cover": "assets/projects/Commercials/Kosala/cover.jpg",
+      "client": "Kosala",
+      "project": "Commercial Shoot",
+      "brand_model": "Ananya",
+      "agency": "Brandshark",
+      "description": "Commercial brand storytelling",
+      "media": [
+        {"type":"image","src":"assets/projects/Commercials/Kosala/photos/01.JPG"},
+        {"type":"image","src":"assets/projects/Commercials/Kosala/photos/02.JPG"},
+        {"type":"image","src":"assets/projects/Commercials/Kosala/photos/03.JPG"},
+        {"type":"image","src":"assets/projects/Commercials/Kosala/photos/04.JPG"},
+        {"type":"image","src":"assets/projects/Commercials/Kosala/photos/05.JPG"},
+        {"type":"image","src":"assets/projects/Commercials/Kosala/photos/06.JPG"}
+      ]
+    },
+    {
+      "id": "Commercials/saree-brand-campaign",
+      "category": "Commercials",
       "title": "Saree Brand Campaign",
       "date": "Jul 10, 2025",
       "chip": "Brand & Commercial",
-      "cover": "assets/projects/commercial/saree-brand-campaign/cover.jpg",
+      "cover": "assets/projects/Commercials/saree-brand-campaign/cover.jpg",
       "client": "Varnika Silks",
       "project": "Commercial Shoot",
       "brand_model": "Varnika Silks",
       "agency": "Brandshark",
       "description": "Commercial brand storytelling",
       "media": [
-        {"type":"image","src":"assets/projects/commercial/saree-brand-campaign/photos/01.jpg"},
-        {"type":"image","src":"assets/projects/commercial/saree-brand-campaign/photos/02.jpg"}
+        {"type":"image","src":"assets/projects/Commercials/saree-brand-campaign/photos/01.jpg"},
+        {"type":"image","src":"assets/projects/Commercials/saree-brand-campaign/photos/02.jpg"}
       ]
     },
     {
-      "id": "documentary/samarth-success-documentary",
-      "category": "documentary",
+      "id": "Documentaries/samarth-success-documentary",
+      "category": "Documentaries",
       "title": "SAMARTH Success Documentary",
       "date": "Sep 12, 2025",
       "chip": "Documentary",
-      "cover": "assets/projects/documentary/samarth-success-documentary/cover.jpg",
+      "cover": "assets/projects/Documentaries/samarth-success-documentary/cover.jpg",
       "client": "SAMARTH",
       "project": "Documentary Film",
       "brand_model": "SAMARTH Program",
       "agency": "Independent",
       "description": "Documentary storytelling focused on real people, progress, and lived outcomes.",
       "media": [
-        {"type":"image","src":"assets/projects/documentary/samarth-success-documentary/photos/01.jpg"},
-        {"type":"image","src":"assets/projects/documentary/samarth-success-documentary/photos/02.jpg"}
+        {"type":"image","src":"assets/projects/Documentaries/samarth-success-documentary/photos/01.jpg"},
+        {"type":"image","src":"assets/projects/Documentaries/samarth-success-documentary/photos/02.jpg"}
       ]
     },
     {
-      "id": "events/design-scion-2025",
-      "category": "events",
+      "id": "Events/design-scion-2025",
+      "category": "Events",
       "title": "Design Scion 2025",
       "date": "Aug 24, 2025",
       "chip": "Events",
-      "cover": "assets/projects/events/design-scion-2025/cover.jpg",
+      "cover": "assets/projects/Events/design-scion-2025/cover.jpg",
       "client": "NIFT Bengaluru",
       "project": "Event Coverage",
       "brand_model": "Design Scion",
       "agency": "In-house",
       "description": "Live event coverage with stage, crowd, and atmosphere-led visuals.",
       "media": [
-        {"type":"image","src":"assets/projects/events/design-scion-2025/photos/01.jpg"},
-        {"type":"image","src":"assets/projects/events/design-scion-2025/photos/02.jpg"}
+        {"type":"image","src":"assets/projects/Events/design-scion-2025/photos/01.jpg"},
+        {"type":"image","src":"assets/projects/Events/design-scion-2025/photos/02.jpg"}
       ]
     }
   ]
