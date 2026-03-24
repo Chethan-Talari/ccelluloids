@@ -17,13 +17,16 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="page-category">
+  <button class="universal-back" type="button" data-fallback="gallery.html" aria-label="Go back">
+    <span aria-hidden="true">←</span>
+    <span>Back</span>
+  </button>
   <main>
     <section class="section page-intro section-dark">
       <div class="container reveal">
         <p class="eyebrow" id="categoryEyebrow">Category</p>
         <h1 id="projectListTitle">Selected Category</h1>
         <p id="categoryLead">Browse the projects inside this category.</p>
-        <a id="categoryBackLink" class="text-link" href="gallery.html" hidden>Back to all categories</a>
       </div>
     </section>
 
@@ -37,7 +40,6 @@
   <section class="project-story" id="projectStory" aria-hidden="true">
     <div class="project-story-scroll">
       <header class="project-story-top">
-        <button class="story-back" type="button">Back</button>
         <h2 class="story-sticky-title"></h2>
       </header>
       <section class="project-story-hero">

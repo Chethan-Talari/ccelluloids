@@ -70,6 +70,35 @@
     });
   };
 
+  const initUniversalBack = () => {
+    const button = document.querySelector(".universal-back");
+    if (!button) {
+      return;
+    }
+
+    button.addEventListener("click", () => {
+      const lightbox = document.getElementById("lightbox");
+      const story = document.getElementById("projectStory");
+
+      if (lightbox?.classList.contains("open")) {
+        closeLightbox();
+        return;
+      }
+
+      if (story?.classList.contains("open")) {
+        closeProjectStory();
+        return;
+      }
+
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+
+      window.location.href = button.dataset.fallback || "index.html";
+    });
+  };
+
   const revealItems = (items) => {
     if (!items.length) {
       return;
@@ -141,34 +170,39 @@
   };
 
   const getCategorySummary = (slug) => {
+    const normalized = String(slug || "").toLowerCase();
     const copy = {
       all: "A complete view across commercial, documentary, event, fashion, and future street work.",
       commercial: "Campaign imagery built for brands, launches, and product-led visual systems.",
+      commercials: "Campaign imagery built for brands, launches, and product-led visual systems.",
       product: "Clean, tactile frames shaped for catalog, e-commerce, and branded storytelling.",
       fashion: "Editorial portraits and model-focused visuals with styling, mood, and direction.",
       events: "Atmosphere-led coverage that captures stage, crowd, movement, and brand presence.",
       documentary: "Human-centered storytelling built around lived moments, place, and observation.",
+      documentaries: "Human-centered storytelling built around lived moments, place, and observation.",
       street: "Unscripted city frames collected through rhythm, contrast, and visual instinct.",
     };
 
-    return copy[slug] || "Project-driven work grouped by format, mood, and client need.";
+    return copy[normalized] || "Project-driven work grouped by format, mood, and client need.";
   };
 
   const getCategoryCards = () => {
     const counts = state.projects.reduce((map, project) => {
-      map[project.category] = (map[project.category] || 0) + 1;
+      const key = String(project.category || "").toLowerCase();
+      map[key] = (map[key] || 0) + 1;
       return map;
     }, {});
 
     return [
       ...state.categories.map((category) => {
-        const firstProject = state.projects.find((project) => project.category === category.slug);
+        const categoryKey = String(category.slug || "").toLowerCase();
+        const firstProject = state.projects.find((project) => String(project.category || "").toLowerCase() === categoryKey);
         return {
           slug: category.slug,
           title: category.title || slugToTitle(category.slug),
           chip: category.chip || "Category",
           cover: firstProject?.cover || "photo2.jpg",
-          count: counts[category.slug] || 0,
+          count: counts[categoryKey] || 0,
         };
       }),
       {
@@ -223,13 +257,12 @@
     const title = document.getElementById("projectListTitle");
     const eyebrow = document.getElementById("categoryEyebrow");
     const lead = document.getElementById("categoryLead");
-    const backLink = document.getElementById("categoryBackLink");
     if (!projectGrid || !title) {
       return;
     }
 
     state.activeCategory = getCategoryFromUrl();
-    const selectedCategory = state.categories.find((item) => item.slug === state.activeCategory);
+    const selectedCategory = state.categories.find((item) => String(item.slug || "").toLowerCase() === state.activeCategory);
     const isAll = state.activeCategory === "all";
     const heading = isAll ? "View All" : (selectedCategory?.title || slugToTitle(state.activeCategory));
 
@@ -240,13 +273,10 @@
     if (lead) {
       lead.textContent = getCategorySummary(state.activeCategory);
     }
-    if (backLink) {
-      backLink.hidden = false;
-    }
     document.title = `${heading} | C Celluloids`;
 
     const visibleProjects = state.projects.filter(
-      (project) => state.activeCategory === "all" || project.category === state.activeCategory
+      (project) => state.activeCategory === "all" || String(project.category || "").toLowerCase() === state.activeCategory
     );
 
     projectGrid.innerHTML = visibleProjects.length
@@ -321,26 +351,15 @@
 
   const updateStoryProgress = () => {
     const story = document.getElementById("projectStory");
-    const scrollWrap = story?.querySelector(".project-story-scroll");
-    const heroSection = story?.querySelector(".project-story-hero");
-    if (!story || !scrollWrap || !heroSection) {
+    if (!story) {
       return;
     }
 
-    const heroTop = heroSection.offsetTop;
-    const heroRange = Math.max(1, heroSection.offsetHeight - (window.innerHeight - 72));
-    const inHero = Math.max(0, Math.min(heroRange, scrollWrap.scrollTop - heroTop));
-    const revealRange = heroRange * 0.6;
-    const progress = Math.max(0, Math.min(1, inHero / Math.max(1, revealRange)));
-    const titleUi = Math.max(0, Math.min(1, (progress - 0.08) / 0.18));
-    const infoUi = Math.max(0, Math.min(1, (progress - 0.25) / 0.22));
-    const baseUi = Math.max(0, Math.min(1, (progress - 0.05) / 0.18));
-
-    story.style.setProperty("--story-progress", progress.toFixed(3));
-    story.style.setProperty("--story-ui", baseUi.toFixed(3));
-    story.style.setProperty("--story-title-ui", titleUi.toFixed(3));
-    story.style.setProperty("--story-info-ui", infoUi.toFixed(3));
-    story.classList.toggle("ui-visible", baseUi > 0.03);
+    story.style.setProperty("--story-progress", "1");
+    story.style.setProperty("--story-ui", "1");
+    story.style.setProperty("--story-title-ui", "1");
+    story.style.setProperty("--story-info-ui", "1");
+    story.classList.add("ui-visible");
   };
 
   const openProjectStory = (project) => {
@@ -374,11 +393,6 @@
     story.setAttribute("aria-hidden", "false");
     document.body.classList.add("story-open");
     scrollWrap.scrollTop = 0;
-    story.style.setProperty("--story-progress", "0");
-    story.style.setProperty("--story-ui", "0");
-    story.style.setProperty("--story-title-ui", "0");
-    story.style.setProperty("--story-info-ui", "0");
-    story.classList.remove("ui-visible");
     updateStoryProgress();
   };
 
@@ -396,12 +410,10 @@
   const initProjectStory = () => {
     const story = document.getElementById("projectStory");
     const scrollWrap = story?.querySelector(".project-story-scroll");
-    const backButton = story?.querySelector(".story-back");
-    if (!story || !scrollWrap || !backButton) {
+    if (!story || !scrollWrap) {
       return;
     }
 
-    backButton.addEventListener("click", closeProjectStory);
     scrollWrap.addEventListener("scroll", updateStoryProgress, { passive: true });
     window.addEventListener("resize", updateStoryProgress);
     document.addEventListener("keydown", (event) => {
@@ -608,6 +620,7 @@
   ready(() => {
     initLoader();
     initActiveNav();
+    initUniversalBack();
     initScrollTop();
     initReveal();
     initCardTilt();
