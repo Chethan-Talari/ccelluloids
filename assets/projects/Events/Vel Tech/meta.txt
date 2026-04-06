@@ -1,0 +1,6 @@
+title= Events of Val Tech
+chip=Events
+description=Live event coverage.
+venue= Vel Tech University
+project=Event Coverage
+

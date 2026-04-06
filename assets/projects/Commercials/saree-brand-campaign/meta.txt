@@ -1,8 +1,0 @@
-title=Saree Brand Campaign
-date=Jul 10, 2025
-chip=Brand & Commercial
-description=Commercial brand storytelling
-client=Varnika Silks
-project=Commercial Shoot
-brand_model=Varnika Silks
-agency=Brandshark

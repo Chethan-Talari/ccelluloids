@@ -1,0 +1,7 @@
+title=Valentines Product Launch
+date= Feb 04, 2026
+chip=Product
+description=Product Marketing Photoshoot
+client= MyBra
+project=Product Shoot
+agency=Brandshark

@@ -1,0 +1,8 @@
+title= MyBra Product Launch
+date= Mar 11, 2026
+chip=Brand & Commercial
+description=Commercial brand storytelling
+client= MyBra
+project=Commercial Shoot
+brand_model= Jaanvi
+agency=Brandshark

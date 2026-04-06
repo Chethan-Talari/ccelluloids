@@ -1,0 +1,7 @@
+title=Kosala Store Launch
+date= Feb 20, 2026
+chip=Product
+description=Product Marketing Photoshoot
+client= Kosala
+project=Product Shoot
+agency=Brandshark

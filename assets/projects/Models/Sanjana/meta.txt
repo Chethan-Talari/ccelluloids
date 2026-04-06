@@ -1,0 +1,6 @@
+title=Sanjana Shoot
+chip=Model
+description= Model Photoshoot
+project= Street Style
+Model= Sanjana
+agency= CC

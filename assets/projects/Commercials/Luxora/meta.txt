@@ -1,0 +1,8 @@
+title=Valentines Launch Campaign
+date= Feb 10, 2026
+chip=Brand & Commercial
+description=Commercial brand storytelling
+client= Luxora
+project=Commercial Shoot
+brand_model= Druthi, Jaanvi
+agency=Brandshark

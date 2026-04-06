@@ -1,0 +1,7 @@
+title= Spec Shoot
+date= Dec 27, 2025
+chip=Product
+description=Product Marketing Photoshoot
+client= Villain
+project=Product Shoot
+agency=Brandshark

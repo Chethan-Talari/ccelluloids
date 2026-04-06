@@ -1,0 +1,6 @@
+title=Naveena Shoot
+chip=Model
+description= Model Photoshoot
+project= Saree Shoot
+Model= Naveena 
+agency= CC

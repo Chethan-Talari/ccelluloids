@@ -152,9 +152,21 @@ done
     done
 
     media_files=()
-    while IFS= read -r file; do
-      media_files+=("$file")
-    done < <(find "$project_dir/photos" "$project_dir/videos" -type f 2>/dev/null | sort -V)
+    media_dirs=()
+    while IFS= read -r media_dir; do
+      media_dirs+=("$media_dir")
+    done < <(
+      find "$project_dir" -mindepth 1 -maxdepth 1 -type d \
+        \( -iname "photos" -o -iname "videos" \) | sort -f
+    )
+
+    if [[ ${#media_dirs[@]} -gt 0 ]]; then
+      while IFS= read -r file; do
+        media_files+=("$file")
+      done < <(
+        find "${media_dirs[@]}" -type f ! -name ".DS_Store" 2>/dev/null | sort -V
+      )
+    fi
 
     if [[ -z "$cover" && ${#media_files[@]} -gt 0 ]]; then
       cover="${media_files[0]}"

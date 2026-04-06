@@ -1,0 +1,7 @@
+title=Skinmumma Sunscreen Shoot
+date= Mar 09, 2026
+chip=Product
+description=Product Marketing Photoshoot
+client= skinmumma
+project=Product Shoot
+agency=Brandshark

@@ -1,8 +1,0 @@
-title=Design Scion 2025
-date=Aug 24, 2025
-chip=Events
-description=Live event coverage with stage, crowd, and atmosphere-led visuals.
-client=NIFT Bengaluru
-project=Event Coverage
-brand_model=Design Scion
-agency=In-house

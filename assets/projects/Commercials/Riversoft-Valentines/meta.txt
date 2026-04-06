@@ -1,0 +1,8 @@
+title=Valentine's Day Campaign
+date= Feb 4, 2026
+chip=Brand & Commercial
+description=Commercial brand storytelling
+client= Riversoft
+project=Commercial Shoot
+brand_model= Kruthi
+agency=Brandshark

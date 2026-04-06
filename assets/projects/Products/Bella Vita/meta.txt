@@ -1,0 +1,6 @@
+title= Spec Shoot
+date= Oct 09, 2024
+chip=Product
+description= Personal Project
+client= Bella Vita
+project=Product Shoot

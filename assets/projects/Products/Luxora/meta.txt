@@ -1,0 +1,7 @@
+title=Valentines Product Launch
+date= Feb 09, 2026
+chip=Product
+description=Product Marketing Photoshoot
+client= Luxora
+project=Product Shoot
+agency=Brandshark

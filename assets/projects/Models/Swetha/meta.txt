@@ -1,0 +1,6 @@
+title=Swetha Shoot
+chip=Model
+description= Model Photoshoot
+project= Street Style
+Model= Swetha
+agency= CC
