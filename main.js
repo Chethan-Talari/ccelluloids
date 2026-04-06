@@ -37,7 +37,7 @@
 
     window.addEventListener("load", () => {
       document.body.classList.add("loaded");
-      window.setTimeout(() => loader.remove(), 650);
+      window.setTimeout(() => loader.remove(), 180);
     });
   };
 
@@ -152,6 +152,27 @@
     });
   };
 
+  const applyProjectCardOrientations = (root = document) => {
+    root.querySelectorAll(".project-card").forEach((card) => {
+      const image = card.querySelector("img");
+      if (!image) {
+        return;
+      }
+
+      const update = () => {
+        const isLandscape = image.naturalWidth > image.naturalHeight;
+        card.classList.toggle("is-landscape", isLandscape);
+        card.classList.toggle("is-portrait", !isLandscape);
+      };
+
+      if (image.complete) {
+        update();
+      } else {
+        image.addEventListener("load", update, { once: true });
+      }
+    });
+  };
+
   const getProjectDetailLines = (project) => {
     const lines = [];
     if (project.client && project.client !== "-") {
@@ -256,7 +277,6 @@
     const projectGrid = document.getElementById("projectCardGrid");
     const title = document.getElementById("projectListTitle");
     const eyebrow = document.getElementById("categoryEyebrow");
-    const lead = document.getElementById("categoryLead");
     if (!projectGrid || !title) {
       return;
     }
@@ -270,9 +290,6 @@
       eyebrow.textContent = isAll ? "All Categories" : "Category";
     }
     title.textContent = heading;
-    if (lead) {
-      lead.textContent = getCategorySummary(state.activeCategory);
-    }
     document.title = `${heading} | C Celluloids`;
 
     const visibleProjects = state.projects.filter(
@@ -285,7 +302,7 @@
             <article class="project-card reveal" data-project-id="${escapeHtml(project.id)}">
               <button class="project-card-trigger" type="button" aria-label="Open ${escapeHtml(project.title)} project">
                 <span class="gallery-panel-media">
-                  <img src="${escapeHtml(project.cover)}" alt="${escapeHtml(project.title)} cover image" loading="lazy" decoding="async" />
+                  <img src="${escapeHtml(project.cover)}" alt="${escapeHtml(project.title)} cover image" loading="lazy" decoding="async" fetchpriority="low" />
                   <span class="gallery-panel-shade" aria-hidden="true"></span>
                 </span>
                 <span class="gallery-panel-copy">
@@ -320,6 +337,7 @@
     revealItems([
       ...projectGrid.querySelectorAll(".reveal"),
     ]);
+    applyProjectCardOrientations(projectGrid);
     initCardTilt(projectGrid);
   };
 
@@ -332,21 +350,94 @@
     masonry.innerHTML = (project.media || [])
       .map((item, index) => {
         const label = `${project.title} ${index + 1}`;
+        const orientationClass = item.type === "video"
+          ? "media-landscape"
+          : "media-image";
         if (item.type === "video") {
           return `
-            <button class="gallery-media" type="button" data-type="video" data-src="${escapeHtml(item.src)}" data-title="${escapeHtml(project.title)}" data-desc="${escapeHtml(project.description || "")}">
+            <button class="gallery-media ${orientationClass}" type="button" data-type="video" data-src="${escapeHtml(item.src)}" data-title="${escapeHtml(project.title)}" data-desc="${escapeHtml(project.description || "")}">
               <video src="${escapeHtml(item.src)}" muted playsinline preload="metadata" aria-label="${escapeHtml(label)}"></video>
             </button>
           `;
         }
 
         return `
-          <button class="gallery-media" type="button" data-type="image" data-src="${escapeHtml(item.src)}" data-title="${escapeHtml(project.title)}" data-desc="${escapeHtml(project.description || "")}">
-            <img src="${escapeHtml(item.src)}" alt="${escapeHtml(label)}" loading="lazy" decoding="async" />
+          <button class="gallery-media ${orientationClass}" type="button" data-type="image" data-src="${escapeHtml(item.src)}" data-title="${escapeHtml(project.title)}" data-desc="${escapeHtml(project.description || "")}">
+            <img src="${escapeHtml(item.src)}" alt="${escapeHtml(label)}" loading="lazy" decoding="async" fetchpriority="low" />
           </button>
         `;
       })
       .join("");
+  };
+
+  const applyStoryMasonryLayout = () => {
+    const masonry = document.querySelector(".story-masonry");
+    if (!masonry) {
+      return;
+    }
+
+    if (window.innerWidth <= 760) {
+      masonry.querySelectorAll(".gallery-media").forEach((item) => {
+        item.style.removeProperty("--media-span");
+        item.style.removeProperty("--media-height");
+        item.style.removeProperty("--media-ratio");
+        item.dataset.shape = "";
+      });
+      return;
+    }
+
+    const masonryStyles = window.getComputedStyle(masonry);
+    const rowHeight = parseFloat(masonryStyles.getPropertyValue("grid-auto-rows")) || 12;
+    const gap = parseFloat(masonryStyles.getPropertyValue("gap")) || 16;
+    const columns = masonryStyles.gridTemplateColumns.split(" ").length || 3;
+    const columnWidth = (masonry.clientWidth - gap * (columns - 1)) / columns;
+
+    masonry.querySelectorAll(".gallery-media").forEach((item) => {
+      const media = item.querySelector("img, video");
+      if (!media) {
+        return;
+      }
+
+      const setShape = (width, height) => {
+        if (!width || !height) {
+          return;
+        }
+
+        const ratio = width / height;
+        let shape = "square";
+
+        if (ratio >= 1.22) {
+          shape = "landscape";
+        } else if (ratio <= 0.84) {
+          shape = "portrait";
+        }
+
+        const renderedHeight = columnWidth / ratio;
+        const span = Math.max(12, Math.round((renderedHeight + gap) / (rowHeight + gap)));
+
+        item.style.setProperty("--media-span", String(span));
+        item.style.setProperty("--media-height", `${renderedHeight}px`);
+        item.style.setProperty("--media-ratio", `${width} / ${height}`);
+        item.dataset.shape = shape;
+      };
+
+      if (media.tagName === "VIDEO") {
+        const applyVideo = () => setShape(media.videoWidth || 16, media.videoHeight || 9);
+        if (media.readyState >= 1) {
+          applyVideo();
+        } else {
+          media.addEventListener("loadedmetadata", applyVideo, { once: true });
+        }
+        return;
+      }
+
+      const applyImage = () => setShape(media.naturalWidth, media.naturalHeight);
+      if (media.complete && media.naturalWidth) {
+        applyImage();
+      } else {
+        media.addEventListener("load", applyImage, { once: true });
+      }
+    });
   };
 
   const updateStoryProgress = () => {
@@ -388,12 +479,14 @@
       .join("");
 
     renderStoryMedia(project);
+    applyStoryMasonryLayout();
 
     story.classList.add("open");
     story.setAttribute("aria-hidden", "false");
     document.body.classList.add("story-open");
     scrollWrap.scrollTop = 0;
     updateStoryProgress();
+    requestAnimationFrame(() => applyStoryMasonryLayout());
   };
 
   const closeProjectStory = () => {
@@ -415,7 +508,10 @@
     }
 
     scrollWrap.addEventListener("scroll", updateStoryProgress, { passive: true });
-    window.addEventListener("resize", updateStoryProgress);
+    window.addEventListener("resize", () => {
+      updateStoryProgress();
+      applyStoryMasonryLayout();
+    });
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && story.classList.contains("open")) {
         closeProjectStory();

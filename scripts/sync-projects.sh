@@ -64,29 +64,31 @@ read_meta_value() {
 }
 
 project_dirs=()
-while IFS= read -r dir; do
-  project_dirs+=("$dir")
-done < <(find "$PROJECTS_DIR" -mindepth 2 -maxdepth 2 -type d | sort)
-
-# Collect categories with at least one project.
 categories_seen=()
-category_exists() {
-  local needle="$1"
-  local item
-  for item in "${categories_seen[@]:-}"; do
-    if [[ "$item" == "$needle" ]]; then
-      return 0
+
+while IFS= read -r cat_slug; do
+  [[ -n "$cat_slug" ]] || continue
+  [[ -d "$PROJECTS_DIR/$cat_slug" ]] || continue
+  categories_seen+=("$cat_slug")
+
+  while IFS= read -r proj_slug; do
+    [[ -n "$proj_slug" ]] || continue
+    [[ -d "$PROJECTS_DIR/$cat_slug/$proj_slug" ]] || continue
+    project_dirs+=("$PROJECTS_DIR/$cat_slug/$proj_slug")
+  done < <(LC_ALL=C ls -1U "$PROJECTS_DIR/$cat_slug")
+done < <(LC_ALL=C ls -1U "$PROJECTS_DIR")
+
+# Keep only categories that actually contain at least one project directory.
+filtered_categories=()
+for cat_slug in "${categories_seen[@]:-}"; do
+  for dir in "${project_dirs[@]:-}"; do
+    if [[ "$(basename "$(dirname "$dir")")" == "$cat_slug" ]]; then
+      filtered_categories+=("$cat_slug")
+      break
     fi
   done
-  return 1
-}
-
-for dir in "${project_dirs[@]:-}"; do
-  cat_slug="$(basename "$(dirname "$dir")")"
-  if ! category_exists "$cat_slug"; then
-    categories_seen+=("$cat_slug")
-  fi
 done
+categories_seen=("${filtered_categories[@]:-}")
 
 {
   printf '{\n'

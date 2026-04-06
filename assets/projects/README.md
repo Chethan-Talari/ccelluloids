@@ -46,7 +46,7 @@ assets/projects/
 - Category folder names become gallery categories.
 - Project folder names become project titles automatically.
 - `cover.jpg` is used for the category card and the project card.
-- Put all stills inside `photos/`.
+- Put all stills inside `photos/` or `Photos/`.
 - Put all motion clips inside `videos/`.
 - Keep file names ordered like `01.jpg`, `02.jpg`, `03.jpg`.
 
