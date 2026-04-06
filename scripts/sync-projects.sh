@@ -144,12 +144,14 @@ done
     if value="$(read_meta_value "$meta_file" "date" 2>/dev/null)"; then date_text="$value"; fi
 
     cover=""
-    for ext in jpg jpeg png webp avif Jpg JPG JPEG PNG WEBP AVIF; do
-      if [[ -f "$project_dir/cover.$ext" ]]; then
-        cover="$project_dir/cover.$ext"
-        break
-      fi
-    done
+    while IFS= read -r cover_file; do
+      cover="$cover_file"
+      break
+    done < <(
+      find "$project_dir" -mindepth 1 -maxdepth 1 -type f \
+        \( -iname "cover.jpg" -o -iname "cover.jpeg" -o -iname "cover.png" -o -iname "cover.webp" -o -iname "cover.avif" \) \
+        | sort -f
+    )
 
     media_files=()
     media_dirs=()
