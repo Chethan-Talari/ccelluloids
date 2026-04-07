@@ -1,4 +1,4 @@
-title=Valentines Product Launch
+title=Luxora - Valentine's
 date= Feb 09, 2026
 chip=Product
 description=Product Marketing Photoshoot

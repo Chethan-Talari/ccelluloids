@@ -1,4 +1,4 @@
-title=Skinmumma Shampoo Shoot
+title=SkinMumma Sunscreen
 date= Mar 09, 2026
 chip=Product
 description=Product Marketing Photoshoot

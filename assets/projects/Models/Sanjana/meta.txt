@@ -1,4 +1,4 @@
-title=Sanjana Shoot
+title=Sanjana
 chip=Model
 description= Model Photoshoot
 project= Street Style

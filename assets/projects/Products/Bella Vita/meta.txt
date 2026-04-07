@@ -1,4 +1,4 @@
-title= Spec Shoot
+title= BellaVita - Spec
 date= Oct 09, 2024
 chip=Product
 description= Personal Project

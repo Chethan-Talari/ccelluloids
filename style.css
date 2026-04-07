@@ -1882,6 +1882,30 @@ body.loaded #loader {
   .project-card.is-landscape .project-card-trigger {
     aspect-ratio: 16 / 10;
   }
+
+  .gallery-panel-copy {
+    padding: 1.15rem 1.2rem 1.1rem;
+  }
+
+  .gallery-panel-topline {
+    margin-bottom: 0.55rem;
+    font-size: 0.78rem;
+  }
+
+  .gallery-panel-rule {
+    margin-bottom: 0.65rem;
+  }
+
+  .gallery-panel-copy strong {
+    max-width: 12ch;
+    font-size: clamp(1.8rem, 2.25vw, 2.55rem);
+    line-height: 0.98;
+  }
+
+  .gallery-panel-copy small {
+    margin-top: 0.3rem;
+    font-size: 0.82rem;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1928,22 +1952,25 @@ body.loaded #loader {
   }
 
   .gallery-panel-copy {
-    padding: 0.78rem;
+    padding: 0.58rem;
   }
 
   .gallery-panel-topline {
-    margin-bottom: 0.45rem;
-    font-size: 0.68rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.56rem;
   }
 
   .gallery-panel-copy strong {
-    font-size: clamp(1.12rem, 5.8vw, 1.65rem);
+    max-width: 11ch;
+    font-size: clamp(0.92rem, 4.6vw, 1.28rem);
+    line-height: 1.02;
   }
 
   .gallery-panel-copy small {
-    font-size: 0.72rem;
+    margin-top: 0.18rem;
+    font-size: 0.58rem;
     line-height: 1.25;
-    max-width: 22ch;
+    max-width: 18ch;
   }
 
   .home-end-masonry {

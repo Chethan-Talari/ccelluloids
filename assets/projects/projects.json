@@ -1,18 +1,19 @@
 {
-  "generated_at": "2026-04-07T05:58:24Z",
+  "generated_at": "2026-04-07T07:13:10Z",
   "categories": [
     {"slug":"Commercials","title":"Commercials","chip":"Category"},
     {"slug":"Products","title":"Products","chip":"Category"},
+    {"slug":"Models","title":"Models","chip":"Category"},
     {"slug":"Events","title":"Events","chip":"Category"},
     {"slug":"Street","title":"Street","chip":"Category"},
-    {"slug":"Models","title":"Models","chip":"Category"},
+    {"slug":"Fashion","title":"Fashion","chip":"Category"},
     {"slug":"Documentaries","title":"Documentaries","chip":"Category"}
   ],
   "projects": [
     {
       "id": "Commercials/Kosala",
       "category": "Commercials",
-      "title": "Kosala Saree Campaign",
+      "title": "Kosala Sarees",
       "date": "Dec 18, 2025",
       "chip": "Brand & Commercial",
       "cover": "assets/projects/Commercials/Kosala/cover.JPG",
@@ -33,7 +34,7 @@
     {
       "id": "Commercials/Riversoft",
       "category": "Commercials",
-      "title": "Holi Campaign",
+      "title": "Riversoft - Holi Campaign",
       "date": "Mar 24, 2026",
       "chip": "Brand & Commercial",
       "cover": "assets/projects/Commercials/Riversoft/cover.jpg",
@@ -60,7 +61,7 @@
     {
       "id": "Commercials/Luxora",
       "category": "Commercials",
-      "title": "Valentines Launch Campaign",
+      "title": "Luxora",
       "date": "Feb 10, 2026",
       "chip": "Brand & Commercial",
       "cover": "assets/projects/Commercials/Luxora/cover.jpg",
@@ -90,7 +91,7 @@
     {
       "id": "Commercials/MyBra",
       "category": "Commercials",
-      "title": "MyBra Product Launch",
+      "title": "MyBra",
       "date": "Mar 11, 2026",
       "chip": "Brand & Commercial",
       "cover": "assets/projects/Commercials/MyBra/cover.jpg",
@@ -141,7 +142,7 @@
     {
       "id": "Commercials/Riversoft-Valentines",
       "category": "Commercials",
-      "title": "Valentine's Day Campaign",
+      "title": "Riversoft - Valentine's",
       "date": "Feb 4, 2026",
       "chip": "Brand & Commercial",
       "cover": "assets/projects/Commercials/Riversoft-Valentines/cover.jpg",
@@ -162,7 +163,7 @@
     {
       "id": "Products/Skinmumma",
       "category": "Products",
-      "title": "Skinmumma Shampoo Shoot",
+      "title": "SkinMumma Sunscreen",
       "date": "Mar 09, 2026",
       "chip": "Product",
       "cover": "assets/projects/Products/Skinmumma/cover.jpg",
@@ -187,7 +188,7 @@
     {
       "id": "Products/Kosala",
       "category": "Products",
-      "title": "Kosala Store Launch",
+      "title": "Kosala",
       "date": "Feb 20, 2026",
       "chip": "Product",
       "cover": "assets/projects/Products/Kosala/cover.jpg",
@@ -214,7 +215,7 @@
     {
       "id": "Products/Skinmumma SE",
       "category": "Products",
-      "title": "Skinmumma Special Edition Shoot",
+      "title": "SkinMumma SE",
       "date": "Mar 09, 2026",
       "chip": "Product",
       "cover": "assets/projects/Products/Skinmumma SE/cover.jpg",
@@ -235,7 +236,7 @@
     {
       "id": "Products/Skinmumma shampoo",
       "category": "Products",
-      "title": "Skinmumma Sunscreen Shoot",
+      "title": "SkinMumma Shampoo",
       "date": "Mar 09, 2026",
       "chip": "Product",
       "cover": "assets/projects/Products/Skinmumma shampoo/cover.jpg",
@@ -258,7 +259,7 @@
     {
       "id": "Products/villian",
       "category": "Products",
-      "title": "Spec Shoot",
+      "title": "Villian-Spec",
       "date": "Dec 27, 2025",
       "chip": "Product",
       "cover": "assets/projects/Products/villian/cover.jpg",
@@ -276,7 +277,7 @@
     {
       "id": "Products/Luxora",
       "category": "Products",
-      "title": "Valentines Product Launch",
+      "title": "Luxora - Valentine's",
       "date": "Feb 09, 2026",
       "chip": "Product",
       "cover": "assets/projects/Products/Luxora/cover.jpg",
@@ -300,7 +301,7 @@
     {
       "id": "Products/Bella Vita",
       "category": "Products",
-      "title": "Spec Shoot",
+      "title": "BellaVita - Spec",
       "date": "Oct 09, 2024",
       "chip": "Product",
       "cover": "assets/projects/Products/Bella Vita/cover.JPG",
@@ -321,7 +322,7 @@
     {
       "id": "Products/MyBra",
       "category": "Products",
-      "title": "Valentines Product Launch",
+      "title": "MyBra",
       "date": "Feb 04, 2026",
       "chip": "Product",
       "cover": "assets/projects/Products/MyBra/cover.JPG",
@@ -336,6 +337,72 @@
         {"type":"image","src":"assets/projects/Products/MyBra/photos/03.JPG"},
         {"type":"image","src":"assets/projects/Products/MyBra/photos/04.JPG"},
         {"type":"image","src":"assets/projects/Products/MyBra/photos/05.JPG"}
+      ]
+    },
+    {
+      "id": "Models/Swetha",
+      "category": "Models",
+      "title": "Swetha",
+      "date": "Apr 07, 2026",
+      "chip": "Model",
+      "cover": "assets/projects/Models/Swetha/cover.jpg",
+      "client": "-",
+      "project": "Street Style",
+      "brand_model": "-",
+      "agency": "CC",
+      "description": "Model Photoshoot",
+      "media": [
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/01.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/02.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/03.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/04.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/05.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/06.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/07.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/08.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/09.jpg"}
+      ]
+    },
+    {
+      "id": "Models/Naveena",
+      "category": "Models",
+      "title": "Naveena",
+      "date": "Apr 07, 2026",
+      "chip": "Model",
+      "cover": "assets/projects/Models/Naveena/cover.jpg",
+      "client": "-",
+      "project": "Saree Shoot",
+      "brand_model": "-",
+      "agency": "CC",
+      "description": "Model Photoshoot",
+      "media": [
+        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-5.jpg"},
+        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-11.jpg"},
+        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-13.jpg"},
+        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-16.jpg"},
+        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-18.jpg"},
+        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-24.jpg"},
+        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-28.jpg"},
+        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-30.jpg"}
+      ]
+    },
+    {
+      "id": "Models/Sanjana",
+      "category": "Models",
+      "title": "Sanjana",
+      "date": "Apr 07, 2026",
+      "chip": "Model",
+      "cover": "assets/projects/Models/Sanjana/cover.jpg",
+      "client": "-",
+      "project": "Street Style",
+      "brand_model": "-",
+      "agency": "CC",
+      "description": "Model Photoshoot",
+      "media": [
+        {"type":"image","src":"assets/projects/Models/Sanjana/Photos/01.jpg"},
+        {"type":"image","src":"assets/projects/Models/Sanjana/Photos/02.jpg"},
+        {"type":"image","src":"assets/projects/Models/Sanjana/Photos/03.jpg"},
+        {"type":"image","src":"assets/projects/Models/Sanjana/Photos/04.jpg"}
       ]
     },
     {
@@ -537,69 +604,31 @@
       ]
     },
     {
-      "id": "Models/Swetha",
-      "category": "Models",
-      "title": "Swetha Shoot",
+      "id": "Fashion/HOS X Varsha'25",
+      "category": "Fashion",
+      "title": "HOS X Varsha'25",
       "date": "Apr 07, 2026",
-      "chip": "Model",
-      "cover": "assets/projects/Models/Swetha/cover.jpg",
+      "chip": "Fashion",
+      "cover": "assets/projects/Fashion/HOS X Varsha'25/cover.jpg",
       "client": "-",
-      "project": "Street Style",
+      "project": "Fashion Photoshoot",
       "brand_model": "-",
-      "agency": "CC",
-      "description": "Model Photoshoot",
+      "agency": "-",
+      "description": "Fashion photoshoot exploring the complete collection.",
       "media": [
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/01.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/02.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/03.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/04.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/05.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/06.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/07.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/08.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/09.jpg"}
-      ]
-    },
-    {
-      "id": "Models/Naveena",
-      "category": "Models",
-      "title": "Naveena Shoot",
-      "date": "Apr 07, 2026",
-      "chip": "Model",
-      "cover": "assets/projects/Models/Naveena/cover.jpg",
-      "client": "-",
-      "project": "Saree Shoot",
-      "brand_model": "-",
-      "agency": "CC",
-      "description": "Model Photoshoot",
-      "media": [
-        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-5.jpg"},
-        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-11.jpg"},
-        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-13.jpg"},
-        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-16.jpg"},
-        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-18.jpg"},
-        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-24.jpg"},
-        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-28.jpg"},
-        {"type":"image","src":"assets/projects/Models/Naveena/Photos/Navee-30.jpg"}
-      ]
-    },
-    {
-      "id": "Models/Sanjana",
-      "category": "Models",
-      "title": "Sanjana Shoot",
-      "date": "Apr 07, 2026",
-      "chip": "Model",
-      "cover": "assets/projects/Models/Sanjana/cover.jpg",
-      "client": "-",
-      "project": "Street Style",
-      "brand_model": "-",
-      "agency": "CC",
-      "description": "Model Photoshoot",
-      "media": [
-        {"type":"image","src":"assets/projects/Models/Sanjana/Photos/01.jpg"},
-        {"type":"image","src":"assets/projects/Models/Sanjana/Photos/02.jpg"},
-        {"type":"image","src":"assets/projects/Models/Sanjana/Photos/03.jpg"},
-        {"type":"image","src":"assets/projects/Models/Sanjana/Photos/04.jpg"}
+        {"type":"image","src":"assets/projects/Fashion/HOS X Varsha'25/photos/01.jpg"},
+        {"type":"image","src":"assets/projects/Fashion/HOS X Varsha'25/photos/02.jpg"},
+        {"type":"image","src":"assets/projects/Fashion/HOS X Varsha'25/photos/03.jpg"},
+        {"type":"image","src":"assets/projects/Fashion/HOS X Varsha'25/photos/04.jpg"},
+        {"type":"image","src":"assets/projects/Fashion/HOS X Varsha'25/photos/05.jpg"},
+        {"type":"image","src":"assets/projects/Fashion/HOS X Varsha'25/photos/06.jpg"},
+        {"type":"image","src":"assets/projects/Fashion/HOS X Varsha'25/photos/07.jpg"},
+        {"type":"image","src":"assets/projects/Fashion/HOS X Varsha'25/photos/08.jpg"},
+        {"type":"image","src":"assets/projects/Fashion/HOS X Varsha'25/photos/09.jpg"},
+        {"type":"image","src":"assets/projects/Fashion/HOS X Varsha'25/photos/10.jpg"},
+        {"type":"image","src":"assets/projects/Fashion/HOS X Varsha'25/photos/11.jpg"},
+        {"type":"image","src":"assets/projects/Fashion/HOS X Varsha'25/photos/12.jpg"},
+        {"type":"image","src":"assets/projects/Fashion/HOS X Varsha'25/photos/13.jpg"}
       ]
     },
     {

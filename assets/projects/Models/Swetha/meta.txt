@@ -1,4 +1,4 @@
-title=Swetha Shoot
+title=Swetha
 chip=Model
 description= Model Photoshoot
 project= Street Style

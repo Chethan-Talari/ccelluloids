@@ -1,4 +1,4 @@
-title=Kosala Store Launch
+title=Kosala
 date= Feb 20, 2026
 chip=Product
 description=Product Marketing Photoshoot

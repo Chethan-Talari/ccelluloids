@@ -1,4 +1,4 @@
-title=Skinmumma Special Edition Shoot
+title=SkinMumma SE
 date= Mar 09, 2026
 chip=Product
 description=Product Marketing Photoshoot

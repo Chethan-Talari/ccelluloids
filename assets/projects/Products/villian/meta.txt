@@ -1,4 +1,4 @@
-title= Spec Shoot
+title= Villian-Spec
 date= Dec 27, 2025
 chip=Product
 description=Product Marketing Photoshoot

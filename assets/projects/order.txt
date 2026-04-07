@@ -1,9 +1,10 @@
 # Category order. Keep these lines above the project sections.
 Commercials
 Products
+Models
 Events
 Street
-Models
+Fashion
 Documentaries
 
 [Commercials]
@@ -24,6 +25,11 @@ Luxora
 Bella Vita
 MyBra
 
+[Models]
+Swetha
+Naveena
+Sanjana
+
 [Events]
 Thaman concert
 DSP Concert
@@ -35,10 +41,8 @@ Vel Tech
 [Street]
 Urban Chronicles
 
-[Models]
-Swetha
-Naveena
-Sanjana
+ [Fashion]
+HOS X Varsha'25
 
 
 [Documentaries]

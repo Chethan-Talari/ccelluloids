@@ -1,0 +1,4 @@
+title= HOS X Varsha'25
+chip=Fashion
+description=Fashion photoshoot exploring the complete collection.
+project=Fashion Photoshoot

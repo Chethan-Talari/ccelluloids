@@ -1,4 +1,4 @@
-title= MyBra Product Launch
+title= MyBra
 date= Mar 11, 2026
 chip=Brand & Commercial
 description=Commercial brand storytelling

@@ -1,4 +1,4 @@
-title=Valentines Launch Campaign
+title=Luxora
 date= Feb 10, 2026
 chip=Brand & Commercial
 description=Commercial brand storytelling
