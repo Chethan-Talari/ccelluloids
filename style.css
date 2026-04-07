@@ -1781,7 +1781,7 @@ body.loaded #loader {
 
   .category-masonry,
   .project-card-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .category-card,
@@ -1867,6 +1867,23 @@ body.loaded #loader {
   }
 }
 
+@media (min-width: 1600px),
+  (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) and (pointer: coarse) {
+  .category-masonry,
+  .project-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .category-card,
+  .project-card-trigger {
+    aspect-ratio: 4 / 5;
+  }
+
+  .project-card.is-landscape .project-card-trigger {
+    aspect-ratio: 16 / 10;
+  }
+}
+
 @media (max-width: 760px) {
   .hero-metrics,
   .recent-grid,
@@ -1887,7 +1904,8 @@ body.loaded #loader {
 
   .category-masonry,
   .project-card-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
   }
 
   .category-card,
@@ -1900,34 +1918,32 @@ body.loaded #loader {
   }
 
   .story-masonry {
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-    gap: 0.9rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 12px;
+    gap: 0.7rem;
   }
 
   .gallery-media {
-    height: auto;
-    min-height: 220px;
-    grid-row: auto;
     border-radius: 0.95rem;
   }
 
   .gallery-panel-copy {
-    padding: 1.05rem;
+    padding: 0.78rem;
   }
 
   .gallery-panel-topline {
-    margin-bottom: 0.6rem;
-    font-size: 0.8rem;
+    margin-bottom: 0.45rem;
+    font-size: 0.68rem;
   }
 
   .gallery-panel-copy strong {
-    font-size: clamp(1.8rem, 8vw, 2.6rem);
+    font-size: clamp(1.12rem, 5.8vw, 1.65rem);
   }
 
   .gallery-panel-copy small {
-    font-size: 0.88rem;
-    max-width: 26ch;
+    font-size: 0.72rem;
+    line-height: 1.25;
+    max-width: 22ch;
   }
 
   .home-end-masonry {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.ccelluloids.in/</loc></url>
-  <url><loc>https://www.ccelluloids.in/index.html</loc></url>
-  <url><loc>https://www.ccelluloids.in/gallery.html</loc></url>
-  <url><loc>https://www.ccelluloids.in/about.html</loc></url>
-  <url><loc>https://www.ccelluloids.in/hireme.html</loc></url>
-  <url><loc>https://www.ccelluloids.in/thankyou.html</loc></url>
+  <url><loc>https://www.ccelluloids.in/gallery/</loc></url>
+  <url><loc>https://www.ccelluloids.in/category/</loc></url>
+  <url><loc>https://www.ccelluloids.in/about/</loc></url>
+  <url><loc>https://www.ccelluloids.in/hireme/</loc></url>
+  <url><loc>https://www.ccelluloids.in/thankyou/</loc></url>
 </urlset>

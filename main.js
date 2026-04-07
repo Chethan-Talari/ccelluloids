@@ -6,6 +6,7 @@
     activeCategory: "all",
     activeStoryProject: null,
   };
+  let closeLightbox = () => {};
 
   const ready = (fn) => {
     if (document.readyState === "loading") {
@@ -29,6 +30,44 @@
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
 
+  const cleanUrlMap = {
+    "/index.html": "/",
+    "/gallery.html": "/gallery/",
+    "/category.html": "/category/",
+    "/about.html": "/about/",
+    "/hireme.html": "/hireme/",
+    "/thankyou.html": "/thankyou/",
+  };
+
+  const toRootUrl = (value) => {
+    const url = String(value || "");
+    if (!url || /^(?:https?:|mailto:|tel:|data:|blob:|#|\/)/.test(url)) {
+      return url;
+    }
+    return `/${url.replace(/^\.?\//, "")}`;
+  };
+
+  const normalizeInternalPath = (value) => {
+    let pathname = value;
+    try {
+      pathname = new URL(value, window.location.origin).pathname;
+    } catch {
+      pathname = String(value || "");
+    }
+
+    return cleanUrlMap[pathname] || pathname.replace(/\/index\.html$/, "/");
+  };
+
+  const initCleanUrlRedirect = () => {
+    const target = cleanUrlMap[window.location.pathname];
+    if (!target) {
+      return false;
+    }
+
+    window.location.replace(`${target}${window.location.search}${window.location.hash}`);
+    return true;
+  };
+
   const initLoader = () => {
     const loader = document.getElementById("loader");
     if (!loader) {
@@ -42,13 +81,13 @@
   };
 
   const initActiveNav = () => {
-    const path = window.location.pathname.split("/").pop() || "index.html";
+    const path = normalizeInternalPath(window.location.pathname);
     document.querySelectorAll(".dock-nav a").forEach((link) => {
       const href = link.getAttribute("href");
       if (!href || href.startsWith("http") || href.startsWith("#")) {
         return;
       }
-      if (href === path || (path === "" && href === "index.html")) {
+      if (normalizeInternalPath(href) === path) {
         link.setAttribute("aria-current", "page");
       }
     });
@@ -95,7 +134,7 @@
         return;
       }
 
-      window.location.href = button.dataset.fallback || "index.html";
+      window.location.href = button.dataset.fallback || "/";
     });
   };
 
@@ -222,7 +261,7 @@
           slug: category.slug,
           title: category.title || slugToTitle(category.slug),
           chip: category.chip || "Category",
-          cover: firstProject?.cover || "photo2.jpg",
+          cover: toRootUrl(firstProject?.cover || "photo2.jpg"),
           count: counts[categoryKey] || 0,
         };
       }),
@@ -230,7 +269,7 @@
         slug: "all",
         title: "View All",
         chip: `${state.projects.length} Projects`,
-        cover: state.projects[0]?.cover || "photo2.jpg",
+        cover: toRootUrl(state.projects[0]?.cover || "photo2.jpg"),
         count: state.projects.length,
       },
     ];
@@ -250,7 +289,7 @@
     categoryMasonry.innerHTML = getCategoryCards()
       .map(
         (category) => `
-          <a class="category-card reveal" href="category.html?category=${encodeURIComponent(category.slug)}" aria-label="View ${escapeHtml(category.title)} category">
+          <a class="category-card reveal" href="/category/?category=${encodeURIComponent(category.slug)}" aria-label="View ${escapeHtml(category.title)} category">
             <span class="gallery-panel-media">
               <img src="${escapeHtml(category.cover)}" alt="${escapeHtml(category.title)} category preview" loading="lazy" decoding="async" />
               <span class="gallery-panel-shade" aria-hidden="true"></span>
@@ -302,7 +341,7 @@
             <article class="project-card reveal" data-project-id="${escapeHtml(project.id)}">
               <button class="project-card-trigger" type="button" aria-label="Open ${escapeHtml(project.title)} project">
                 <span class="gallery-panel-media">
-                  <img src="${escapeHtml(project.cover)}" alt="${escapeHtml(project.title)} cover image" loading="lazy" decoding="async" fetchpriority="low" />
+                  <img src="${escapeHtml(toRootUrl(project.cover))}" alt="${escapeHtml(project.title)} cover image" loading="lazy" decoding="async" fetchpriority="low" />
                   <span class="gallery-panel-shade" aria-hidden="true"></span>
                 </span>
                 <span class="gallery-panel-copy">
@@ -355,15 +394,15 @@
           : "media-image";
         if (item.type === "video") {
           return `
-            <button class="gallery-media ${orientationClass}" type="button" data-type="video" data-src="${escapeHtml(item.src)}" data-title="${escapeHtml(project.title)}" data-desc="${escapeHtml(project.description || "")}">
-              <video src="${escapeHtml(item.src)}" muted playsinline preload="metadata" aria-label="${escapeHtml(label)}"></video>
+            <button class="gallery-media ${orientationClass}" type="button" data-type="video" data-src="${escapeHtml(toRootUrl(item.src))}" data-title="${escapeHtml(project.title)}" data-desc="${escapeHtml(project.description || "")}">
+              <video src="${escapeHtml(toRootUrl(item.src))}" muted playsinline preload="metadata" aria-label="${escapeHtml(label)}"></video>
             </button>
           `;
         }
 
         return `
-          <button class="gallery-media ${orientationClass}" type="button" data-type="image" data-src="${escapeHtml(item.src)}" data-title="${escapeHtml(project.title)}" data-desc="${escapeHtml(project.description || "")}">
-            <img src="${escapeHtml(item.src)}" alt="${escapeHtml(label)}" loading="lazy" decoding="async" fetchpriority="low" />
+          <button class="gallery-media ${orientationClass}" type="button" data-type="image" data-src="${escapeHtml(toRootUrl(item.src))}" data-title="${escapeHtml(project.title)}" data-desc="${escapeHtml(project.description || "")}">
+            <img src="${escapeHtml(toRootUrl(item.src))}" alt="${escapeHtml(label)}" loading="lazy" decoding="async" fetchpriority="low" />
           </button>
         `;
       })
@@ -373,16 +412,6 @@
   const applyStoryMasonryLayout = () => {
     const masonry = document.querySelector(".story-masonry");
     if (!masonry) {
-      return;
-    }
-
-    if (window.innerWidth <= 760) {
-      masonry.querySelectorAll(".gallery-media").forEach((item) => {
-        item.style.removeProperty("--media-span");
-        item.style.removeProperty("--media-height");
-        item.style.removeProperty("--media-ratio");
-        item.dataset.shape = "";
-      });
       return;
     }
 
@@ -467,7 +496,7 @@
     }
 
     state.activeStoryProject = project;
-    cover.src = project.cover;
+    cover.src = toRootUrl(project.cover);
     cover.alt = `${project.title} cover image`;
     stickyTitle.textContent = project.title;
     title.textContent = project.title;
@@ -575,6 +604,7 @@
       stage.innerHTML = "";
       document.body.style.overflow = "";
     };
+    closeLightbox = close;
 
     const move = (step) => {
       index = (index + step + items.length) % items.length;
@@ -684,7 +714,7 @@
     }
 
     try {
-      const response = await fetch("assets/projects/projects.json", { cache: "no-store" });
+      const response = await fetch("/assets/projects/projects.json", { cache: "no-store" });
       if (!response.ok) {
         throw new Error(`Failed to load projects.json (${response.status})`);
       }
@@ -714,6 +744,9 @@
   };
 
   ready(() => {
+    if (initCleanUrlRedirect()) {
+      return;
+    }
     initLoader();
     initActiveNav();
     initUniversalBack();
