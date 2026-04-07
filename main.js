@@ -333,13 +333,11 @@
               <span class="gallery-panel-shade" aria-hidden="true"></span>
             </span>
             <span class="gallery-panel-copy">
-              <span class="gallery-panel-topline">
-                <em>${escapeHtml(category.chip)}</em>
+              <span class="gallery-panel-rule" aria-hidden="true"></span>
+              <span class="gallery-panel-title-row">
+                <strong>${escapeHtml(category.title)}</strong>
                 <span>${escapeHtml(String(category.count).padStart(2, "0"))} Projects</span>
               </span>
-              <span class="gallery-panel-rule" aria-hidden="true"></span>
-              <strong>${escapeHtml(category.title)}</strong>
-              <small>${escapeHtml(getCategorySummary(category.slug))}</small>
             </span>
           </a>
         `
@@ -384,10 +382,6 @@
                   <span class="gallery-panel-shade" aria-hidden="true"></span>
                 </span>
                 <span class="gallery-panel-copy">
-                  <span class="gallery-panel-topline">
-                    <em>${escapeHtml(project.client || project.brand_model || project.chip || slugToTitle(project.category))}</em>
-                    <span>${escapeHtml(project.date || "")}</span>
-                  </span>
                   <span class="gallery-panel-rule" aria-hidden="true"></span>
                   <strong>${escapeHtml(project.title)}</strong>
                   <small>${escapeHtml(project.description || project.project || "")}</small>
@@ -766,6 +760,55 @@
     }
   };
 
+  const initTopShots = () => {
+    const section = document.getElementById("topShotsSection");
+    const track = document.getElementById("topShotsTrack");
+    if (!section || !track) {
+      return;
+    }
+
+    const extensions = ["jpg", "JPG", "jpeg", "JPEG", "png", "PNG", "webp", "WEBP"];
+    let loadedCount = 0;
+
+    const trySource = (img, index, extensionIndex = 0) => {
+      if (extensionIndex >= extensions.length) {
+        img.closest(".top-shot-card")?.remove();
+        return;
+      }
+
+      img.dataset.extensionIndex = String(extensionIndex);
+      img.src = `/assets/top-shots/${String(index).padStart(2, "0")}.${extensions[extensionIndex]}`;
+    };
+
+    Array.from({ length: 10 }, (_, index) => index + 1).forEach((shotNumber) => {
+      const card = document.createElement("figure");
+      const image = document.createElement("img");
+
+      card.className = "top-shot-card";
+      card.dataset.index = String(shotNumber).padStart(2, "0");
+      image.alt = `Top shot ${shotNumber}`;
+      image.loading = "lazy";
+      image.decoding = "async";
+
+      image.addEventListener("load", () => {
+        loadedCount += 1;
+        section.hidden = false;
+        if (loadedCount === 1) {
+          revealItems([...section.querySelectorAll(".reveal")]);
+        }
+      });
+
+      image.addEventListener("error", () => {
+        const nextExtensionIndex = Number(image.dataset.extensionIndex || "0") + 1;
+        trySource(image, shotNumber, nextExtensionIndex);
+      });
+
+      card.appendChild(image);
+      track.appendChild(card);
+      trySource(image, shotNumber);
+    });
+  };
+
   const initTrustedLogoGrid = () => {
     document.querySelectorAll(".logo-grid[data-staggered]").forEach((grid) => {
       if (grid.dataset.enhanced === "true") {
@@ -850,6 +893,7 @@
     initLightbox();
     initTrustedLogoGrid();
     initFeaturedProjects();
+    initTopShots();
     initGalleryData();
   });
 })();
