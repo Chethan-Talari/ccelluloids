@@ -17,6 +17,14 @@ Add your top 10 photos to this folder using these names:
 
 The homepage also checks `.JPG`, `.jpeg`, `.JPEG`, `.png`, `.PNG`, `.webp`, and `.WEBP` for the same numbers.
 
+After adding or replacing Top Shots images, run:
+
+```bash
+./scripts/optimize-images.sh
+```
+
+The homepage will use the faster previews from `assets/optimized/top-shots/` first, then fall back to the originals if a preview is missing.
+
 ## Crop Control
 
 Edit `crops.json` to choose which part of each photo is previewed.

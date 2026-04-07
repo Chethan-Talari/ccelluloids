@@ -75,11 +75,14 @@ Set `featured=true` on the project(s) you want to show in the homepage Featured 
 - `documentary`
 - `street`
 
-After adding or changing folders, run:
+After adding or changing folders or cover images, run:
 
 ```bash
+./scripts/optimize-images.sh
 ./scripts/sync-projects.sh
 ```
+
+The optimize step creates smaller preview covers in `assets/optimized/projects/`. The website uses those previews for category, project, and featured project cards so those pages load faster, while the original project files stay unchanged.
 
 ## Ordering Categories And Projects
 

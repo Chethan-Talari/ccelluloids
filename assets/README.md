@@ -47,7 +47,9 @@ Example:
 After adding project folders, run:
 
 ```bash
+./scripts/optimize-images.sh
 ./scripts/sync-projects.sh
 ```
 
 That rebuilds `assets/projects/projects.json` for the gallery and category pages.
+The optimize step creates lightweight preview images in `assets/optimized/` so the home page, gallery cards, category cards, and Top Shots load faster while keeping your original files untouched.
