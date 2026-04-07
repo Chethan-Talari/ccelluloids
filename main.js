@@ -763,12 +763,27 @@
   const initTopShots = () => {
     const section = document.getElementById("topShotsSection");
     const track = document.getElementById("topShotsTrack");
-    if (!section || !track) {
+    const prevButton = section?.querySelector(".top-shots-prev");
+    const nextButton = section?.querySelector(".top-shots-next");
+    if (!section || !track || !prevButton || !nextButton) {
       return;
     }
 
     const extensions = ["jpg", "JPG", "jpeg", "JPEG", "png", "PNG", "webp", "WEBP"];
     let loadedCount = 0;
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartScroll = 0;
+
+    const getStep = () => {
+      const firstCard = track.querySelector(".top-shot-card");
+      const gap = parseFloat(window.getComputedStyle(track).gap) || 16;
+      return firstCard ? firstCard.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
+    };
+
+    const moveBy = (direction) => {
+      track.scrollBy({ left: direction * getStep(), behavior: "smooth" });
+    };
 
     const trySource = (img, index, extensionIndex = 0) => {
       if (extensionIndex >= extensions.length) {
@@ -805,6 +820,43 @@
       card.appendChild(image);
       track.appendChild(card);
       trySource(image, shotNumber);
+    });
+
+    prevButton.addEventListener("click", () => moveBy(-1));
+    nextButton.addEventListener("click", () => moveBy(1));
+
+    track.addEventListener("pointerdown", (event) => {
+      isDragging = true;
+      dragStartX = event.clientX;
+      dragStartScroll = track.scrollLeft;
+      track.setPointerCapture?.(event.pointerId);
+    });
+
+    track.addEventListener("pointermove", (event) => {
+      if (!isDragging) {
+        return;
+      }
+      event.preventDefault();
+      track.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
+    });
+
+    const stopDrag = (event) => {
+      isDragging = false;
+      track.releasePointerCapture?.(event.pointerId);
+    };
+
+    track.addEventListener("pointerup", stopDrag);
+    track.addEventListener("pointercancel", stopDrag);
+
+    track.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        moveBy(-1);
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        moveBy(1);
+      }
     });
   };
 

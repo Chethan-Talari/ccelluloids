@@ -313,6 +313,7 @@ video {
 }
 
 .top-shots-stage {
+  position: relative;
   width: min(100%, 1760px);
   margin: 0 auto;
   overflow: hidden;
@@ -326,8 +327,16 @@ video {
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   padding: 1.2rem max(1.2rem, calc((100vw - 1180px) / 2)) 2.5rem;
   scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.top-shots-track:active {
+  cursor: grabbing;
 }
 
 .top-shots-track::-webkit-scrollbar {
@@ -336,6 +345,7 @@ video {
 
 .top-shot-card {
   position: relative;
+  margin: 0;
   height: clamp(260px, 42vw, 600px);
   padding: 0.68rem;
   border-radius: 1.45rem;
@@ -378,6 +388,39 @@ video {
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.16em;
+}
+
+.top-shots-control {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(16, 17, 18, 0.86);
+  color: #fff;
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.8rem;
+  line-height: 1;
+  transform: translateY(-50%);
+  transition: transform 0.22s ease, background 0.22s ease;
+}
+
+.top-shots-control:hover {
+  background: rgba(16, 17, 18, 0.96);
+  transform: translateY(-50%) scale(1.04);
+}
+
+.top-shots-prev {
+  left: max(0.75rem, calc((100vw - 1180px) / 2));
+}
+
+.top-shots-next {
+  right: max(0.75rem, calc((100vw - 1180px) / 2));
 }
 
 .btn {
@@ -2032,6 +2075,12 @@ body.loaded #loader {
   .top-shot-card {
     height: clamp(260px, 92vw, 440px);
     border-radius: 1.2rem;
+  }
+
+  .top-shots-control {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.45rem;
   }
 
   .teaser-meta h3 {
