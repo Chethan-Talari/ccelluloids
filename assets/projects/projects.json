@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-07T05:42:33Z",
+  "generated_at": "2026-04-07T05:58:24Z",
   "categories": [
     {"slug":"Commercials","title":"Commercials","chip":"Category"},
     {"slug":"Products","title":"Products","chip":"Category"},
@@ -28,6 +28,33 @@
         {"type":"image","src":"assets/projects/Commercials/Kosala/photos/04.JPG"},
         {"type":"image","src":"assets/projects/Commercials/Kosala/photos/05.JPG"},
         {"type":"image","src":"assets/projects/Commercials/Kosala/photos/06.JPG"}
+      ]
+    },
+    {
+      "id": "Commercials/Riversoft",
+      "category": "Commercials",
+      "title": "Holi Campaign",
+      "date": "Mar 24, 2026",
+      "chip": "Brand & Commercial",
+      "cover": "assets/projects/Commercials/Riversoft/cover.jpg",
+      "client": "Riversoft",
+      "project": "Commercial Shoot",
+      "brand_model": "Selvi",
+      "agency": "Brandshark",
+      "description": "Commercial brand storytelling",
+      "media": [
+        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/01.jpg"},
+        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/02.jpg"},
+        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/03.jpg"},
+        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/04.jpg"},
+        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/05.jpg"},
+        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/06.jpg"},
+        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/07.jpg"},
+        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/08.jpg"},
+        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/09.jpg"},
+        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/10.jpg"},
+        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/11.jpg"},
+        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/12.jpg"}
       ]
     },
     {
@@ -112,33 +139,6 @@
       ]
     },
     {
-      "id": "Commercials/Riversoft",
-      "category": "Commercials",
-      "title": "Holi Campaign",
-      "date": "Mar 24, 2026",
-      "chip": "Brand & Commercial",
-      "cover": "assets/projects/Commercials/Riversoft/cover.jpg",
-      "client": "Riversoft",
-      "project": "Commercial Shoot",
-      "brand_model": "Selvi",
-      "agency": "Brandshark",
-      "description": "Commercial brand storytelling",
-      "media": [
-        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/01.jpg"},
-        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/02.jpg"},
-        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/03.jpg"},
-        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/04.jpg"},
-        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/05.jpg"},
-        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/06.jpg"},
-        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/07.jpg"},
-        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/08.jpg"},
-        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/09.jpg"},
-        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/10.jpg"},
-        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/11.jpg"},
-        {"type":"image","src":"assets/projects/Commercials/Riversoft/photos/12.jpg"}
-      ]
-    },
-    {
       "id": "Commercials/Riversoft-Valentines",
       "category": "Commercials",
       "title": "Valentine's Day Campaign",
@@ -160,24 +160,28 @@
       ]
     },
     {
-      "id": "Products/Bella Vita",
+      "id": "Products/Skinmumma",
       "category": "Products",
-      "title": "Spec Shoot",
-      "date": "Oct 09, 2024",
+      "title": "Skinmumma Shampoo Shoot",
+      "date": "Mar 09, 2026",
       "chip": "Product",
-      "cover": "assets/projects/Products/Bella Vita/cover.JPG",
-      "client": "Bella Vita",
+      "cover": "assets/projects/Products/Skinmumma/cover.jpg",
+      "client": "skinmumma",
       "project": "Product Shoot",
       "brand_model": "-",
-      "agency": "-",
-      "description": "Personal Project",
+      "agency": "Brandshark",
+      "description": "Product Marketing Photoshoot",
       "media": [
-        {"type":"image","src":"assets/projects/Products/Bella Vita/photos/01.JPG"},
-        {"type":"image","src":"assets/projects/Products/Bella Vita/photos/02.JPG"},
-        {"type":"image","src":"assets/projects/Products/Bella Vita/photos/03.JPG"},
-        {"type":"image","src":"assets/projects/Products/Bella Vita/photos/04.JPG"},
-        {"type":"image","src":"assets/projects/Products/Bella Vita/photos/05.JPG"},
-        {"type":"image","src":"assets/projects/Products/Bella Vita/photos/06.JPG"}
+        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/01.jpg"},
+        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/02.jpg"},
+        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/03.jpg"},
+        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/04.jpg"},
+        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/05.jpg"},
+        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/06.jpg"},
+        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/07.jpg"},
+        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/08.jpg"},
+        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/09.jpg"},
+        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/10.jpg"}
       ]
     },
     {
@@ -205,75 +209,6 @@
         {"type":"image","src":"assets/projects/Products/Kosala/photos/10.jpg"},
         {"type":"image","src":"assets/projects/Products/Kosala/photos/11.jpg"},
         {"type":"image","src":"assets/projects/Products/Kosala/photos/12.jpg"}
-      ]
-    },
-    {
-      "id": "Products/Luxora",
-      "category": "Products",
-      "title": "Valentines Product Launch",
-      "date": "Feb 09, 2026",
-      "chip": "Product",
-      "cover": "assets/projects/Products/Luxora/cover.jpg",
-      "client": "Luxora",
-      "project": "Product Shoot",
-      "brand_model": "-",
-      "agency": "Brandshark",
-      "description": "Product Marketing Photoshoot",
-      "media": [
-        {"type":"image","src":"assets/projects/Products/Luxora/photos/01.jpg"},
-        {"type":"image","src":"assets/projects/Products/Luxora/photos/02.jpg"},
-        {"type":"image","src":"assets/projects/Products/Luxora/photos/03.jpg"},
-        {"type":"image","src":"assets/projects/Products/Luxora/photos/04.jpg"},
-        {"type":"image","src":"assets/projects/Products/Luxora/photos/05.jpg"},
-        {"type":"image","src":"assets/projects/Products/Luxora/photos/06.jpg"},
-        {"type":"image","src":"assets/projects/Products/Luxora/photos/07.jpg"},
-        {"type":"image","src":"assets/projects/Products/Luxora/photos/08.jpg"},
-        {"type":"image","src":"assets/projects/Products/Luxora/photos/09.jpg"}
-      ]
-    },
-    {
-      "id": "Products/MyBra",
-      "category": "Products",
-      "title": "Valentines Product Launch",
-      "date": "Feb 04, 2026",
-      "chip": "Product",
-      "cover": "assets/projects/Products/MyBra/cover.JPG",
-      "client": "MyBra",
-      "project": "Product Shoot",
-      "brand_model": "-",
-      "agency": "Brandshark",
-      "description": "Product Marketing Photoshoot",
-      "media": [
-        {"type":"image","src":"assets/projects/Products/MyBra/photos/01.JPG"},
-        {"type":"image","src":"assets/projects/Products/MyBra/photos/02.JPG"},
-        {"type":"image","src":"assets/projects/Products/MyBra/photos/03.JPG"},
-        {"type":"image","src":"assets/projects/Products/MyBra/photos/04.JPG"},
-        {"type":"image","src":"assets/projects/Products/MyBra/photos/05.JPG"}
-      ]
-    },
-    {
-      "id": "Products/Skinmumma",
-      "category": "Products",
-      "title": "Skinmumma Shampoo Shoot",
-      "date": "Mar 09, 2026",
-      "chip": "Product",
-      "cover": "assets/projects/Products/Skinmumma/cover.jpg",
-      "client": "skinmumma",
-      "project": "Product Shoot",
-      "brand_model": "-",
-      "agency": "Brandshark",
-      "description": "Product Marketing Photoshoot",
-      "media": [
-        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/01.jpg"},
-        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/02.jpg"},
-        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/03.jpg"},
-        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/04.jpg"},
-        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/05.jpg"},
-        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/06.jpg"},
-        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/07.jpg"},
-        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/08.jpg"},
-        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/09.jpg"},
-        {"type":"image","src":"assets/projects/Products/Skinmumma/photos/10.jpg"}
       ]
     },
     {
@@ -339,6 +274,104 @@
       ]
     },
     {
+      "id": "Products/Luxora",
+      "category": "Products",
+      "title": "Valentines Product Launch",
+      "date": "Feb 09, 2026",
+      "chip": "Product",
+      "cover": "assets/projects/Products/Luxora/cover.jpg",
+      "client": "Luxora",
+      "project": "Product Shoot",
+      "brand_model": "-",
+      "agency": "Brandshark",
+      "description": "Product Marketing Photoshoot",
+      "media": [
+        {"type":"image","src":"assets/projects/Products/Luxora/photos/01.jpg"},
+        {"type":"image","src":"assets/projects/Products/Luxora/photos/02.jpg"},
+        {"type":"image","src":"assets/projects/Products/Luxora/photos/03.jpg"},
+        {"type":"image","src":"assets/projects/Products/Luxora/photos/04.jpg"},
+        {"type":"image","src":"assets/projects/Products/Luxora/photos/05.jpg"},
+        {"type":"image","src":"assets/projects/Products/Luxora/photos/06.jpg"},
+        {"type":"image","src":"assets/projects/Products/Luxora/photos/07.jpg"},
+        {"type":"image","src":"assets/projects/Products/Luxora/photos/08.jpg"},
+        {"type":"image","src":"assets/projects/Products/Luxora/photos/09.jpg"}
+      ]
+    },
+    {
+      "id": "Products/Bella Vita",
+      "category": "Products",
+      "title": "Spec Shoot",
+      "date": "Oct 09, 2024",
+      "chip": "Product",
+      "cover": "assets/projects/Products/Bella Vita/cover.JPG",
+      "client": "Bella Vita",
+      "project": "Product Shoot",
+      "brand_model": "-",
+      "agency": "-",
+      "description": "Personal Project",
+      "media": [
+        {"type":"image","src":"assets/projects/Products/Bella Vita/photos/01.JPG"},
+        {"type":"image","src":"assets/projects/Products/Bella Vita/photos/02.JPG"},
+        {"type":"image","src":"assets/projects/Products/Bella Vita/photos/03.JPG"},
+        {"type":"image","src":"assets/projects/Products/Bella Vita/photos/04.JPG"},
+        {"type":"image","src":"assets/projects/Products/Bella Vita/photos/05.JPG"},
+        {"type":"image","src":"assets/projects/Products/Bella Vita/photos/06.JPG"}
+      ]
+    },
+    {
+      "id": "Products/MyBra",
+      "category": "Products",
+      "title": "Valentines Product Launch",
+      "date": "Feb 04, 2026",
+      "chip": "Product",
+      "cover": "assets/projects/Products/MyBra/cover.JPG",
+      "client": "MyBra",
+      "project": "Product Shoot",
+      "brand_model": "-",
+      "agency": "Brandshark",
+      "description": "Product Marketing Photoshoot",
+      "media": [
+        {"type":"image","src":"assets/projects/Products/MyBra/photos/01.JPG"},
+        {"type":"image","src":"assets/projects/Products/MyBra/photos/02.JPG"},
+        {"type":"image","src":"assets/projects/Products/MyBra/photos/03.JPG"},
+        {"type":"image","src":"assets/projects/Products/MyBra/photos/04.JPG"},
+        {"type":"image","src":"assets/projects/Products/MyBra/photos/05.JPG"}
+      ]
+    },
+    {
+      "id": "Events/Thaman concert",
+      "category": "Events",
+      "title": "Thaman Concert",
+      "date": "Mar 12, 2024",
+      "chip": "Events",
+      "cover": "assets/projects/Events/Thaman concert/cover.jpg",
+      "client": "-",
+      "project": "Event Coverage",
+      "brand_model": "-",
+      "agency": "-",
+      "description": "Live event coverage.",
+      "media": [
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/01.jpg"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/02.jpg"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/03.jpg"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/04.jpg"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/05.jpg"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/06.jpg"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/07.JPG"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/08.JPG"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/09.JPG"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/10.jpg"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/11.jpg"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/12.jpg"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/13.JPG"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/14.JPG"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/15.JPG"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/16.JPG"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/17.JPG"},
+        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/18.JPG"}
+      ]
+    },
+    {
       "id": "Events/DSP Concert",
       "category": "Events",
       "title": "DSP Concert",
@@ -357,6 +390,27 @@
         {"type":"image","src":"assets/projects/Events/DSP Concert/photos/04.JPG"},
         {"type":"image","src":"assets/projects/Events/DSP Concert/photos/05.JPG"},
         {"type":"image","src":"assets/projects/Events/DSP Concert/photos/06.JPG"}
+      ]
+    },
+    {
+      "id": "Events/Ram Miriyala Concert",
+      "category": "Events",
+      "title": "Ram Miriyala Concert",
+      "date": "Mar 10, 2024",
+      "chip": "Events",
+      "cover": "assets/projects/Events/Ram Miriyala Concert/cover.JPG",
+      "client": "-",
+      "project": "Event Coverage",
+      "brand_model": "-",
+      "agency": "-",
+      "description": "Live event coverage.",
+      "media": [
+        {"type":"image","src":"assets/projects/Events/Ram Miriyala Concert/photos/01.JPG"},
+        {"type":"image","src":"assets/projects/Events/Ram Miriyala Concert/photos/02.JPG"},
+        {"type":"image","src":"assets/projects/Events/Ram Miriyala Concert/photos/03.JPG"},
+        {"type":"image","src":"assets/projects/Events/Ram Miriyala Concert/photos/04.JPG"},
+        {"type":"image","src":"assets/projects/Events/Ram Miriyala Concert/photos/05.JPG"},
+        {"type":"image","src":"assets/projects/Events/Ram Miriyala Concert/photos/06.JPG"}
       ]
     },
     {
@@ -414,60 +468,6 @@
         {"type":"image","src":"assets/projects/Events/Lavaza'24/photos/06.JPG"},
         {"type":"image","src":"assets/projects/Events/Lavaza'24/photos/07.JPG"},
         {"type":"image","src":"assets/projects/Events/Lavaza'24/photos/08.JPG"}
-      ]
-    },
-    {
-      "id": "Events/Ram Miriyala Concert",
-      "category": "Events",
-      "title": "Ram Miriyala Concert",
-      "date": "Mar 10, 2024",
-      "chip": "Events",
-      "cover": "assets/projects/Events/Ram Miriyala Concert/cover.JPG",
-      "client": "-",
-      "project": "Event Coverage",
-      "brand_model": "-",
-      "agency": "-",
-      "description": "Live event coverage.",
-      "media": [
-        {"type":"image","src":"assets/projects/Events/Ram Miriyala Concert/photos/01.JPG"},
-        {"type":"image","src":"assets/projects/Events/Ram Miriyala Concert/photos/02.JPG"},
-        {"type":"image","src":"assets/projects/Events/Ram Miriyala Concert/photos/03.JPG"},
-        {"type":"image","src":"assets/projects/Events/Ram Miriyala Concert/photos/04.JPG"},
-        {"type":"image","src":"assets/projects/Events/Ram Miriyala Concert/photos/05.JPG"},
-        {"type":"image","src":"assets/projects/Events/Ram Miriyala Concert/photos/06.JPG"}
-      ]
-    },
-    {
-      "id": "Events/Thaman concert",
-      "category": "Events",
-      "title": "Thaman Concert",
-      "date": "Mar 12, 2024",
-      "chip": "Events",
-      "cover": "assets/projects/Events/Thaman concert/cover.jpg",
-      "client": "-",
-      "project": "Event Coverage",
-      "brand_model": "-",
-      "agency": "-",
-      "description": "Live event coverage.",
-      "media": [
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/01.jpg"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/02.jpg"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/03.jpg"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/04.jpg"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/05.jpg"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/06.jpg"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/07.JPG"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/08.JPG"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/09.JPG"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/10.jpg"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/11.jpg"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/12.jpg"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/13.JPG"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/14.JPG"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/15.JPG"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/16.JPG"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/17.JPG"},
-        {"type":"image","src":"assets/projects/Events/Thaman concert/photos/18.JPG"}
       ]
     },
     {
@@ -537,6 +537,30 @@
       ]
     },
     {
+      "id": "Models/Swetha",
+      "category": "Models",
+      "title": "Swetha Shoot",
+      "date": "Apr 07, 2026",
+      "chip": "Model",
+      "cover": "assets/projects/Models/Swetha/cover.jpg",
+      "client": "-",
+      "project": "Street Style",
+      "brand_model": "-",
+      "agency": "CC",
+      "description": "Model Photoshoot",
+      "media": [
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/01.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/02.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/03.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/04.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/05.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/06.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/07.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/08.jpg"},
+        {"type":"image","src":"assets/projects/Models/Swetha/Photos/09.jpg"}
+      ]
+    },
+    {
       "id": "Models/Naveena",
       "category": "Models",
       "title": "Naveena Shoot",
@@ -576,30 +600,6 @@
         {"type":"image","src":"assets/projects/Models/Sanjana/Photos/02.jpg"},
         {"type":"image","src":"assets/projects/Models/Sanjana/Photos/03.jpg"},
         {"type":"image","src":"assets/projects/Models/Sanjana/Photos/04.jpg"}
-      ]
-    },
-    {
-      "id": "Models/Swetha",
-      "category": "Models",
-      "title": "Swetha Shoot",
-      "date": "Apr 07, 2026",
-      "chip": "Model",
-      "cover": "assets/projects/Models/Swetha/cover.jpg",
-      "client": "-",
-      "project": "Street Style",
-      "brand_model": "-",
-      "agency": "CC",
-      "description": "Model Photoshoot",
-      "media": [
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/01.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/02.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/03.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/04.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/05.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/06.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/07.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/08.jpg"},
-        {"type":"image","src":"assets/projects/Models/Swetha/Photos/09.jpg"}
       ]
     },
     {
