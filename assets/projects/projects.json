@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-07T07:58:05Z",
+  "generated_at": "2026-04-07T11:03:32Z",
   "categories": [
     {"slug":"Commercials","title":"Commercials","chip":"Category"},
     {"slug":"Products","title":"Products","chip":"Category"},
@@ -87,8 +87,7 @@
         {"type":"image","src":"assets/projects/Commercials/Luxora/photos/11.jpg"},
         {"type":"image","src":"assets/projects/Commercials/Luxora/photos/12.jpg"},
         {"type":"image","src":"assets/projects/Commercials/Luxora/photos/13.jpg"},
-        {"type":"image","src":"assets/projects/Commercials/Luxora/photos/14.jpg"},
-        {"type":"image","src":"assets/projects/Commercials/Luxora/photos/15.jpg"}
+        {"type":"image","src":"assets/projects/Commercials/Luxora/photos/14.jpg"}
       ]
     },
     {
