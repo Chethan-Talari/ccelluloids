@@ -315,60 +315,55 @@ video {
 .top-shots-stage {
   position: relative;
   width: min(100%, 1760px);
+  height: clamp(430px, 58vw, 760px);
   margin: 0 auto;
   overflow: hidden;
 }
 
 .top-shots-track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: clamp(240px, 34vw, 520px);
-  gap: clamp(0.85rem, 2vw, 1.6rem);
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding: 1.2rem max(1.2rem, calc((100vw - 1180px) / 2)) 2.5rem;
-  scrollbar-width: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
   cursor: grab;
   user-select: none;
-  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
 .top-shots-track:active {
   cursor: grabbing;
 }
 
-.top-shots-track::-webkit-scrollbar {
-  display: none;
-}
-
 .top-shot-card {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: var(--shot-z, 1);
+  width: clamp(260px, 34vw, 460px);
+  aspect-ratio: 4 / 5;
+  height: auto;
   margin: 0;
-  height: clamp(260px, 42vw, 600px);
   padding: 0.68rem;
   border-radius: 1.45rem;
   background: #0b0b0c;
   box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
-  scroll-snap-align: center;
-  transform: translateY(var(--shot-offset, 0)) rotate(var(--shot-rotate, 0deg));
+  opacity: var(--shot-opacity, 0);
+  transform:
+    translate3d(-50%, -50%, 0)
+    translateX(var(--shot-x, 0))
+    translateY(var(--shot-y, 0))
+    scale(var(--shot-scale, 0.78))
+    rotate(var(--shot-rotate, 0deg));
+  transition:
+    transform 0.72s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.42s ease;
   overflow: hidden;
+  pointer-events: none;
+  will-change: transform, opacity;
+  contain: layout paint;
 }
 
-.top-shot-card:nth-child(3n + 1) {
-  --shot-offset: 1.2rem;
-  --shot-rotate: -1.4deg;
-}
-
-.top-shot-card:nth-child(3n + 2) {
-  --shot-offset: -0.9rem;
-  --shot-rotate: 1deg;
-}
-
-.top-shot-card:nth-child(3n) {
-  --shot-offset: 0.35rem;
-  --shot-rotate: -0.35deg;
+.top-shot-card[data-active="true"] {
+  pointer-events: auto;
 }
 
 .top-shot-card img {
@@ -377,6 +372,14 @@ video {
   object-fit: cover;
   object-position: center center;
   border-radius: 1rem;
+  opacity: 0;
+  transform: scale(1.025);
+  transition: opacity 0.45s ease, transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.top-shot-card img.is-loaded {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .top-shot-card::after {
@@ -416,11 +419,11 @@ video {
 }
 
 .top-shots-prev {
-  left: max(0.75rem, calc((100vw - 1180px) / 2));
+  left: max(1rem, calc((100vw - 1180px) / 2));
 }
 
 .top-shots-next {
-  right: max(0.75rem, calc((100vw - 1180px) / 2));
+  right: max(1rem, calc((100vw - 1180px) / 2));
 }
 
 .btn {
@@ -2068,12 +2071,16 @@ body.loaded #loader {
   }
 
   .top-shots-track {
-    grid-auto-columns: minmax(210px, 72vw);
-    padding: 0.7rem 1rem 2.2rem;
+    touch-action: pan-y;
+  }
+
+  .top-shots-stage {
+    height: clamp(360px, 120vw, 560px);
   }
 
   .top-shot-card {
-    height: clamp(260px, 92vw, 440px);
+    width: min(76vw, 340px);
+    height: auto;
     border-radius: 1.2rem;
   }
 

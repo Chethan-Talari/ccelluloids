@@ -47,6 +47,10 @@
     return `/${url.replace(/^\.?\//, "")}`;
   };
 
+  const getProjectCover = (project, fallback = "photo2.jpg") => (
+    toRootUrl(project?.cover_preview || project?.cover || fallback)
+  );
+
   const normalizeInternalPath = (value) => {
     let pathname = value;
     try {
@@ -299,7 +303,7 @@
           slug: category.slug,
           title: category.title || slugToTitle(category.slug),
           chip: category.chip || "Category",
-          cover: toRootUrl(firstProject?.cover || "photo2.jpg"),
+          cover: getProjectCover(firstProject),
           count: counts[categoryKey] || 0,
         };
       }),
@@ -307,7 +311,7 @@
         slug: "all",
         title: "View All",
         chip: `${state.projects.length} Projects`,
-        cover: toRootUrl(state.projects[0]?.cover || "photo2.jpg"),
+        cover: getProjectCover(state.projects[0]),
         count: state.projects.length,
       },
     ];
@@ -378,7 +382,7 @@
             <article class="project-card reveal" data-project-id="${escapeHtml(project.id)}">
               <button class="project-card-trigger" type="button" aria-label="Open ${escapeHtml(project.title)} project">
                 <span class="gallery-panel-media">
-                  <img src="${escapeHtml(toRootUrl(project.cover))}" alt="${escapeHtml(project.title)} cover image" loading="lazy" decoding="async" fetchpriority="low" />
+                  <img src="${escapeHtml(getProjectCover(project))}" alt="${escapeHtml(project.title)} cover image" loading="lazy" decoding="async" fetchpriority="low" />
                   <span class="gallery-panel-shade" aria-hidden="true"></span>
                 </span>
                 <span class="gallery-panel-copy">
@@ -723,7 +727,7 @@
       .map((project) => `
         <article class="work-card project-teaser reveal">
           <a href="/category/?category=${encodeURIComponent(project.category || "all")}" class="teaser-media">
-            <img src="${escapeHtml(toRootUrl(project.cover))}" alt="${escapeHtml(project.title)} cover image" loading="lazy" decoding="async" />
+            <img src="${escapeHtml(getProjectCover(project))}" alt="${escapeHtml(project.title)} cover image" loading="lazy" decoding="async" />
             <span class="teaser-corners" aria-hidden="true"></span>
           </a>
           <div class="teaser-meta">
@@ -760,7 +764,7 @@
     }
   };
 
-  const initTopShots = () => {
+  const initTopShots = async () => {
     const section = document.getElementById("topShotsSection");
     const track = document.getElementById("topShotsTrack");
     const prevButton = section?.querySelector(".top-shots-prev");
@@ -770,29 +774,97 @@
     }
 
     const extensions = ["jpg", "JPG", "jpeg", "JPEG", "png", "PNG", "webp", "WEBP"];
+    let cropConfig = {
+      "01": "50% 50%",
+      "02": "50% 50%",
+      "03": "50% 50%",
+      "04": "50% 50%",
+      "05": "50% 50%",
+      "06": "50% 50%",
+      "07": "50% 50%",
+      "08": "50% 50%",
+      "09": "50% 50%",
+      "10": "50% 50%",
+    };
+    try {
+      const response = await fetch("/assets/top-shots/crops.json", { cache: "no-store" });
+      if (response.ok) {
+        cropConfig = { ...cropConfig, ...(await response.json()) };
+      }
+    } catch (error) {
+      console.error(error);
+    }
     let loadedCount = 0;
     let isDragging = false;
     let dragStartX = 0;
-    let dragStartScroll = 0;
+    let activeIndex = 0;
 
-    const getStep = () => {
-      const firstCard = track.querySelector(".top-shot-card");
-      const gap = parseFloat(window.getComputedStyle(track).gap) || 16;
-      return firstCard ? firstCard.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
+    const getCards = () => [...track.querySelectorAll(".top-shot-card")];
+
+    const getTopShotSources = (index) => {
+      const padded = String(index).padStart(2, "0");
+      return [
+        `/assets/optimized/top-shots/${padded}.jpg`,
+        ...extensions.map((extension) => `/assets/top-shots/${padded}.${extension}`),
+      ];
     };
 
-    const moveBy = (direction) => {
-      track.scrollBy({ left: direction * getStep(), behavior: "smooth" });
-    };
-
-    const trySource = (img, index, extensionIndex = 0) => {
-      if (extensionIndex >= extensions.length) {
+    const trySource = (img, index, sourceIndex = 0) => {
+      const sources = getTopShotSources(index);
+      if (sourceIndex >= sources.length) {
         img.closest(".top-shot-card")?.remove();
+        requestAnimationFrame(() => setActive(activeIndex));
         return;
       }
 
-      img.dataset.extensionIndex = String(extensionIndex);
-      img.src = `/assets/top-shots/${String(index).padStart(2, "0")}.${extensions[extensionIndex]}`;
+      img.dataset.sourceIndex = String(sourceIndex);
+      img.src = sources[sourceIndex];
+    };
+
+    const loadShot = (card) => {
+      const img = card?.querySelector("img");
+      if (!img || img.dataset.loading === "true" || img.dataset.loaded === "true") {
+        return;
+      }
+
+      img.dataset.loading = "true";
+      trySource(img, Number(img.dataset.shotNumber || "1"));
+    };
+
+    const setActive = (nextIndex) => {
+      const cards = getCards();
+      if (!cards.length) {
+        return;
+      }
+
+      activeIndex = (nextIndex + cards.length) % cards.length;
+      cards.forEach((card, index) => {
+        let offset = index - activeIndex;
+        if (offset > cards.length / 2) {
+          offset -= cards.length;
+        }
+        if (offset < -cards.length / 2) {
+          offset += cards.length;
+        }
+
+        const distance = Math.abs(offset);
+        const visible = distance <= 2;
+        card.dataset.active = String(offset === 0);
+        card.style.setProperty("--shot-x", `${offset * 42}%`);
+        card.style.setProperty("--shot-y", `${distance * 1.1}rem`);
+        card.style.setProperty("--shot-scale", String(Math.max(0.72, 1 - distance * 0.13)));
+        card.style.setProperty("--shot-rotate", `${offset * -2.4}deg`);
+        card.style.setProperty("--shot-opacity", visible ? String(Math.max(0.28, 1 - distance * 0.28)) : "0");
+        card.style.setProperty("--shot-z", String(20 - distance));
+
+        if (visible) {
+          loadShot(card);
+        }
+      });
+    };
+
+    const moveBy = (direction) => {
+      setActive(activeIndex + direction);
     };
 
     Array.from({ length: 10 }, (_, index) => index + 1).forEach((shotNumber) => {
@@ -802,25 +874,44 @@
       card.className = "top-shot-card";
       card.dataset.index = String(shotNumber).padStart(2, "0");
       image.alt = `Top shot ${shotNumber}`;
-      image.loading = "eager";
+      image.loading = "lazy";
       image.decoding = "async";
+      image.dataset.shotNumber = String(shotNumber);
+      image.style.objectPosition = cropConfig[String(shotNumber).padStart(2, "0")] || "50% 50%";
 
       image.addEventListener("load", () => {
-        loadedCount += 1;
-        if (loadedCount === 1) {
-          revealItems([...section.querySelectorAll(".reveal")]);
+        const markLoaded = () => {
+          loadedCount += 1;
+          image.dataset.loaded = "true";
+          image.classList.add("is-loaded");
+          requestAnimationFrame(() => setActive(activeIndex));
+          if (loadedCount === 1) {
+            revealItems([...section.querySelectorAll(".reveal")]);
+          }
+        };
+
+        if (image.decode) {
+          image.decode().catch(() => {}).finally(markLoaded);
+          return;
         }
+
+        markLoaded();
       });
 
       image.addEventListener("error", () => {
-        const nextExtensionIndex = Number(image.dataset.extensionIndex || "0") + 1;
-        trySource(image, shotNumber, nextExtensionIndex);
+        const nextSourceIndex = Number(image.dataset.sourceIndex || "0") + 1;
+        trySource(image, shotNumber, nextSourceIndex);
       });
 
       card.appendChild(image);
       track.appendChild(card);
-      trySource(image, shotNumber);
     });
+
+    const preloadRemaining = () => {
+      getCards().forEach((card, index) => {
+        window.setTimeout(() => loadShot(card), index * 140);
+      });
+    };
 
     prevButton.addEventListener("click", () => moveBy(-1));
     nextButton.addEventListener("click", () => moveBy(1));
@@ -828,7 +919,6 @@
     track.addEventListener("pointerdown", (event) => {
       isDragging = true;
       dragStartX = event.clientX;
-      dragStartScroll = track.scrollLeft;
       track.setPointerCapture?.(event.pointerId);
     });
 
@@ -837,12 +927,18 @@
         return;
       }
       event.preventDefault();
-      track.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
     });
 
     const stopDrag = (event) => {
+      if (!isDragging) {
+        return;
+      }
+      const deltaX = event.clientX - dragStartX;
       isDragging = false;
       track.releasePointerCapture?.(event.pointerId);
+      if (Math.abs(deltaX) > 36) {
+        moveBy(deltaX < 0 ? 1 : -1);
+      }
     };
 
     track.addEventListener("pointerup", stopDrag);
@@ -858,6 +954,13 @@
         moveBy(1);
       }
     });
+
+    setActive(0);
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(preloadRemaining, { timeout: 1800 });
+    } else {
+      window.setTimeout(preloadRemaining, 900);
+    }
   };
 
   const initTrustedLogoGrid = () => {

@@ -292,6 +292,7 @@ project_dirs=("${sorted_project_dirs[@]:-}")
     fi
 
     rel_cover="${cover#$ROOT_DIR/}"
+    cover_preview="assets/optimized/projects/$cat_slug/$proj_slug/cover.jpg"
 
     if [[ $first_proj -eq 1 ]]; then
       printf '\n'
@@ -307,6 +308,9 @@ project_dirs=("${sorted_project_dirs[@]:-}")
     printf '      "date": "%s",\n' "$(json_escape "$date_text")"
     printf '      "chip": "%s",\n' "$(json_escape "$chip")"
     printf '      "cover": "%s",\n' "$(json_escape "$rel_cover")"
+    if [[ -f "$ROOT_DIR/$cover_preview" ]]; then
+      printf '      "cover_preview": "%s",\n' "$(json_escape "$cover_preview")"
+    fi
     printf '      "client": "%s",\n' "$(json_escape "$client")"
     printf '      "project": "%s",\n' "$(json_escape "$project_type")"
     printf '      "brand_model": "%s",\n' "$(json_escape "$brand_model")"
