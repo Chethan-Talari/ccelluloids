@@ -77,3 +77,33 @@ After adding or changing folders, run:
 ```bash
 ./scripts/sync-projects.sh
 ```
+
+## Ordering Categories And Projects
+
+Use `assets/projects/order.txt` to control the order shown on the website.
+
+Keep category names above the section blocks:
+
+```text
+Commercials
+Products
+Events
+Street
+Models
+Documentaries
+```
+
+Then control project order inside each category:
+
+```text
+[Commercials]
+Kosala
+Luxora
+MyBra
+```
+
+Rules:
+
+- Names must match the folder names exactly.
+- Projects or categories not listed in `order.txt` will still appear after the listed items.
+- Run `./scripts/sync-projects.sh` after editing `order.txt`.

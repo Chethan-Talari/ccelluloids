@@ -4,6 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 PROJECTS_DIR="$ROOT_DIR/assets/projects"
 OUT_FILE="$PROJECTS_DIR/projects.json"
+ORDER_FILE="$PROJECTS_DIR/order.txt"
 
 mkdir -p "$PROJECTS_DIR"
 
@@ -63,6 +64,64 @@ read_meta_value() {
   ' "$file"
 }
 
+trim_text() {
+  printf '%s' "$1" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
+}
+
+array_contains() {
+  local needle="$1"
+  shift || true
+  local item
+  for item in "$@"; do
+    if [[ "$item" == "$needle" ]]; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+find_project_dir() {
+  local category="$1"
+  local project="$2"
+  local dir
+  for dir in "${project_dirs[@]:-}"; do
+    if [[ "$(basename "$(dirname "$dir")")" == "$category" && "$(basename "$dir")" == "$project" ]]; then
+      printf '%s' "$dir"
+      return 0
+    fi
+  done
+  return 1
+}
+
+read_order_file() {
+  ordered_categories=()
+  ordered_projects=()
+
+  local current_section=""
+  local raw_line line
+  if [[ ! -f "$ORDER_FILE" ]]; then
+    return
+  fi
+
+  while IFS= read -r raw_line || [[ -n "$raw_line" ]]; do
+    line="$(trim_text "${raw_line%%#*}")"
+    [[ -n "$line" ]] || continue
+
+    if [[ "$line" == \[*\] ]]; then
+      current_section="${line#[}"
+      current_section="${current_section%]}"
+      current_section="$(trim_text "$current_section")"
+      continue
+    fi
+
+    if [[ -z "$current_section" ]]; then
+      ordered_categories+=("$line")
+    else
+      ordered_projects+=("$current_section|$line")
+    fi
+  done < "$ORDER_FILE"
+}
+
 project_dirs=()
 categories_seen=()
 
@@ -89,6 +148,51 @@ for cat_slug in "${categories_seen[@]:-}"; do
   done
 done
 categories_seen=("${filtered_categories[@]:-}")
+
+ordered_categories=()
+ordered_projects=()
+read_order_file
+
+if [[ ${#ordered_categories[@]} -gt 0 ]]; then
+  sorted_categories=()
+  for cat_slug in "${ordered_categories[@]:-}"; do
+    if array_contains "$cat_slug" "${categories_seen[@]:-}" && ! array_contains "$cat_slug" "${sorted_categories[@]:-}"; then
+      sorted_categories+=("$cat_slug")
+    fi
+  done
+
+  for cat_slug in "${categories_seen[@]:-}"; do
+    if ! array_contains "$cat_slug" "${sorted_categories[@]:-}"; then
+      sorted_categories+=("$cat_slug")
+    fi
+  done
+  categories_seen=("${sorted_categories[@]:-}")
+fi
+
+sorted_project_dirs=()
+for cat_slug in "${categories_seen[@]:-}"; do
+  listed_projects=()
+
+  for entry in "${ordered_projects[@]:-}"; do
+    entry_cat="${entry%%|*}"
+    entry_project="${entry#*|}"
+    if [[ "$entry_cat" == "$cat_slug" ]]; then
+      if project_dir="$(find_project_dir "$cat_slug" "$entry_project")"; then
+        if ! array_contains "$project_dir" "${sorted_project_dirs[@]:-}"; then
+          sorted_project_dirs+=("$project_dir")
+          listed_projects+=("$entry_project")
+        fi
+      fi
+    fi
+  done
+
+  for project_dir in "${project_dirs[@]:-}"; do
+    if [[ "$(basename "$(dirname "$project_dir")")" == "$cat_slug" ]] && ! array_contains "$project_dir" "${sorted_project_dirs[@]:-}"; then
+      sorted_project_dirs+=("$project_dir")
+    fi
+  done
+done
+project_dirs=("${sorted_project_dirs[@]:-}")
 
 {
   printf '{\n'

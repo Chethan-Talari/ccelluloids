@@ -1,0 +1,45 @@
+# Category order. Keep these lines above the project sections.
+Commercials
+Products
+Events
+Street
+Models
+Documentaries
+
+[Commercials]
+Kosala
+Riversoft
+Luxora
+MyBra
+Portl
+Riversoft-Valentines
+
+[Products]
+Skinmumma
+Kosala
+Skinmumma SE
+Skinmumma shampoo
+villian
+Luxora
+Bella Vita
+MyBra
+
+[Events]
+Thaman concert
+DSP Concert
+Ram Miriyala Concert
+Lavaza'23
+Lavaza'24
+Vel Tech
+
+[Street]
+Urban Chronicles
+
+[Models]
+Swetha
+Naveena
+Sanjana
+
+
+[Documentaries]
+samarth-success-documentary
