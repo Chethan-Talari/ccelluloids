@@ -1,7 +1,5 @@
 title= UltraGym
-date= Mar 02, 2026
 chip=Brand & Commercial
-description=Commercial brand storytelling
-client= Portl
+description= Digital Campaign by Portal
 project=Commercial Shoot
 agency=Brandshark

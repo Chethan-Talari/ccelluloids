@@ -61,7 +61,10 @@ client=Varnika Silks
 project=Commercial Shoot
 brand_model=Varnika Silks
 agency=Brandshark
+featured=true
 ```
+
+Set `featured=true` on the project(s) you want to show in the homepage Featured Projects section.
 
 ## Categories To Use
 

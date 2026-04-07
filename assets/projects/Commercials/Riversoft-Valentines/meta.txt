@@ -1,8 +1,6 @@
-title=Riversoft - Valentine's
-date= Feb 4, 2026
+title=Riversoft
 chip=Brand & Commercial
-description=Commercial brand storytelling
-client= Riversoft
+description= Valentine's Day Campaign
 project=Commercial Shoot
 brand_model= Kruthi
 agency=Brandshark

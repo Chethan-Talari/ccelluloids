@@ -1,8 +1,6 @@
 title=Luxora
-date= Feb 10, 2026
 chip=Brand & Commercial
-description=Commercial brand storytelling
-client= Luxora
+description= Valentine's Day Campaign
 project=Commercial Shoot
 brand_model= Druthi, Jaanvi
 agency=Brandshark

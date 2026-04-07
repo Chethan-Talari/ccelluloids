@@ -239,6 +239,7 @@ project_dirs=("${sorted_project_dirs[@]:-}")
     brand_model="-"
     agency="-"
     date_text="$(date -u +"%b %d, %Y")"
+    featured="false"
 
     if value="$(read_meta_value "$meta_file" "title" 2>/dev/null)"; then title="$value"; fi
     if value="$(read_meta_value "$meta_file" "chip" 2>/dev/null)"; then chip="$value"; fi
@@ -248,6 +249,12 @@ project_dirs=("${sorted_project_dirs[@]:-}")
     if value="$(read_meta_value "$meta_file" "brand_model" 2>/dev/null)"; then brand_model="$value"; fi
     if value="$(read_meta_value "$meta_file" "agency" 2>/dev/null)"; then agency="$value"; fi
     if value="$(read_meta_value "$meta_file" "date" 2>/dev/null)"; then date_text="$value"; fi
+    if value="$(read_meta_value "$meta_file" "featured" 2>/dev/null)"; then
+      case "$(printf '%s' "$value" | tr '[:upper:]' '[:lower:]')" in
+        true|yes|1) featured="true" ;;
+        *) featured="false" ;;
+      esac
+    fi
 
     cover=""
     while IFS= read -r cover_file; do
@@ -304,6 +311,7 @@ project_dirs=("${sorted_project_dirs[@]:-}")
     printf '      "project": "%s",\n' "$(json_escape "$project_type")"
     printf '      "brand_model": "%s",\n' "$(json_escape "$brand_model")"
     printf '      "agency": "%s",\n' "$(json_escape "$agency")"
+    printf '      "featured": %s,\n' "$featured"
     printf '      "description": "%s",\n' "$(json_escape "$description")"
     printf '      "media": ['
 

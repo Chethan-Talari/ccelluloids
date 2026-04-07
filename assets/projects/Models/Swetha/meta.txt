@@ -3,4 +3,4 @@ chip=Model
 description= Model Photoshoot
 project= Street Style
 Model= Swetha
-agency= CC
+featured=true

@@ -1,7 +1,5 @@
-title= Villian-Spec
-date= Dec 27, 2025
+title= Villian
 chip=Product
-description=Product Marketing Photoshoot
-client= Villain
+description=Spec Photoshoot
 project=Product Shoot
 agency=Brandshark

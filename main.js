@@ -191,6 +191,43 @@
     });
   };
 
+  const applyGalleryCardMasonryLayout = (root = document) => {
+    const grids = root?.matches?.(".category-masonry, .project-card-grid")
+      ? [root]
+      : [...(root || document).querySelectorAll(".category-masonry, .project-card-grid")];
+
+    grids.forEach((grid) => {
+      const gridStyles = window.getComputedStyle(grid);
+      const rowHeight = parseFloat(gridStyles.getPropertyValue("grid-auto-rows")) || 8;
+      const gap = parseFloat(gridStyles.getPropertyValue("gap")) || 16;
+      const items = [...grid.children].filter((item) => item.matches(".category-card, .project-card"));
+
+      items.forEach((item) => {
+        const tile = item.matches(".project-card") ? item.querySelector(".project-card-trigger") : item;
+        if (!tile) {
+          return;
+        }
+
+        const update = () => {
+          const height = tile.getBoundingClientRect().height;
+          if (!height) {
+            return;
+          }
+
+          const span = Math.max(12, Math.ceil((height + gap) / (rowHeight + gap)));
+          item.style.setProperty("--card-span", String(span));
+        };
+
+        update();
+
+        const image = tile.querySelector("img");
+        if (image && !image.complete) {
+          image.addEventListener("load", () => requestAnimationFrame(update), { once: true });
+        }
+      });
+    });
+  };
+
   const applyProjectCardOrientations = (root = document) => {
     root.querySelectorAll(".project-card").forEach((card) => {
       const image = card.querySelector("img");
@@ -202,6 +239,7 @@
         const isLandscape = image.naturalWidth > image.naturalHeight;
         card.classList.toggle("is-landscape", isLandscape);
         card.classList.toggle("is-portrait", !isLandscape);
+        requestAnimationFrame(() => applyGalleryCardMasonryLayout(root));
       };
 
       if (image.complete) {
@@ -309,6 +347,7 @@
       .join("");
 
     revealItems([...categoryMasonry.querySelectorAll(".reveal")]);
+    requestAnimationFrame(() => applyGalleryCardMasonryLayout(categoryMasonry));
     initCardTilt(categoryMasonry);
   };
 
@@ -377,6 +416,7 @@
       ...projectGrid.querySelectorAll(".reveal"),
     ]);
     applyProjectCardOrientations(projectGrid);
+    requestAnimationFrame(() => applyGalleryCardMasonryLayout(projectGrid));
     initCardTilt(projectGrid);
   };
 
@@ -539,6 +579,7 @@
     scrollWrap.addEventListener("scroll", updateStoryProgress, { passive: true });
     window.addEventListener("resize", () => {
       updateStoryProgress();
+      applyGalleryCardMasonryLayout();
       applyStoryMasonryLayout();
     });
     document.addEventListener("keydown", (event) => {
@@ -673,6 +714,58 @@
     }
   };
 
+  const renderFeaturedProjects = (projects) => {
+    const grid = document.getElementById("featuredProjectsGrid");
+    if (!grid) {
+      return;
+    }
+
+    const featuredProjects = projects.filter((project) => project.featured === true).slice(0, 3);
+    if (!featuredProjects.length) {
+      return;
+    }
+
+    grid.innerHTML = featuredProjects
+      .map((project) => `
+        <article class="work-card project-teaser reveal">
+          <a href="/category/?category=${encodeURIComponent(project.category || "all")}" class="teaser-media">
+            <img src="${escapeHtml(toRootUrl(project.cover))}" alt="${escapeHtml(project.title)} cover image" loading="lazy" decoding="async" />
+            <span class="teaser-corners" aria-hidden="true"></span>
+          </a>
+          <div class="teaser-meta">
+            <h3>${escapeHtml(project.title)}</h3>
+            <span class="tag-pill">${escapeHtml(project.category || project.chip || "Project")}</span>
+          </div>
+        </article>
+      `)
+      .join("");
+
+    revealItems([...grid.querySelectorAll(".reveal")]);
+  };
+
+  const initFeaturedProjects = async () => {
+    const grid = document.getElementById("featuredProjectsGrid");
+    if (!grid) {
+      return;
+    }
+
+    try {
+      const response = await fetch("/assets/projects/projects.json", { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`Failed to load projects.json (${response.status})`);
+      }
+
+      const payload = await response.json();
+      const projects = (Array.isArray(payload.projects) ? payload.projects : []).map((project) => ({
+        ...project,
+        title: project.title || slugToTitle(project.id?.split("/").pop() || ""),
+      }));
+      renderFeaturedProjects(projects);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const initTrustedLogoGrid = () => {
     document.querySelectorAll(".logo-grid[data-staggered]").forEach((grid) => {
       if (grid.dataset.enhanced === "true") {
@@ -756,6 +849,7 @@
     initProjectStory();
     initLightbox();
     initTrustedLogoGrid();
+    initFeaturedProjects();
     initGalleryData();
   });
 })();

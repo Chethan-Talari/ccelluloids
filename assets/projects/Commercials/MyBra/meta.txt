@@ -1,8 +1,6 @@
 title= MyBra
-date= Mar 11, 2026
 chip=Brand & Commercial
-description=Commercial brand storytelling
-client= MyBra
+description= Daily casuals campaign
 project=Commercial Shoot
 brand_model= Jaanvi
 agency=Brandshark

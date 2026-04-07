@@ -1,6 +1,4 @@
-title= BellaVita - Spec
-date= Oct 09, 2024
+title= BellaVita
 chip=Product
-description= Personal Project
-client= Bella Vita
+description=Spec Photoshoot
 project=Product Shoot

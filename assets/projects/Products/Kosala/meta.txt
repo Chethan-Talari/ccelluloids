@@ -1,7 +1,5 @@
 title=Kosala
-date= Feb 20, 2026
 chip=Product
-description=Product Marketing Photoshoot
-client= Kosala
+description= Store Launch Campaign
 project=Product Shoot
 agency=Brandshark

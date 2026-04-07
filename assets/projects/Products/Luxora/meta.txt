@@ -1,7 +1,5 @@
-title=Luxora - Valentine's
-date= Feb 09, 2026
+title=Luxora
 chip=Product
-description=Product Marketing Photoshoot
-client= Luxora
+description=Valentine's Day Product launch
 project=Product Shoot
 agency=Brandshark

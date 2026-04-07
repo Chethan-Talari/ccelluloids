@@ -1,8 +1,6 @@
-title= Riversoft - Holi Campaign
-date= Mar 24, 2026
+title= Riversoft
 chip=Brand & Commercial
-description=Commercial brand storytelling
-client= Riversoft
+description= Holi Campaign
 project=Commercial Shoot
 brand_model= Selvi
 agency=Brandshark

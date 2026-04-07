@@ -1,7 +1,6 @@
 title=SkinMumma Sunscreen
-date= Mar 09, 2026
 chip=Product
-description=Product Marketing Photoshoot
-client= skinmumma
+description= Social Media assets
 project=Product Shoot
 agency=Brandshark
+featured=true
