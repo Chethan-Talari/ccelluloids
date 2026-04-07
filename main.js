@@ -787,12 +787,11 @@
       card.className = "top-shot-card";
       card.dataset.index = String(shotNumber).padStart(2, "0");
       image.alt = `Top shot ${shotNumber}`;
-      image.loading = "lazy";
+      image.loading = "eager";
       image.decoding = "async";
 
       image.addEventListener("load", () => {
         loadedCount += 1;
-        section.hidden = false;
         if (loadedCount === 1) {
           revealItems([...section.querySelectorAll(".reveal")]);
         }
