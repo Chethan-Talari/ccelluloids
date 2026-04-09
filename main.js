@@ -367,7 +367,7 @@
     const heading = isAll ? "View All" : (selectedCategory?.title || slugToTitle(state.activeCategory));
 
     if (eyebrow) {
-      eyebrow.textContent = isAll ? "All Categories" : "Category";
+      eyebrow.textContent = isAll ? "All Projects" : "Selected Work";
     }
     title.textContent = heading;
     document.title = `${heading} | C Celluloids`;
@@ -536,9 +536,10 @@
     state.activeStoryProject = project;
     cover.src = toRootUrl(project.cover);
     cover.alt = `${project.title} cover image`;
+    cover.style.objectPosition = project.hero_position || "50% 50%";
     stickyTitle.textContent = project.title;
     title.textContent = project.title;
-    galleryTitle.textContent = project.title;
+    galleryTitle.textContent = `Frames from ${project.title}`;
     description.textContent = project.description || "";
 
     meta.innerHTML = getProjectDetailLines(project)

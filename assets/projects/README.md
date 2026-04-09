@@ -61,10 +61,20 @@ client=Varnika Silks
 project=Commercial Shoot
 brand_model=Varnika Silks
 agency=Brandshark
+hero_position=50% 22%
 featured=true
 ```
 
 Set `featured=true` on the project(s) you want to show in the homepage Featured Projects section.
+Use `hero_position=` to control which part of the cover photo is shown in the opened project hero.
+
+Examples:
+
+- `hero_position=50% 50%` keeps it centered
+- `hero_position=50% 20%` shows more of the top
+- `hero_position=50% 80%` shows more of the bottom
+- `hero_position=30% 50%` shifts the crop left
+- `hero_position=70% 50%` shifts the crop right
 
 ## Categories To Use
 

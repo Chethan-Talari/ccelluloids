@@ -4,3 +4,4 @@ description= Holi Campaign
 project=Commercial Shoot
 brand_model= Selvi
 agency=Brandshark
+hero_position=50% 18%

@@ -10,6 +10,10 @@
   --accent-ink: #5d4300;
   --radius: 1.1rem;
   --shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-serif: "Bodoni Moda", serif;
+  --font-script: "Allura", cursive;
+  --font-mono: "IBM Plex Mono", monospace;
 }
 
 * {
@@ -22,7 +26,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-sans);
   background: var(--bg);
   color: var(--text);
   text-align: left;
@@ -34,10 +38,10 @@ h1,
 h2,
 h3 {
   margin: 0;
-  font-family: "Bodoni Moda", serif;
-  line-height: 0.98;
-  letter-spacing: -0.03em;
-  font-weight: 700;
+  font-family: var(--font-sans);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  font-weight: 800;
 }
 
 p {
@@ -78,10 +82,46 @@ video {
 .eyebrow {
   margin-bottom: 0.5rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.74rem;
-  font-weight: 800;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
   color: #7e6204;
+}
+
+.accent-serif {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.accent-script {
+  display: inline-block;
+  font-family: var(--font-script);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.82;
+  color: #a6792a;
+  padding-inline: 0.08em;
+}
+
+.hero-title .accent-script,
+.section-head .accent-script,
+.contact-hero h1 .accent-script,
+.profile-card h2 .accent-script,
+.thankyou-card h1 .accent-script {
+  font-size: 1.08em;
+  transform: translateY(0.08em);
+}
+
+.hero-title,
+.section-head h1,
+.section-head h2,
+.profile-card h2,
+.contact-hero h1,
+.contact-panel h2,
+.category-mini-head h1 {
+  text-wrap: balance;
 }
 
 .hero {
@@ -125,12 +165,30 @@ video {
 }
 
 .hero-tagline {
-  margin: 0 0 1.4rem;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  margin: 0 0 1rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.78rem;
+  font-weight: 500;
+  font-family: var(--font-mono);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+.hero-title {
+  max-width: 13ch;
+  margin: 0 auto;
+  color: #fff;
+  font-size: clamp(2.7rem, 6.6vw, 6rem);
+  line-height: 0.92;
+  text-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+}
+
+.hero-subcopy {
+  max-width: 44rem;
+  margin: 1.05rem auto 1.75rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(1rem, 1.7vw, 1.12rem);
+  line-height: 1.7;
 }
 
 .hero-metrics {
@@ -184,15 +242,19 @@ video {
   text-align: center;
 }
 
+.section-head h1,
 .section-head h2 {
-  max-width: 14ch;
+  max-width: 15ch;
   margin: 0 auto;
   font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 0.94;
 }
 
 .section-head p:not(.eyebrow) {
-  max-width: 44rem;
+  max-width: 47rem;
   margin: 0.9rem auto 0;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 .recent-grid,
@@ -295,8 +357,11 @@ video {
   border: 1px solid rgba(16, 17, 18, 0.2);
   background: #f0f1f3;
   color: #202328;
-  font-size: 0.71rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 0.69rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   padding: 0.32rem 0.68rem;
   white-space: nowrap;
 }
@@ -389,7 +454,8 @@ video {
   bottom: 1.1rem;
   color: rgba(255, 255, 255, 0.76);
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 500;
+  font-family: var(--font-mono);
   letter-spacing: 0.16em;
 }
 
@@ -435,8 +501,11 @@ video {
   background: var(--accent);
   color: var(--accent-ink);
   padding: 0.64rem 1.25rem;
-  font-size: 0.88rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -586,7 +655,7 @@ main > .section:first-child {
 
 .testimonial-card h3 {
   margin-top: 1rem;
-  font-size: 1.45rem;
+  font-size: 1.3rem;
 }
 
 .testimonial-card span {
@@ -867,8 +936,9 @@ main > .section:first-child {
   border-radius: 999px;
   background: rgba(242, 198, 0, 0.16);
   color: #7b5e00;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1173,8 +1243,9 @@ main > .section:first-child {
   border-radius: 999px;
   background: #111316;
   color: #fff;
-  font-size: 0.78rem;
-  font-weight: 800;
+  font-size: 0.74rem;
+  font-weight: 500;
+  font-family: var(--font-mono);
   margin-bottom: 1rem;
 }
 
@@ -1182,6 +1253,7 @@ main > .section:first-child {
 .contact-panel h2 {
   font-size: 1.8rem;
   margin-bottom: 0.35rem;
+  line-height: 0.98;
 }
 
 .contact-action-link {
@@ -1198,11 +1270,18 @@ main > .section:first-child {
 }
 
 .category-mini-head {
-  margin-bottom: 1rem;
+  max-width: 54rem;
+  margin: 0 auto 1rem;
+  text-align: center;
 }
 
 .category-mini-head h1 {
   font-size: clamp(1.9rem, 4vw, 3rem);
+}
+
+.category-mini-head p:not(.eyebrow) {
+  max-width: 42rem;
+  margin: 0.8rem auto 0;
 }
 
 .category-masonry,
@@ -1330,8 +1409,8 @@ main > .section:first-child {
   max-width: 11ch;
   font-size: clamp(1.7rem, 3.3vw, 2.85rem);
   line-height: 0.95;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-weight: 700;
   letter-spacing: -0.04em;
   color: #fff;
 }
@@ -1350,8 +1429,11 @@ main > .section:first-child {
 .gallery-panel-title-row span {
   flex: 0 0 auto;
   color: rgba(255, 255, 255, 0.88);
-  font-size: 0.86rem;
-  font-weight: 800;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 
@@ -1414,7 +1496,11 @@ main > .section:first-child {
 
 .story-sticky-title {
   color: #f5f5f5;
-  font-size: 1rem;
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   text-align: center;
 }
 
@@ -1465,6 +1551,9 @@ main > .section:first-child {
   transform: translate(-50%, -50%);
   text-align: center;
   font-size: clamp(2.4rem, 6vw, 4.8rem);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: -0.03em;
   color: #fff;
   opacity: 1;
 }
@@ -1642,6 +1731,7 @@ main > .section:first-child {
 .profile-card h2 {
   font-size: 2.4rem;
   margin-bottom: 0.5rem;
+  max-width: 12ch;
 }
 
 .profile-card p {
@@ -1663,6 +1753,8 @@ main > .section:first-child {
 .timeline-item h3 {
   color: #7e6204;
   font-size: 1.35rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
 }
 
 .logo-grid {
