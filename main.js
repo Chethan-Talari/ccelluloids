@@ -86,13 +86,82 @@
 
   const initActiveNav = () => {
     const path = normalizeInternalPath(window.location.pathname);
-    document.querySelectorAll(".dock-nav a").forEach((link) => {
+    document.querySelectorAll(".site-header-nav a, .site-header-cta, .mobile-menu-panel a").forEach((link) => {
       const href = link.getAttribute("href");
       if (!href || href.startsWith("http") || href.startsWith("#")) {
         return;
       }
       if (normalizeInternalPath(href) === path) {
         link.setAttribute("aria-current", "page");
+      }
+    });
+  };
+
+  const initHeaderShrink = () => {
+    const header = document.querySelector(".site-header");
+    if (!header) {
+      return;
+    }
+
+    let ticking = false;
+    const maxScroll = 360;
+
+    const updateHeader = () => {
+      const progress = Math.max(0, Math.min(window.scrollY / maxScroll, 1));
+      const compactStart = 0.58;
+      const compactRaw = Math.max(0, Math.min((progress - compactStart) / (1 - compactStart), 1));
+      const compactProgress = compactRaw * compactRaw * (3 - (2 * compactRaw));
+      document.documentElement.style.setProperty("--header-progress", progress.toFixed(4));
+      document.documentElement.style.setProperty("--header-compact-progress", compactProgress.toFixed(4));
+      document.body.classList.toggle("header-compact", compactProgress > 0.985);
+      ticking = false;
+    };
+
+    window.addEventListener("scroll", () => {
+      if (ticking) {
+        return;
+      }
+      ticking = true;
+      window.requestAnimationFrame(updateHeader);
+    }, { passive: true });
+
+    updateHeader();
+  };
+
+  const initMobileMenu = () => {
+    const toggle = document.querySelector(".mobile-menu-toggle");
+    const panel = document.querySelector(".mobile-menu-panel");
+    const close = document.querySelector(".mobile-menu-close");
+    if (!toggle || !panel || !close) {
+      return;
+    }
+
+    const setOpen = (value) => {
+      panel.classList.toggle("open", value);
+      panel.setAttribute("aria-hidden", value ? "false" : "true");
+      toggle.setAttribute("aria-expanded", value ? "true" : "false");
+      document.body.classList.toggle("mobile-menu-open", value);
+    };
+
+    toggle.addEventListener("click", () => {
+      setOpen(!panel.classList.contains("open"));
+    });
+
+    close.addEventListener("click", () => setOpen(false));
+
+    panel.addEventListener("click", (event) => {
+      if (event.target === panel) {
+        setOpen(false);
+      }
+    });
+
+    panel.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setOpen(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && panel.classList.contains("open")) {
+        setOpen(false);
       }
     });
   };
@@ -799,6 +868,7 @@
     let isDragging = false;
     let dragStartX = 0;
     let activeIndex = 0;
+    const mobileDeckQuery = window.matchMedia("(max-width: 760px)");
 
     const getCards = () => [...track.querySelectorAll(".top-shot-card")];
 
@@ -839,6 +909,7 @@
       }
 
       activeIndex = (nextIndex + cards.length) % cards.length;
+      const isMobileDeck = mobileDeckQuery.matches;
       cards.forEach((card, index) => {
         let offset = index - activeIndex;
         if (offset > cards.length / 2) {
@@ -849,14 +920,23 @@
         }
 
         const distance = Math.abs(offset);
-        const visible = distance <= 2;
+        const visible = isMobileDeck ? distance <= 1 : distance <= 2;
         card.dataset.active = String(offset === 0);
-        card.style.setProperty("--shot-x", `${offset * 42}%`);
-        card.style.setProperty("--shot-y", `${distance * 1.1}rem`);
-        card.style.setProperty("--shot-scale", String(Math.max(0.72, 1 - distance * 0.13)));
-        card.style.setProperty("--shot-rotate", `${offset * -2.4}deg`);
-        card.style.setProperty("--shot-opacity", visible ? String(Math.max(0.28, 1 - distance * 0.28)) : "0");
-        card.style.setProperty("--shot-z", String(20 - distance));
+        if (isMobileDeck) {
+          card.style.setProperty("--shot-x", `${offset * 19}%`);
+          card.style.setProperty("--shot-y", `${distance * 0.7}rem`);
+          card.style.setProperty("--shot-scale", String(Math.max(0.84, 1 - distance * 0.1)));
+          card.style.setProperty("--shot-rotate", `${offset * -4.5}deg`);
+          card.style.setProperty("--shot-opacity", visible ? String(offset === 0 ? 1 : 0.66) : "0");
+          card.style.setProperty("--shot-z", String(30 - distance));
+        } else {
+          card.style.setProperty("--shot-x", `${offset * 42}%`);
+          card.style.setProperty("--shot-y", `${distance * 1.1}rem`);
+          card.style.setProperty("--shot-scale", String(Math.max(0.72, 1 - distance * 0.13)));
+          card.style.setProperty("--shot-rotate", `${offset * -2.4}deg`);
+          card.style.setProperty("--shot-opacity", visible ? String(Math.max(0.28, 1 - distance * 0.28)) : "0");
+          card.style.setProperty("--shot-z", String(20 - distance));
+        }
 
         if (visible) {
           loadShot(card);
@@ -956,6 +1036,7 @@
       }
     });
 
+    mobileDeckQuery.addEventListener?.("change", () => setActive(activeIndex));
     setActive(0);
     if ("requestIdleCallback" in window) {
       window.requestIdleCallback(preloadRemaining, { timeout: 1800 });
@@ -1039,6 +1120,8 @@
       return;
     }
     initLoader();
+    initMobileMenu();
+    initHeaderShrink();
     initActiveNav();
     initUniversalBack();
     initScrollTop();

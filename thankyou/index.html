@@ -9,15 +9,50 @@
   <link rel="canonical" href="https://www.ccelluloids.in/thankyou/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700;6..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body class="page-thankyou">
+  <header class="site-header" aria-label="Primary Header">
+    <div class="site-header-shell">
+      <a class="site-brand" href="/" aria-label="C Celluloids home">
+        <span class="site-brand-emblem" aria-hidden="true"><img src="/signature.png" alt="" /></span>
+        <span class="site-brand-lockup">C Celluloids</span>
+      </a>
+      <nav class="site-header-nav" aria-label="Primary Navigation">
+        <a href="/">Home</a>
+        <a href="/gallery/">Gallery</a>
+        <a href="/about/">About</a>
+      </nav>
+      <a class="site-header-cta" href="/hireme/">Hire Me <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="mobile-header-shell">
+      <a class="site-brand" href="/" aria-label="C Celluloids home">
+        <span class="site-brand-emblem" aria-hidden="true"><img src="/signature.png" alt="" /></span>
+      </a>
+      <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenuPanel">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
+      <div class="mobile-menu-inner">
+        <button class="mobile-menu-close" type="button" aria-label="Close menu">×</button>
+        <nav class="mobile-menu-nav" aria-label="Mobile Navigation">
+          <a href="/">Home</a>
+          <a href="/gallery/">Gallery</a>
+          <a href="/about/">About</a>
+        </nav>
+        <a class="mobile-menu-cta" href="/hireme/">Hire Me <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </header>
   <main class="thankyou-main">
     <section class="thankyou-card reveal">
       <p class="eyebrow">Inquiry Received</p>
-      <h1>Thank you. The next <span class="accent-script">frame</span> is in motion.</h1>
-      <p>Your note is in. Expect a reply within 24 hours with the clearest next steps from here.</p>
+      <h1>Thank you. We’ll get back shortly.</h1>
+      <p>Your message is in. Expect a response within 24 hours with next steps.</p>
       <a href="/" class="btn">Back to Home</a>
     </section>
   </main>

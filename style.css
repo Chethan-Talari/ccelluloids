@@ -257,6 +257,24 @@ video {
   line-height: 1.7;
 }
 
+.page-home .hero-title {
+  max-width: 12ch;
+  font-size: clamp(2.3rem, 5.4vw, 4.9rem);
+  line-height: 0.94;
+}
+
+.page-home .section-head h2 {
+  max-width: 14ch;
+  font-size: clamp(1.85rem, 3vw, 2.8rem);
+  line-height: 0.98;
+}
+
+.page-home .section-head p:not(.eyebrow) {
+  max-width: 34rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
 .recent-grid,
 .testimonial-grid {
   display: grid;
@@ -2163,23 +2181,41 @@ body.loaded #loader {
   }
 
   .top-shots-track {
+    inset: 0 0 0;
     touch-action: pan-y;
   }
 
   .top-shots-stage {
-    height: clamp(360px, 120vw, 560px);
+    width: min(100%, 420px);
+    height: clamp(430px, 132vw, 640px);
+    padding-inline: 0.25rem;
   }
 
   .top-shot-card {
-    width: min(76vw, 340px);
+    width: min(78vw, 320px);
     height: auto;
-    border-radius: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 1.35rem;
+    background: linear-gradient(180deg, #ffffff, #f1f0eb);
+    box-shadow:
+      0 24px 42px rgba(0, 0, 0, 0.14),
+      0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .top-shot-card img {
+    border-radius: 1.05rem;
+  }
+
+  .top-shot-card::after {
+    right: 50%;
+    bottom: 1rem;
+    transform: translateX(50%);
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   }
 
   .top-shots-control {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 1.45rem;
+    display: none;
   }
 
   .teaser-meta h3 {
