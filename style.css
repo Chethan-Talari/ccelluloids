@@ -198,7 +198,7 @@ video {
 
 .site-brand-lockup {
   color: #f8f2df;
-  font-family: var(--font-serif);
+  font-family: robust, var(--font-sans);
   font-size: calc(0.92rem + (0.16rem * (1 - var(--header-compact-progress))));
   font-weight: 700;
   letter-spacing: calc(0.01em + (0.03em * (1 - var(--header-compact-progress))));
